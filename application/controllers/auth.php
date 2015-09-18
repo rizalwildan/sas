@@ -30,12 +30,24 @@ class Auth extends CI_Controller {
 		
 		if($akun['level'] == 1)
 		{
+			redirect(base_url().'index.php/admin/index');
+		}
+		else if($akun['level'] == 2)
+		{
 			redirect(base_url().'index.php/home/index');
 		}
 		else
 		{
-			
+			$data['error'] = "Password dan Username Salah";
+			$this->load->view('login', $data);
 		}
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata(array('username'=>'','login'=>FALSE));
+    	$this->session->sess_destroy();
+    	$this->load->view('login');
 	}
 	
 	

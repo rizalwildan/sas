@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Admin extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -24,7 +24,7 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == TRUE)
 		{
-			redirect(base_url(). 'index.php/home/datasiswa');
+			redirect(base_url(). 'index.php/admin/datasiswa');
 		}
 		else
 		{
@@ -37,7 +37,7 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'index.php/admin/index');
 		}
 		else
 		{
@@ -47,7 +47,7 @@ class Home extends CI_Controller {
 		$data['siswa'] = $this->siswa_model->tampilSiswaall();
 		$data['ceksmt'] = $this->siswa_model->cekSmester();
 		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
+		$this->load->view('template/sidebar2');
 		$this->load->view('data', $data);
 		$this->load->view('template/footer');
 		}
@@ -58,13 +58,29 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'index.php/admin/index');
 		}
 		else
-		{	
+		{
 		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
+		$this->load->view('template/sidebar2');
 		$this->load->view('transaksi');
+		$this->load->view('template/footer');
+		}
+	}
+
+			public function komponenDetail()
+	{
+		$akun = $this->session->userdata('akun');
+		if($akun['login'] == FALSE)
+		{
+			redirect(base_url(). 'index.php/admin/index');
+		}
+		else 
+		{
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('komponen');
 		$this->load->view('template/footer');
 		}
 	}
@@ -74,14 +90,14 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'index.php/admin/index');
 		}
 		else
 		{
 		$data['p'] = $this->kelas_model->getData();
 
 		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
+		$this->load->view('template/sidebar2');
 		$this->load->view('datkelas', $data);
 		$this->load->view('template/footer');
 		}
@@ -92,7 +108,7 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'index.php/admin/index');
 		}
 		else
 		{
@@ -102,10 +118,9 @@ class Home extends CI_Controller {
 		$data['kelas'] = $this->kelas_model->getData();
 		$data['cek'] = $this->siswa_model->cekSmester();
 		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
+		$this->load->view('template/sidebar2');
 		$this->load->view('detailkelas', $data);
 		$this->load->view('template/footer');
 		}
 	}
-
 }

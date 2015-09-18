@@ -22,16 +22,18 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li>
-              <a href="<?php echo base_url(); ?>index.php/home/index"><i class="fa fa-users"></i> <span>Siswa</span> </a>
+              <a href="<?php echo base_url(); ?>index.php/admin/datasiswa"><i class="fa fa-users"></i> <span>Data Siswa</span> </a>
             </li>
-            <li><a href="<?php echo base_url(); ?>index.php/home/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
+            <li><a href="<?php echo base_url(); ?>index.php/admin/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
+            <li><a href="<?php echo base_url(); ?>index.php/admin/KomponenDetail"><i class="fa fa-money"></i><span>Data Komponen Keuangan</span></a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Data Kelas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>index.php/home/kelas">Kelas</a></li>
-                <li><a href="<?php echo base_url(); ?>index.php/home/detailkelas">Siswa Kelas</a></li>
+                <li><a href="<?php echo base_url(); ?>index.php/admin/kelas">Kelas</a></li>
+                <li><a href="<?php echo base_url(); ?>index.php/admin/detailkelas">Siswa Kelas</a></li>
               </ul>
             </li>
+            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-calendar"></i><span>Data Smester</span></a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Rekap Keuangan</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">

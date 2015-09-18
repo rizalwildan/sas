@@ -18,19 +18,23 @@ class Kelas extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
-		$this->load->view('template/footer');
-		
-	}
 
 	public function input()
 	{
 		$kelas = $this->input->post('kelas');
 
 		$this->kelas_model->tambah($kelas);
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'index.php/admin/kelas');
+		}
+		else
+		{
+		redirect(base_url().'index.php/home/kelas');
+		}
 	}
 
 	

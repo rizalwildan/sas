@@ -44,7 +44,7 @@ class Siswa extends CI_Controller {
 			);
 		
 		$this->db->insert('siswa', $datasiswa);
-		redirect(base_url().'index.php/home/datasiswa');
+		redirect(base_url().'index.php/auth/cek_login');
 	}
 	
 
@@ -87,7 +87,7 @@ class Siswa extends CI_Controller {
 		$this->load->model('siswa_model');
 		
 		$this->siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
-		redirect(base_url().'index.php/home/datasiswa');
+		redirect(base_url().'index.php/auth/cek_login');
 
 	}
 
@@ -106,6 +106,16 @@ class Siswa extends CI_Controller {
 		for ($j=0; $j < $i; $j++) { 
 			$this->kelas_model->input_kelas_siswa($nis[$j], $kelas, $tahun);
 		}
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'index.php/admin/detailkelas');
+		}
+		else
+		{
 		redirect(base_url().'index.php/home/detailkelas');
+		}
 	}
 }
