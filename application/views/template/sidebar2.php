@@ -34,6 +34,9 @@
               </ul>
             </li>
             <li><a href="<?php echo base_url(); ?>"><i class="fa fa-calendar"></i><span>Data Smester</span></a></li>
+            <li>
+              <a href="<?php echo base_url(); ?>index.php/admin/user"><i class="fa fa-user"></i> <span>Data User</span> </a>
+            </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Rekap Keuangan</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">

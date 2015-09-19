@@ -32,6 +32,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url('asset/development-bundle/ui/ui.core.js');?>"></script>
     <script src="<?php echo base_url('asset/development-bundle/ui/ui.datepicker.js');?>"></script>
     <script src="<?php echo base_url('asset/development-bundle/ui/i18n/ui.datepicker-id.js');?>"></script>
+    <script src="<?php echo base_url('asset/bootstrap/js/jquery.bootstrap-growl.js');?>"></script>
+    
+ 
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

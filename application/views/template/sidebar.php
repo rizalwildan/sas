@@ -22,7 +22,7 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li>
-              <a href="<?php echo base_url(); ?>index.php/home/index"><i class="fa fa-users"></i> <span>Siswa</span> </a>
+              <a href="<?php echo base_url(); ?>index.php/home/datasiswa"><i class="fa fa-users"></i> <span>Siswa</span> </a>
             </li>
             <li><a href="<?php echo base_url(); ?>index.php/home/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
             <li class="treeview">

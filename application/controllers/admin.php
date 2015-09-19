@@ -123,4 +123,22 @@ class Admin extends CI_Controller {
 		$this->load->view('template/footer');
 		}
 	}
+
+	public function user()
+	{
+		$akun = $this->session->userdata('akun');
+		if ($akun['login'] == FALSE)
+		{
+			redirect(base_url(). 'index.php/admin/index');
+		}
+		else
+		{
+			$this->load->model('login_model');
+			$data['user'] = $this->login_model->tampil_user();
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar2');
+			$this->load->view('datauser', $data);
+			$this->load->view('template/footer');
+		}
+	}
 }

@@ -30,11 +30,11 @@ class Auth extends CI_Controller {
 		
 		if($akun['level'] == 1)
 		{
-			redirect(base_url().'index.php/admin/index');
+			redirect(base_url().'index.php/admin/datasiswa');
 		}
 		else if($akun['level'] == 2)
 		{
-			redirect(base_url().'index.php/home/index');
+			redirect(base_url().'index.php/home/datasiswa');
 		}
 		else
 		{

@@ -23,4 +23,28 @@
 		}
 	}
 
+	public function tampil_user()
+	{
+		$sql = "SELECT*FROM tampil_user";
+		$hasil = $this->db->query($sql);
+		$index = 1;
+		if($hasil->num_rows()<1)
+		{
+			$kirimData = "kosong";
+		}
+		else
+		{
+			foreach ($hasil->result() as $dataUser)
+			{
+				$kirimData[$index] = array(
+					'username' => $dataUser->username,
+					'password' => $dataUser->password,
+					'namalevel' => $dataUser->namalevel
+					);
+				$index++;
+			}
+		}
+		return $kirimData;
+	}
+
 }
