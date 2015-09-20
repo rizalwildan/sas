@@ -20,7 +20,7 @@ Content Wrapper. Contains page content -->
                       <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Tambah Kelas</button>
                 </div>
 
-                       <!-- Modal Komponen -->
+                       <!-- Modal Tambah Kelas -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -29,7 +29,7 @@ Content Wrapper. Contains page content -->
         <h4 class="modal-title" id="myModalLabel">Tambah Kelas</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/kelas/input">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Kelas/input">
           <div class="form-group">
               <label class="col-sm-4 control-label">Nama Kelas</label>
                 <div class="col-sm-4">

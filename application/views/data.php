@@ -140,7 +140,7 @@ Content Wrapper. Contains page content -->
         <h4 class="modal-title" id="myModalLabel">Tambah Data Siswa</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/siswa/insert_siswa">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Siswa/insert_siswa">
 
           <div class="form-group">
                     <label class="col-sm-3 control-label">Nis</label>
@@ -216,7 +216,7 @@ Content Wrapper. Contains page content -->
       </div>
       <div class="modal-body">
 
-        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/siswa/update_siswa">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Siswa/update_siswa">
 
           <input class="form-control" id="inputEmail3" type="hidden" name="idsiswa">
 

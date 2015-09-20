@@ -32,7 +32,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Masukkan Username dan Password</p>
-        <form action="<?php echo base_url(); ?>index.php/auth/cek_login" method="post">
+        <form action="<?php echo base_url(); ?>Auth/cek_login" method="post">
           <?php echo validation_errors(); ?>
           <div class="form-group has-feedback">
             <input type="text" class="form-control" value="<?php echo set_value('username') ?>" name="username">

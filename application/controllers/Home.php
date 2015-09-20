@@ -18,13 +18,13 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	
+
 	public function index()
 	{
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == TRUE)
 		{
-			redirect(base_url(). 'index.php/home/datasiswa');
+			redirect(base_url(). 'Home/datasiswa');
 		}
 		else
 		{
@@ -37,15 +37,15 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'Home/index');
 		}
 		else
 		{
-		$this->load->model('siswa_model');
-		$this->load->model('kelas_model');
-		$data['kelas'] = $this->kelas_model->getData();
-		$data['siswa'] = $this->siswa_model->tampilSiswaall();
-		$data['ceksmt'] = $this->siswa_model->cekSmester();
+		$this->load->model('Siswa_model');
+		$this->load->model('Kelas_model');
+		$data['kelas'] = $this->Kelas_model->getData();
+		$data['siswa'] = $this->Siswa_model->tampilSiswaall();
+		$data['ceksmt'] = $this->Siswa_model->cekSmester();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('data', $data);
@@ -58,10 +58,10 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'Home/index');
 		}
 		else
-		{	
+		{
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('transaksi');
@@ -74,11 +74,12 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'Home/index');
 		}
 		else
 		{
-		$data['p'] = $this->kelas_model->getData();
+		$this->load->model('Kelas_model');
+		$data['p'] = $this->Kelas_model->getData();
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
@@ -92,15 +93,15 @@ class Home extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'index.php/home/index');
+			redirect(base_url(). 'Home/index');
 		}
 		else
 		{
-		$this->load->model('kelas_model');
-		$this->load->model('siswa_model');
-		$data['tsk'] = $this->kelas_model->tampil_siswa_kelas();
-		$data['kelas'] = $this->kelas_model->getData();
-		$data['cek'] = $this->siswa_model->cekSmester();
+		$this->load->model('Kelas_model');
+		$this->load->model('Siswa_model');
+		$data['tsk'] = $this->Kelas_model->tampil_siswa_kelas();
+		$data['kelas'] = $this->Kelas_model->getData();
+		$data['cek'] = $this->Siswa_model->cekSmester();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');
 		$this->load->view('detailkelas', $data);

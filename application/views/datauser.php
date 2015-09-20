@@ -26,7 +26,7 @@ Content Wrapper. Contains page content -->
               stackup_spacing: 10
             });
           </script>
-    <?php } else if($this->session->flashdata('success')) {?>
+    <?php } else if($this->session->flashdata('error')) {?>
       <script type="text/javascript">
         $.bootstrapGrowl("Input Data <strong>Gagal !</strong>", // Messages
             { // options
@@ -65,11 +65,12 @@ Content Wrapper. Contains page content -->
         <h4 class="modal-title" id="myModalLabel">Tambah Data User</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/user/insert_user">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>User/insert_user">
           <div class="form-group">
               <label class="col-sm-4 control-label">Username</label>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" placeholder="Username" name="username">
+                  <input class="form-control" type="hidden" placeholder="Username" name="username">
                 </div>
           </div>
           <div class="form-group">
@@ -126,7 +127,7 @@ Content Wrapper. Contains page content -->
                         <?php if($row['username'] == 'root') { ?>
                         <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#editUser'><i class='fa fa-edit'></i> Edit</button>
                         <?php } else {?>
-                        <button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>
+                        <button class="btn btn-primary btn-xs" data-toggle='modal' data-target='#editUser'><i class='fa fa-edit'></i> Edit</button>
                         <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
                         <?php } ?>
                         </td>
@@ -152,7 +153,7 @@ Content Wrapper. Contains page content -->
                     <h4 class="modal-title" id="myModalLabel">Tambah Data User</h4>
                   </div>
                   <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/user/insert_user">
+                    <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>User/update_user">
                       <div class="form-group">
                           <label class="col-sm-4 control-label">Username</label>
                             <div class="col-sm-4">

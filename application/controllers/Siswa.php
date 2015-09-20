@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class Siswa extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,35 +20,33 @@ class User extends CI_Controller {
 	 */
 	public function __construct() {
 		parent::__construct();
-		
+
 	}
 
-	public function insert_user()
+	public function insert_siswa()
 	{
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$level = $this->input->post('level');
-		$pas_enkrip = md5($password);
+		$kelas = $this->input->post('kelas');
+		$nim = $this->input->post('nim');
+		$nama = $this->input->post('nama');
+		$jenis = $this->input->post('jenis');
+		$alamat = $this->input->post('alamat');
+		$tempat = $this->input->post('tempat');
+		$tgl = $this->input->post('tgl');
+		$wali = $this->input->post('wali');
 
-		$datauser = array('username' => $username,
-			'password' => $pas_enkrip,
-			'idlevel' => $level
+		$datasiswa = array('nim' => $nim,
+			'namasiswa' => $nama,
+			'gender' => $jenis,
+			'alamat' => $alamat,
+			'tmlahir' => $tempat,
+			'tgllahir' => $tgl,
+			'namawali' => $wali,
 			);
-		
-		$preb = $this->db->insert('user', $datauser);
-		if($preb == 1)
-		{
-			$this->session->set_flashdata('success', 'sukses input');
-		}
-		else
-		{
-			$this->session->set_flashdata('error', 'gagal input');
-		}
-		
-		redirect(base_url().'index.php/admin/user');
-		
+
+		$this->db->insert('siswa', $datasiswa);
+		redirect(base_url().'Auth/cek_login');
 	}
-	
+
 
 	public function detail($dataSis)
 	{
@@ -85,11 +83,39 @@ class User extends CI_Controller {
 			'idkelas' => $kelas,
 			'idtahun' => $tahun
 			);
-		
-		$this->load->model('siswa_model');
-		
-		$this->siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
-		redirect(base_url().'index.php/auth/cek_login');
 
+		$this->load->model('siswa_model');
+
+		$this->siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
+		redirect(base_url().'Auth/cek_login');
+
+	}
+
+	public function insert_siswa_kelas()
+	{
+		$this->load->model('kelas_model');
+		$kelas = $this->input->post('kelas');
+		$nis = $this->input->post('nis');
+		$tahun = $this->input->post('tahun');
+
+		$i = 0;
+		foreach ($nis as $banyak)
+		{
+			$i++;
+		}
+		for ($j=0; $j < $i; $j++) {
+			$this->kelas_model->input_kelas_siswa($nis[$j], $kelas, $tahun);
+		}
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'Admin/detailkelas');
+		}
+		else
+		{
+		redirect(base_url().'Home/detailkelas');
+		}
 	}
 }

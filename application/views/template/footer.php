@@ -4,7 +4,7 @@
         <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
       </footer>
     </div><!-- ./wrapper -->
-    
+
     <!-- jQuery 2.1.4 -->
     <script src="<?= base_url(). 'asset/plugins/jQuery/jQuery-2.1.4.min.js'; ?>"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -41,6 +41,7 @@
               });
     </SCRIPT>
 
+    <!--JS Detail Siswa-->
     <SCRIPT TYPE="text/javascript">
       $('#detailSiswa').on('shown.bs.modal', function(e) {
               var idsiswa = $(e.relatedTarget).data('idsiswa');
@@ -54,19 +55,19 @@
 
               var namawali = $(e.relatedTarget).data('namawali');
               $(e.currentTarget).find('input[name="wali"]').val(namawali);
-              
+
               var alamat = $(e.relatedTarget).data('alamat');
               $(e.currentTarget).find('textarea[name="alamat"]').val(alamat);
-              
+
               var tmlahir = $(e.relatedTarget).data('tmlahir');
               $(e.currentTarget).find('input[name="tempat"]').val(tmlahir);
-              
+
               var tgllahir = $(e.relatedTarget).data('tgllahir');
               $(e.currentTarget).find('input[name="tgl"]').val(tgllahir);
-              
+
               var namakelas = $(e.relatedTarget).data('namakelas');
               $(e.currentTarget).find('input[name="kelas"]').val(namakelas);
-              
+
               var gender = $(e.relatedTarget).data('gender');
               $(e.currentTarget).find('input[name="jenis"]').val(gender);
               });

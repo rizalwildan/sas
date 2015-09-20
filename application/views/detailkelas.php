@@ -26,7 +26,7 @@ Content Wrapper. Contains page content -->
             else{
             ?>
 
-            <form action="<?php echo base_url();?>index.php/siswa/insert_siswa_kelas" method="post">
+            <form action="<?php echo base_url();?>Siswa/insert_siswa_kelas" method="post">
              <div class="row">
                     <div class="col-sm-12">
                       <?php foreach($cek as $smt) { ?>
