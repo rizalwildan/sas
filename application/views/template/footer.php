@@ -72,6 +72,20 @@
               });
     </SCRIPT>
 
+    <SCRIPT TYPE="text/javascript">
+      $('#editKomponen').on('shown.bs.modal', function(e) {
+              var idkomponen = $(e.relatedTarget).data('idkomponen');
+              $(e.currentTarget).find('input[name="idkomponen"]').val(idkomponen);
+              var nama_komp = $(e.relatedTarget).data('nama_komp');
+              $(e.currentTarget).find('input[name="nama_komp"]').val(nama_komp);
+              var deskripsi = $(e.relatedTarget).data('deskripsi');
+              $(e.currentTarget).find('input[name="deskripsi"]').val(deskripsi);
+              var iuran = $(e.relatedTarget).data('iuran');
+              $(e.currentTarget).find('input[name="iuran"]').val(iuran);
+              });
+    </SCRIPT>
+
+
     <!--Js Date Time Picker-->
     <script type="text/javascript">
     $(".input-group.date").datepicker({ autoclose: true, todayHighlight: true });
