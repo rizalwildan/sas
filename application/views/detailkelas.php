@@ -16,9 +16,9 @@ Content Wrapper. Contains page content -->
           <div class="row">
           <div class="col-xs-12">
 
-            <?php if ($tsk == 'kosong') 
+            <?php if ($tsk == 'kosong')
             {
-              echo '<div class="callout callout-warning"> 
+              echo '<div class="callout callout-warning">
                     <h4>Tidak Ada Siswa yang Tidak Punya Kelas</h4>
                     <p>Semua siswa sudah punya kelas </p>
                     </div>';
@@ -28,13 +28,13 @@ Content Wrapper. Contains page content -->
 
             <form action="<?php echo base_url();?>index.php/siswa/insert_siswa_kelas" method="post">
              <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                       <?php foreach($cek as $smt) { ?>
                       <input type="hidden" name="tahun" value="<?php echo $smt['idtahun']; ?>">
                       <?php }?>
                       <div id="example1_length" class="dataTables_length">
                         <label>
-                          Kelas 
+                          Kelas
                           <select class="form-control input-sm" aria-controls="example1" name="kelas">
                             <option value="">--Semua Kelas--</option>
                             <?php foreach($kelas->result() as $datakelas) { ?>
@@ -43,11 +43,12 @@ Content Wrapper. Contains page content -->
                           </select>
                           </label>
                         </div>
+                          <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Simpan</button>
                       </div>
               </div>
 
                 <div class="row">
-                      <button type="submit" class="btn btn-primary" style="margin-left:1000px"><i class="fa fa-plus"></i> Simpan</button>
+
                 </div>
 
             <div class="box box-info" style="margin-top:20px">
@@ -69,7 +70,7 @@ Content Wrapper. Contains page content -->
                         <input type="checkbox" name="nis[]" value="<?php echo $isi['idsiswa']; ?>">
                         </td>
                       </tr>
-                      <?php }?>         
+                      <?php }?>
                     </tbody>
                 </table>
 
@@ -97,7 +98,7 @@ Content Wrapper. Contains page content -->
                     </div>
                   </div>
                 </div><!--</pagination-->
-                
+
                 </form>
               </div><!-- /.box body-->
             </div>

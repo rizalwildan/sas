@@ -7,7 +7,7 @@ Content Wrapper. Contains page content -->
             Data User
           </h1>
         </section>
-        
+
     <?php if($this->session->flashdata('success'))
     { ?>
           <script type="text/javascript">
@@ -49,13 +49,15 @@ Content Wrapper. Contains page content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-      
+
                 <div class="row">
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#modelUser" style="margin-left:970px"><i class="fa fa-plus"></i> Tambah User</button>
+                    <div class="col-sm-12">
+                      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalUser"><i class="fa fa-plus"></i> Tambah User</button>
+                    </div>
                 </div>
 
                        <!-- Modal Tambah User -->
-<div class="modal fade" id="modelUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,10 +96,10 @@ Content Wrapper. Contains page content -->
       </form>
     </div>
   </div>
-</div>
 </div><!--End Modal-->
 
-            <div class="box box-info" style="margin-top:50px">
+
+            <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-5">
@@ -122,7 +124,7 @@ Content Wrapper. Contains page content -->
                         <td><?php echo $row['namalevel']; ?></td>
                         <td>
                         <?php if($row['username'] == 'root') { ?>
-                        <button class='btn btn-primary btn-xs'><i class='fa fa-edit'></i> Edit</button>
+                        <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#editUser'><i class='fa fa-edit'></i> Edit</button>
                         <?php } else {?>
                         <button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>
                         <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
@@ -134,13 +136,63 @@ Content Wrapper. Contains page content -->
                       ?>
                     </tbody>
                 </table>
-                
+
                 </div>
                 </div>
-             
+
               </div><!-- /.box body-->
             </div>
-          
+
+            <!--Modal Edit User-->
+            <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Tambah Data User</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/user/insert_user">
+                      <div class="form-group">
+                          <label class="col-sm-4 control-label">Username</label>
+                            <div class="col-sm-4">
+                              <input class="form-control" type="text" placeholder="Username" name="username">
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4 control-label">Password Lama</label>
+                            <div class="col-sm-4">
+                              <input class="form-control" type="password" placeholder="Password Lama" name="old_password">
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-4 control-label">Password Baru</label>
+                            <div class="col-sm-4">
+                              <input class="form-control" type="password" placeholder="Password Baru" name="password">
+                            </div>
+                      </div>
+                      <div class="form-group">
+                                <label class="col-sm-4 control-label">Level</label>
+                                <div class="col-sm-4">
+                                <select class="form-control input-sm" aria-controls="example1" name="level">
+                                    <option value="">Pilih Level Akses</option>
+                                    <option value="1">Root</option>
+                                    <option value="2">Admin</option>
+                                </select>
+                                </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            </div><!--End Modal-->
+            </div>
+
         </div>
 
         </section><!-- /.content -->

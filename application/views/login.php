@@ -33,12 +33,13 @@
       <div class="login-box-body">
         <p class="login-box-msg">Masukkan Username dan Password</p>
         <form action="<?php echo base_url(); ?>index.php/auth/cek_login" method="post">
+          <?php echo validation_errors(); ?>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="username" name="username">
+            <input type="text" class="form-control" value="<?php echo set_value('username') ?>" name="username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" value="<?php echo set_value('password') ?>" name="password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
             <div class="form-group ">

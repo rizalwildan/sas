@@ -15,9 +15,9 @@ Content Wrapper. Contains page content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-      
+
                 <div class="row">
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-left:970px"><i class="fa fa-plus"></i> Tambah Kelas</button>
+                      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Tambah Kelas</button>
                 </div>
 
                        <!-- Modal Komponen -->
@@ -52,12 +52,12 @@ Content Wrapper. Contains page content -->
                 <div class="row">
                 <div class="col-md-5">
                   <?php
-                    foreach ($p->result() as $row) 
+                    foreach ($p->result() as $row)
                     {
-                      
+
                     }
                  ?>
-               <table id='example1' class='table table-bordered table-striped' style='margin-right:600px'>
+               <table id='example1' class='table table-bordered table-striped'>
                     <thead>
                       <tr>
                         <th>No</th>
@@ -84,13 +84,13 @@ Content Wrapper. Contains page content -->
                       ?>
                     </tbody>
                 </table>
-                
+
                 </div>
                 </div>
-             
+
               </div><!-- /.box body-->
             </div>
-          
+
         </div>
 
         </section><!-- /.content -->

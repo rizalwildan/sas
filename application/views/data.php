@@ -19,7 +19,7 @@ Content Wrapper. Contains page content -->
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
                         <label>
-                          Kelas 
+                          Kelas
                           <select class="form-control input-sm" aria-controls="example1" name="kelas">
                             <option value="">--Semua Kelas--</option>
                             <?php foreach($kelas->result() as $datakelas) { ?>
@@ -52,13 +52,13 @@ Content Wrapper. Contains page content -->
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                  <a href="<?php echo base_url(); ?>index.php/home/input" >
-                      <button class="btn btn-success" style="margin-left:800px"><i class="fa fa-plus"></i> Import Data</button>
+                      <button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Import Data</button>
                       </a>
 
-                      
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#modalTambah" style="margin-left:20px"><i class="fa fa-plus"></i> Tambah Data</button>
-                      
-               <table id="example1" class="table table-bordered table-striped" style="margin-top:20px">
+
+                      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalTambah" style="margin-right:10px"><i class="fa fa-plus"></i> Tambah Data</button>
+
+               <table id="example1" class="table table-bordered table-striped" style="margin-top:50px">
                     <thead>
                       <tr>
                         <th>Nis</th>
@@ -82,24 +82,24 @@ Content Wrapper. Contains page content -->
                           data-tmlahir="<?php echo $isi['tmlahir']; ?>"
                           data-tgllahir="<?php echo $isi['tgllahir']; ?>"
                           data-namawali="<?php echo $isi['namawali']; ?>"><?php echo $isi['namasiswa']; ?></button></td>
-                        
+
                         <td><?php echo $isi['namakelas']; ?></td>
                         <td><?php echo $isi['alamat']; ?></td>
                         <td><?php echo $isi['namawali']; ?></td>
                         <td>
-                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSiswa" 
-                        data-idsiswa="<?php echo $isi['idsiswa']; ?>" 
-                        data-nim="<?php echo $isi['nim']; ?>" 
-                        data-namasiswa="<?php echo $isi['namasiswa']; ?>" 
-                        data-namawali="<?php echo $isi['namawali']; ?>" 
-                        data-alamat="<?php echo $isi['alamat']; ?>" 
+                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSiswa"
+                        data-idsiswa="<?php echo $isi['idsiswa']; ?>"
+                        data-nim="<?php echo $isi['nim']; ?>"
+                        data-namasiswa="<?php echo $isi['namasiswa']; ?>"
+                        data-namawali="<?php echo $isi['namawali']; ?>"
+                        data-alamat="<?php echo $isi['alamat']; ?>"
                         data-tmlahir="<?php echo $isi['tmlahir']; ?>"
                         data-tgllahir="<?php echo $isi['tgllahir']; ?>"><i class="fa fa-edit"></i> Edit</button>
                         <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a></button>
                         </td>
                       </tr>
                       <?php }?>
-                      
+
                     </tbody>
                 </table>
 
@@ -367,7 +367,7 @@ Content Wrapper. Contains page content -->
               </div>
       </div>
       <div class="modal-footer">
-        
+
       </div>
       </form>
     </div>
