@@ -19,12 +19,12 @@
 
         <div class="row">
           <div class="col-sm-4">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Tambah Data Komponen</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#tambahKomponen"><i class="fa fa-plus"></i> Tambah Data Komponen</button>
           </div>
         </div>
 
         <!-- Modal Komponen -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="tambahKomponen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -32,42 +32,33 @@
         <h4 class="modal-title" id="myModalLabel">Tambah Data Komponen</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="<?php echo base_url() ;?>index.php/transaksi/tambah_komponen" method="POST">
           <div class="form-group">
               <label class="col-sm-4 control-label">Nama Komponen</label>
                 <div class="col-sm-4">
-                  <input class="form-control" id="inputEmail3" placeholder="Nama Komponen">
+                  <input class="form-control" id="inputEmail3" placeholder="Nama Komponen" name="nama_komponen">
                 </div>
           </div>
            <div class="form-group">
               <label class="col-sm-4 control-label">Deskripsi Komponen</label>
                 <div class="col-sm-4">
-                  <input class="form-control" id="inputEmail3" placeholder="Deskripsi Komponen">
+                  <input class="form-control" id="inputEmail3" placeholder="Deskripsi Komponen" name="deskripsi">
                 </div>
           </div>
           <div class="form-group">
               <label class="col-sm-4 control-label">Jumlah Iuran</label>
                 <div class="col-sm-4">
-                  <input class="form-control" id="inputEmail3" placeholder="Jumlah Iuran">
+                  <input class="form-control" id="inputEmail3" placeholder="Jumlah Iuran" name="iuran">
                 </div>
           </div>
-          <div class="form-group">
-                    <label class="col-sm-4 control-label">Status</label>
-                    <div class="col-sm-4">
-                    <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-                        <option value="--pilih kelas--">--Pilih Status--</option>
-                        <option value="Aktif">Aktif</option>
-                        <option value="Tidak Aktif">Tidak Aktif</option>
-                    </select>
-                    </div>
-                  </div>
 
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
+      </form>
     </div>
   </div>
 </div><!--End Modal-->
@@ -78,50 +69,83 @@
                     <thead>
                       <tr>
                         <th>No</th>
+                        <th>id</th>
                         <th>Nama Komponen</th>
                         <th>Deskripsi Komponen</th>
                         <th>Jumlah Iuran</th>
-                        <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Uang Sumbangan Gedung</td>
-                        <td>Iuran uang sumbangan gedung sekolah</td>
-                        <td>Rp 50.000</td>
-                        <td>Aktif</td>
+                    <?php
+                        $no=1;
+                        foreach ($komponen as $row) { 
+                           ?>
+                      <tr> 
+                        <td><?php echo $no++;?></td>
+                        <td><?php echo $row['idkomponen'];?></td>
+                        <td><?php echo $row['nama_komp'];?></td>
+                        <td><?php echo $row['deskripsi'];?></td>
+                        <td><?php echo $row['iuran'];?></td>
                         <td>
-                        <a class="btn btn-small" href="#"><i class="fa fa-edit"></i> Edit</a>
+                        <a class="btn btn-small" data-toggle="modal" data-target="#editKomponen"
+                        data-idkomponen="<?php echo $row['idkomponen']; ?>"
+                        data-nama_komp="<?php echo $row['nama_komp']; ?>" 
+                        data-deskripsi="<?php echo $row['deskripsi']; ?>" 
+                        data-iuran="<?php echo $row['iuran']; ?>"><i class="fa fa-edit" ></i> Edit</a>
                         <a class="btn btn-small" href="#"><i class="fa fa-trash"></i> Hapus</a>
                         </td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Tabungan Wisata</td>
-                        <td>Tabungan Wisata Kebali</td>
-                        <td>Rp 10.000</td>
-                        <td>Aktif</td>
-                        <td>
-                        <a class="btn btn-small" href="#"><i class="fa fa-edit"></i> Edit</a>
-                        <a class="btn btn-small" href="#"><i class="fa fa-trash"></i> Hapus</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Iuran Internet</td>
-                        <td>Iuran Internet Sekolah</td>
-                        <td>Rp 20.000</td>
-                        <td>Aktif</td>
-                        <td>
-                        <a class="btn btn-small" href="#"><i class="fa fa-edit"></i> Edit</a>
-                        <a class="btn btn-small" href="#"><i class="fa fa-trash"></i> Hapus</a>
-                        </td>
-                      </tr>
-        
+                      <?php
+                         }
+                       ?>
                     </tbody>
                 </table>
+
+<!--Modal Edit Data Siswa-->
+              <div class="modal fade" id="editKomponen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Komponen</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/transaksi/update_komponen">
+
+          <input class="form-control" id="inputEmail3" type="hidden" name="idkomponen">
+
+          <div class="form-group">
+                    <label class="col-sm-3 control-label">Nama Komponen</label>
+                    <div class="col-sm-4">
+                      <input class="form-control" id="inputEmail3" placeholder="Nama Komponen" name="nama_komp">
+                    </div>
+          </div>
+
+          <div class="form-group">
+                  <label class="col-sm-3 control-label">Deskripsi</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="inputEmail3" placeholder="Deskripsi" name="deskripsi">
+                  </div>
+            </div>
+      
+          <div class="form-group">
+                  <label class="col-sm-3 control-label">Iuran</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="inputEmail3" placeholder="Iuran" name="iuran">
+                  </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div><!--End Modal-->
 
                 <!--Pagination-->
                 <div class="row">
