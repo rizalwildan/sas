@@ -11,7 +11,7 @@ Content Wrapper. Contains page content -->
     <?php if($this->session->flashdata('success'))
     { ?>
           <script type="text/javascript">
-          $.bootstrapGrowl("Input Data <strong>Berhasil !</strong>", // Messages
+          $.bootstrapGrowl("Manipulasi Data <strong>Berhasil !</strong>", // Messages
             { // options
               type: "success", // info, success, warning and danger
               ele: "body", // parent container
@@ -28,7 +28,7 @@ Content Wrapper. Contains page content -->
           </script>
     <?php } else if($this->session->flashdata('error')) {?>
       <script type="text/javascript">
-        $.bootstrapGrowl("Input Data <strong>Gagal !</strong>", // Messages
+        $.bootstrapGrowl("Manipulasi Data <strong>Gagal !</strong>", // Messages
             { // options
               type: "danger", // info, success, warning and danger
               ele: "body", // parent container
@@ -70,7 +70,6 @@ Content Wrapper. Contains page content -->
               <label class="col-sm-4 control-label">Username</label>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" placeholder="Username" name="username">
-                  <input class="form-control" type="hidden" placeholder="Username" name="username">
                 </div>
           </div>
           <div class="form-group">
@@ -125,9 +124,13 @@ Content Wrapper. Contains page content -->
                         <td><?php echo $row['namalevel']; ?></td>
                         <td>
                         <?php if($row['username'] == 'root') { ?>
-                        <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#editUser'><i class='fa fa-edit'></i> Edit</button>
+                        <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#editUser'
+                                        data-iduser="<?php echo $row['iduser']; ?>"
+                                        data-username="<?php echo $row['username']; ?>"><i class='fa fa-edit'></i> Edit</button>
                         <?php } else {?>
-                        <button class="btn btn-primary btn-xs" data-toggle='modal' data-target='#editUser'><i class='fa fa-edit'></i> Edit</button>
+                        <button class="btn btn-primary btn-xs" data-toggle='modal' data-target='#editUser'
+                                        data-iduser="<?php echo $row['iduser']; ?>"
+                                        data-username="<?php echo $row['username']; ?>"><i class='fa fa-edit'></i> Edit</button>
                         <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
                         <?php } ?>
                         </td>
@@ -158,18 +161,7 @@ Content Wrapper. Contains page content -->
                           <label class="col-sm-4 control-label">Username</label>
                             <div class="col-sm-4">
                               <input class="form-control" type="text" placeholder="Username" name="username">
-                            </div>
-                      </div>
-                      <div class="form-group">
-                          <label class="col-sm-4 control-label">Password Lama</label>
-                            <div class="col-sm-4">
-                              <input class="form-control" type="password" placeholder="Password Lama" name="old_password">
-                            </div>
-                      </div>
-                      <div class="form-group">
-                          <label class="col-sm-4 control-label">Password Baru</label>
-                            <div class="col-sm-4">
-                              <input class="form-control" type="password" placeholder="Password Baru" name="password">
+                              <input class="form-control" type="hidden" name="iduser">
                             </div>
                       </div>
                       <div class="form-group">

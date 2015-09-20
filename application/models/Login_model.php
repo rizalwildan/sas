@@ -36,7 +36,7 @@
 		{
 			foreach ($hasil->result() as $dataUser)
 			{
-				$kirimData[$index] = array(
+				$kirimData[$index] = array('iduser' => $dataUser->iduser,
 					'username' => $dataUser->username,
 					'password' => $dataUser->password,
 					'namalevel' => $dataUser->namalevel
@@ -47,9 +47,21 @@
 		return $kirimData;
 	}
 
-	public function update_user()
+	public function edit_user($dataUser)
 	{
-		# code...
+		$this->db->where('iduser', $dataUser['iduser']);
+		$preb = $this->db->update('user', $dataUser);
+
+		if($preb == 1)
+		{
+			$this->session->set_flashdata('success', 'sukses input');
+		}
+		else
+		{
+			$this->session->set_flashdata('error', 'gagal input');
+		}
+
+		redirect(base_url().'Admin/user');
 	}
 
 }

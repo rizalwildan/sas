@@ -73,6 +73,7 @@
               });
     </SCRIPT>
 
+      <!--JS Edit Komponen-->
     <SCRIPT TYPE="text/javascript">
       $('#editKomponen').on('shown.bs.modal', function(e) {
               var idkomponen = $(e.relatedTarget).data('idkomponen');
@@ -85,6 +86,17 @@
               $(e.currentTarget).find('input[name="iuran"]').val(iuran);
               });
     </SCRIPT>
+
+    <!--JS Edit User-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editUser').on('shown.bs.modal', function(e) {
+              var iduser = $(e.relatedTarget).data('iduser');
+              $(e.currentTarget).find('input[name="iduser"]').val(iduser);
+              var username = $(e.relatedTarget).data('username');
+              $(e.currentTarget).find('input[name="username"]').val(username);
+              });
+    </SCRIPT>
+
 
 
     <!--Js Date Time Picker-->

@@ -78,9 +78,11 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+		$this->load->model('Transaksi_model');
+		$data['komponen'] = $this->Transaksi_model->getKomponen();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
-		$this->load->view('komponen');
+		$this->load->view('komponen', $data);
 		$this->load->view('template/footer');
 		}
 	}

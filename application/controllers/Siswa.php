@@ -44,7 +44,17 @@ class Siswa extends CI_Controller {
 			);
 
 		$this->db->insert('siswa', $datasiswa);
-		redirect(base_url().'Auth/cek_login');
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'Admin/datasiswa');
+		}
+		else
+		{
+		redirect(base_url().'Home/datasiswa');
+		}
 	}
 
 
@@ -87,8 +97,17 @@ class Siswa extends CI_Controller {
 		$this->load->model('siswa_model');
 
 		$this->siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
-		redirect(base_url().'Auth/cek_login');
 
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'Admin/datasiswa');
+		}
+		else
+		{
+		redirect(base_url().'Home/datasiswa');
+		}
 	}
 
 	public function insert_siswa_kelas()

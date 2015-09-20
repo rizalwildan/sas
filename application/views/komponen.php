@@ -32,7 +32,7 @@
         <h4 class="modal-title" id="myModalLabel">Tambah Data Komponen</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" action="<?php echo base_url() ;?>index.php/transaksi/tambah_komponen" method="POST">
+        <form class="form-horizontal" action="<?php echo base_url() ;?>Transaksi/tambah_komponen" method="POST">
           <div class="form-group">
               <label class="col-sm-4 control-label">Nama Komponen</label>
                 <div class="col-sm-4">
@@ -52,7 +52,7 @@
                 </div>
           </div>
 
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -69,7 +69,6 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>id</th>
                         <th>Nama Komponen</th>
                         <th>Deskripsi Komponen</th>
                         <th>Jumlah Iuran</th>
@@ -79,19 +78,18 @@
                     <tbody>
                     <?php
                         $no=1;
-                        foreach ($komponen as $row) { 
+                        foreach ($komponen as $row) {
                            ?>
-                      <tr> 
+                      <tr>
                         <td><?php echo $no++;?></td>
-                        <td><?php echo $row['idkomponen'];?></td>
                         <td><?php echo $row['nama_komp'];?></td>
                         <td><?php echo $row['deskripsi'];?></td>
                         <td><?php echo $row['iuran'];?></td>
                         <td>
                         <a class="btn btn-small" data-toggle="modal" data-target="#editKomponen"
                         data-idkomponen="<?php echo $row['idkomponen']; ?>"
-                        data-nama_komp="<?php echo $row['nama_komp']; ?>" 
-                        data-deskripsi="<?php echo $row['deskripsi']; ?>" 
+                        data-nama_komp="<?php echo $row['nama_komp']; ?>"
+                        data-deskripsi="<?php echo $row['deskripsi']; ?>"
                         data-iuran="<?php echo $row['iuran']; ?>"><i class="fa fa-edit" ></i> Edit</a>
                         <a class="btn btn-small" href="#"><i class="fa fa-trash"></i> Hapus</a>
                         </td>
@@ -102,7 +100,7 @@
                     </tbody>
                 </table>
 
-<!--Modal Edit Data Siswa-->
+<!--Modal Edit Data Komponen-->
               <div class="modal fade" id="editKomponen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -112,7 +110,7 @@
       </div>
       <div class="modal-body">
 
-        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>index.php/transaksi/update_komponen">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Transaksi/update_komponen">
 
           <input class="form-control" id="inputEmail3" type="hidden" name="idkomponen">
 
@@ -129,7 +127,7 @@
                     <input class="form-control" id="inputEmail3" placeholder="Deskripsi" name="deskripsi">
                   </div>
             </div>
-      
+
           <div class="form-group">
                   <label class="col-sm-3 control-label">Iuran</label>
                   <div class="col-sm-4">

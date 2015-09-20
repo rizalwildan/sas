@@ -51,49 +51,15 @@ class User extends CI_Controller {
 
 	public function update_user()
 	{
-		$dataUser = array (
-		'username' => $this->input->post('username'),
-		'password' => $this->input->post('password'),
-		'old_password' => $this->input->post('old_password'),
-		'level' => $this->input->post('level')
-		);
 		$this->load->model('Login_model');
-		$this->Login_model->update_user($dataUser);
+
+		$dataUser = array (
+		'iduser' => $this->input->post('iduser'),
+		'username' => $this->input->post('username'),
+		'idlevel' => $this->input->post('level')
+		);
+		$this->Login_model->edit_user($dataUser);
 	}
 
-	public function update_siswa()
-	{
-		$idsiswa = $this->input->post('idsiswa');
-		$kelas = $this->input->post('kelas');
-		$nim = $this->input->post('nim');
-		$nama = $this->input->post('nama');
-		$jenis = $this->input->post('jenis');
-		$alamat = $this->input->post('alamat');
-		$tempat = $this->input->post('tempat');
-		$tgl = $this->input->post('tgl');
-		$tahun = $this->input->post('tahun');
-		$wali = $this->input->post('wali');
 
-		$datasiswa = array('idsiswa' => $idsiswa,
-			'nim' => $nim,
-			'namasiswa' => $nama,
-			'gender' => $jenis,
-			'alamat' => $alamat,
-			'tmlahir' => $tempat,
-			'tgllahir' => $tgl,
-			'idtahun' => $tahun,
-			'namawali' => $wali,
-			);
-
-		$dataSiswaKelas = array(
-			'idkelas' => $kelas,
-			'idtahun' => $tahun
-			);
-
-		$this->load->model('siswa_model');
-
-		$this->siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
-		redirect(base_url().'Auth/cek_login');
-
-	}
 }
