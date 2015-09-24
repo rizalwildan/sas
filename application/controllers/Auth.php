@@ -42,7 +42,8 @@ class Auth extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('login');
+			$data['error'] = validation_errors();
+			$this->load->view('login', $data);
 		}
 		else
 		{
@@ -50,15 +51,15 @@ class Auth extends CI_Controller {
 
 			if($akun['level'] == 1)
 			{
-				redirect(base_url().'/admin/datasiswa');
+				redirect(base_url().'admin/datasiswa');
 			}
 			else if($akun['level'] == 2)
 			{
-				redirect(base_url().'/home/datasiswa');
+				redirect(base_url().'home/datasiswa');
 			}
 			else
 			{
-				$data['error'] = "Password dan Username Salah";
+				$data['error'] = "Password Atau Username Salah";
 				$this->load->view('login', $data);
 			}
 		}

@@ -26,6 +26,34 @@ Content Wrapper. Contains page content -->
             else{
             ?>
 
+            <?php if($this->session->flashdata('insert'))
+            { ?>
+                  <script type="text/javascript">
+                  $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong>", // Messages
+                    { // options
+                      type: "success", // info, success, warning and danger
+                      ele: "body", // parent container
+                      offset: {
+                      from: "top",
+                      amount: 70
+                    },
+                      align: "right", // right, left or center
+                      width: 350,
+                      delay: 3000,
+                      allow_dismiss: true, // add a close button to the message
+                      stackup_spacing: 10
+                    });
+                  </script>
+            <?php } ?>
+
+            <!--Alert Form Validation-->
+            <?php if(isset($error)){ ?>
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $error; ?>
+            </div>
+            <?php } ?>
+
             <form action="<?php echo base_url();?>Siswa/insert_siswa_kelas" method="post">
              <div class="row">
                     <div class="col-sm-12">

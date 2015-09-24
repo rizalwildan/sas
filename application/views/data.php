@@ -11,10 +11,10 @@ Content Wrapper. Contains page content -->
           </ol>
         </section>
 
-        <?php if($this->session->flashdata('success'))
+        <?php if($this->session->flashdata('warning'))
         { ?>
               <script type="text/javascript">
-              $.bootstrapGrowl("Manipulasi Data <strong>Berhasil !</strong>", // Messages
+              $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong> <br> Cek Menu <strong> Siswa Kelas </strong>", // Messages
                 { // options
                   type: "success", // info, success, warning and danger
                   ele: "body", // parent container
@@ -53,6 +53,15 @@ Content Wrapper. Contains page content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
+            <?php if ($siswa == 'kosong')
+            {
+              echo '<div class="callout callout-warning">
+                    <h4>Data Siswa Belum Ada</h4>
+                    <p>Setting Siswa Kelas Terlebih Dahulu</p>
+                    </div>';
+            }
+            else{
+            ?>
              <div class="row">
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
@@ -243,7 +252,7 @@ Content Wrapper. Contains page content -->
   </div>
 </div>
 </div><!--End Modal-->
-
+<?php } ?>
 <!--Modal Edit Data Siswa-->
               <div class="modal fade" id="editSiswa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -331,8 +340,8 @@ Content Wrapper. Contains page content -->
       </form>
     </div>
   </div>
-</div>
 </div><!--End Modal-->
+</div>
 
 <!--Modal Detail Data Siswa-->
               <div class="modal fade" id="detailSiswa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

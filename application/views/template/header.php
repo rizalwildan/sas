@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    
+
     <link rel="stylesheet" href="<?= base_url(). 'asset/dist/css/skins/skin-blue.min.css'; ?>">
 
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('asset/development-bundle/themes/ui-lightness/ui.all.css');?>" />
@@ -33,9 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url('asset/development-bundle/ui/ui.datepicker.js');?>"></script>
     <script src="<?php echo base_url('asset/development-bundle/ui/i18n/ui.datepicker-id.js');?>"></script>
     <script src="<?php echo base_url('asset/bootstrap/js/jquery.bootstrap-growl.js');?>"></script>
-    
- 
-    
+
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="<?= base_url(); ?>index.php/home" class="logo">
+        <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
@@ -81,17 +81,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
-          
+
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
-             
+
               </li><!-- /.messages-menu -->
 
               <!-- Notifications Menu -->
               <li class="dropdown notifications-menu">
-               
+
               </li>
               <!-- Tasks Menu -->
               <li class="dropdown tasks-menu">

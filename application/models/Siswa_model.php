@@ -12,7 +12,12 @@
 				$index = 1;
 				foreach ($semesterIni->result() as $row)
 				{
-					$dataSmester[$index] = array('idtahun' => $row->idtahun, 'tahun_pelajaran' => $row->tahun_pelajaran);
+					$dataSmester[$index] = array('idtahun' => $row->idtahun,
+					'nama_smester' => $row->nama_smester,
+					'awal_smester' => $row->awal_smester,
+					'akhir_smester' => $row->akhir_smester,
+					'jenis_smester' => $row->jenis_smester, 
+					'tahun_pelajaran' => $row->tahun_pelajaran);
 					$index++;
 				}
 			}

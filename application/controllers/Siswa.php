@@ -45,6 +45,8 @@ class Siswa extends CI_Controller {
 
 		$this->db->insert('siswa', $datasiswa);
 
+		$this->session->set_flashdata('warning', 'Data Berhasil');
+
 		$akun = $this->session->userdata('akun');
 
 		if($akun['level'] == 1)
@@ -117,24 +119,53 @@ class Siswa extends CI_Controller {
 		$nis = $this->input->post('nis');
 		$tahun = $this->input->post('tahun');
 
-		$i = 0;
-		foreach ($nis as $banyak)
+		$config = array(
+						   array(
+								 'field'   => 'nis[]', //nama elemen form
+								 'label'   => 'Nis', //keterangan form
+								 'rules'   => 'required',//Harus Diisi
+                 'errors' => array(
+                       'required' => 'Data Harus Dipilih'),//Custom Message
+							  ),
+						   array(
+								 'field'   => 'kelas',
+								 'label'   => 'Kelas',
+								 'rules'   => 'required',
+                 'errors' => array(
+                       'required' => 'Kelas Harus Dipilih'),
+               )
+		        );
+						
+		$this->form_validation->set_rules($config);
+		if ($this->form_validation->run() == FALSE)
 		{
-			$i++;
-		}
-		for ($j=0; $j < $i; $j++) {
-			$this->kelas_model->input_kelas_siswa($nis[$j], $kelas, $tahun);
-		}
-
-		$akun = $this->session->userdata('akun');
-
-		if($akun['level'] == 1)
-		{
-		redirect(base_url().'Admin/detailkelas');
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('Admin/detailkelas/');
 		}
 		else
 		{
-		redirect(base_url().'Home/detailkelas');
+			$i = 0;
+			foreach ($nis as $banyak)
+			{
+				$i++;
+			}
+			for ($j=0; $j < $i; $j++) {
+				$this->kelas_model->input_kelas_siswa($nis[$j], $kelas, $tahun);
+			}
+
+			$this->session->set_flashdata('insert', 'Berhasil');
+
+			$akun = $this->session->userdata('akun');
+
+			if($akun['level'] == 1)
+			{
+			redirect(base_url().'Admin/detailkelas');
+			}
+			else
+			{
+			redirect(base_url().'Home/detailkelas');
+			}
 		}
+
 	}
 }

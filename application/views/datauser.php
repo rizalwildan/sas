@@ -8,7 +8,7 @@ Content Wrapper. Contains page content -->
           </h1>
         </section>
 
-    <?php if($this->session->flashdata('success'))
+    <?php if($this->session->flashdata('insert'))
     { ?>
           <script type="text/javascript">
           $.bootstrapGrowl("Manipulasi Data <strong>Berhasil !</strong>", // Messages
@@ -26,24 +26,7 @@ Content Wrapper. Contains page content -->
               stackup_spacing: 10
             });
           </script>
-    <?php } else if($this->session->flashdata('error')) {?>
-      <script type="text/javascript">
-        $.bootstrapGrowl("Manipulasi Data <strong>Gagal !</strong>", // Messages
-            { // options
-              type: "danger", // info, success, warning and danger
-              ele: "body", // parent container
-              offset: {
-              from: "top",
-              amount: 70
-            },
-              align: "right", // right, left or center
-              width: 350,
-              delay: 3000,
-              allow_dismiss: true, // add a close button to the message
-              stackup_spacing: 10
-            });
-      </script>
-    <?php }?>
+    <?php } ?>
 
         <!-- Main content -->
         <section class="content">

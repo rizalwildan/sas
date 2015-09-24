@@ -144,4 +144,23 @@ class Admin extends CI_Controller {
 			$this->load->view('template/footer');
 		}
 	}
+
+	public function dataSmester()
+	{
+		$akun = $this->session->userdata('akun');
+		if ($akun['login'] == FALSE)
+		{
+			redirect(base_url().'Admin/index');
+		}
+		else
+		{
+			$this->load->model('Siswa_model');
+			$data['smt'] = $this->Siswa_model->cekSmester();
+			$data['error'] = $this->session->flashdata('error');
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar2');
+			$this->load->view('smester', $data);
+			$this->load->view('template/footer');
+		}
+	}
 }
