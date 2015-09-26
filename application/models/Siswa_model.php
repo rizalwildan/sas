@@ -13,10 +13,8 @@
 				foreach ($semesterIni->result() as $row)
 				{
 					$dataSmester[$index] = array('idtahun' => $row->idtahun,
-					'nama_smester' => $row->nama_smester,
-					'awal_smester' => $row->awal_smester,
-					'akhir_smester' => $row->akhir_smester,
-					'jenis_smester' => $row->jenis_smester, 
+					'awal_tahun' => $row->awal_tahun_pelajaran,
+					'akhir_tahun' => $row->akhir_tahun_pelajaran,
 					'tahun_pelajaran' => $row->tahun_pelajaran);
 					$index++;
 				}

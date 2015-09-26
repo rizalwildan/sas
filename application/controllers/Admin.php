@@ -117,6 +117,7 @@ class Admin extends CI_Controller {
 		{
 		$this->load->model('Kelas_model');
 		$this->load->model('Siswa_model');
+		$data['error'] = $this->session->flashdata('error');
 		$data['tsk'] = $this->Kelas_model->tampil_siswa_kelas();
 		$data['kelas'] = $this->Kelas_model->getData();
 		$data['cek'] = $this->Siswa_model->cekSmester();
@@ -160,6 +161,23 @@ class Admin extends CI_Controller {
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar2');
 			$this->load->view('smester', $data);
+			$this->load->view('template/footer');
+		}
+	}
+
+	public function setting_komponen()
+	{
+		$akun = $this->session->userdata('akun');
+		if ($akun['login'] == FALSE)
+		{
+			redirect(base_url().'Admin/index');
+		}
+		else
+		{
+			$data['error'] = $this->session->flashdata('error');
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar2');
+			$this->load->view('kelaskomponen', $data);
 			$this->load->view('template/footer');
 		}
 	}

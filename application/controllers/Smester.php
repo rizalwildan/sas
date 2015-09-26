@@ -34,41 +34,27 @@ class Smester extends CI_Controller {
           );
 
     $config = array(
+			array(
+				'field'   => 'tahunpel',
+				'label'   => 'tahun pelajaran',
+				'rules'   => 'required',
+				'errors' => array(
+							'required' => 'Tahun Pelajaran harus diisi'),
+		 ),
 						   array(
-								 'field'   => 'smester', //nama elemen form
-								 'label'   => 'Nama Smester', //keterangan form
-								 'rules'   => 'required',//Harus Diisi
-                 'errors' => array(
-                       'required' => 'Nama Smseter harus diisi'),//Custom Message
-							  ),
-						   array(
-								 'field'   => 'awalsmt',
-								 'label'   => 'Awal Smester',
+								 'field'   => 'awaltahun',
+								 'label'   => 'Awal Tahun',
 								 'rules'   => 'required',
                  'errors' => array(
-                       'required' => 'Awal Smseter harus diisi'),
+                       'required' => 'Awal Tahun harus diisi'),
                ),
               array(
- 								 'field'   => 'akhirsmt',
- 								 'label'   => 'Akhir Smester',
+ 								 'field'   => 'akhitahun',
+ 								 'label'   => 'Akhir Tahun',
  								 'rules'   => 'required',
                  'errors' => array(
-                       'required' => 'Akhir Smseter harus diisi'),
-               ),
-              array(
-								 'field'   => 'jenisSmt',
-								 'label'   => 'jenis smester',
-								 'rules'   => 'required',
-                 'errors' => array(
-                       'required' => 'Jenis Smseter harus diisi'),
-               ),
-               array(
-								 'field'   => 'tahunpel',
-								 'label'   => 'tahun pelajaran',
-								 'rules'   => 'required',
-                 'errors' => array(
-                       'required' => 'Tahun Pelajaran harus diisi'),
-							)
+                       'required' => 'Akhir Tahun harus diisi'),
+               )
 		        );
     $this->form_validation->set_rules($config);
     if ($this->form_validation->run() == FALSE)

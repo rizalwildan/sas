@@ -60,41 +60,25 @@ Content Wrapper. Contains page content -->
       <div class="modal-body">
         <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Smester/insert_smester">
           <div class="form-group">
-              <label class="col-sm-4 control-label">Nama Smester</label>
+              <label class="col-sm-4 control-label">Tahun Pelajaran</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" value="<?php echo set_value('Nama Smester') ?>" placeholder="Nama Smester" name="smester">
+                  <input class="form-control" type="text" placeholder="Tahun Pelajaran" name="tahunpel">
                 </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label">Awal Smester</label>
+            <label class="col-sm-4 control-label">Awal Tahun Pelajaran</label>
             <div class="input-group date col-sm-4" data-date-format="yyyy/mm/dd">
-              <input class="form-control" id="startDate" placeholder="Awal Smester" name="awalsmt" style="margin-left:14px">
+              <input class="form-control" id="startDate" placeholder="Awal Smester" name="awaltahun" style="margin-left:14px">
               <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label">Akhir Smester</label>
+            <label class="col-sm-4 control-label">Akhir Tahun Pelajaran</label>
             <div class="input-group date col-sm-4" data-date-format="yyyy/mm/dd">
-              <input class="form-control" id="startDate" placeholder="Akhir Smester" name="akhirsmt" style="margin-left:14px">
+              <input class="form-control" id="startDate" placeholder="Akhir Smester" name="akhirtahun" style="margin-left:14px">
               <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
             </div>
           </div>
-          <div class="form-group">
-                    <label class="col-sm-4 control-label">Jenis Smester</label>
-                    <div class="col-sm-4">
-                    <select class="form-control input-sm" aria-controls="example1" name="jenisSmt">
-                        <option value="">Pilih Jenis Smester</option>
-                        <option value="Ganjil">Ganjil</option>
-                        <option value="Genap">Genap</option>
-                    </select>
-                    </div>
-          </div>
-            <div class="form-group">
-                <label class="col-sm-4 control-label">Tahun Pelajaran</label>
-                  <div class="col-sm-4">
-                    <input class="form-control" type="text" placeholder="Tahun Pelajaran" name="tahunpel">
-                  </div>
-            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -114,11 +98,9 @@ Content Wrapper. Contains page content -->
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama Smester</th>
-                        <th>Awal Smester</th>
-                        <th>Akhir Smester</th>
-                        <th>Jenis Smester</th>
                         <th>Tahun Pelajaran</th>
+                        <th>Awal Tahun Pelajaran</th>
+                        <th>Akhir Tahun Pelajaran</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -126,11 +108,9 @@ Content Wrapper. Contains page content -->
                       <?php foreach ($smt as $row) { ?>
                       <tr>
                         <td><?php echo $no=1; ?></td>
-                        <td><?php echo $row['nama_smester']; ?></td>
-                        <td><?php echo $row['awal_smester']; ?></td>
-                        <td><?php echo $row['akhir_smester']; ?></td>
-                        <td><?php echo $row['jenis_smester']; ?></td>
-                        <td><?php echo $row['tahun_pelajaran']; ?></td>
+                          <td><?php echo $row['tahun_pelajaran']; ?></td>
+                        <td><?php echo $row['awal_tahun']; ?></td>
+                        <td><?php echo $row['akhir_tahun']; ?></td>
                         <td>
                         <button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>
                         <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
