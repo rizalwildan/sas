@@ -32,7 +32,7 @@ class Transaksi extends CI_Controller {
 
 		$this->db->insert('komponen', $dataKomponen);
 
-		redirect(base_url('index.php/home/KomponenDetail'));
+		redirect(base_url('index.php/admin/KomponenDetail'));
 		
 	}
 
@@ -53,7 +53,19 @@ class Transaksi extends CI_Controller {
 
 		$this->transaksi_model->update_komponen($updateKomponen);
 
-		redirect(base_url('index.php/home/KomponenDetail'));
+		redirect(base_url('index.php/admin/KomponenDetail'));
+	}
+
+	public function setting_komponen()
+	{
+		$this->load->model('transaksi_model');
+		$idkelas = $this->input->post('idkelas');
+		$idkomponen = $this->input->post('idkomponen');
+		$idtahun = $this->input->post('idtahun');
+		$periode =  $this->input->post('periode');
+
+		
+
 	}
 	
 }

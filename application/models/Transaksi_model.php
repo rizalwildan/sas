@@ -32,16 +32,16 @@
 			}
 			return $kirimData;
 		}
-		public function tambah_komponen()
-		{
-			$sql= "INSERT into komponen values ";
-
-		}
 
 		public function update_komponen($updateKomponen)
 		{
 			$this->db->where('idkomponen',$updateKomponen['idkomponen']);
 			$this->db->update('komponen',$updateKomponen);
+		}
+
+		public function spp_setting()
+		{
+
 		}
 
 

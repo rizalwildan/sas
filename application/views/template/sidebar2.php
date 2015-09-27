@@ -26,6 +26,7 @@
             </li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/KomponenDetail"><i class="fa fa-money"></i><span>Data Komponen Keuangan</span></a></li>
+            <li><a href="<?php echo base_url(); ?>index.php/admin/settingkomponen"><i class="fa fa-money"></i><span>Setting Komponen Keuangan</span></a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Data Kelas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">

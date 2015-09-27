@@ -12,6 +12,11 @@
 		return $this->db->query($sql);
 	}
 
+	public function jenis_kelas(){
+		$sql = "SELECT distinct jenis_kelas from kelas";
+		return $this->db->query($sql);
+	}
+
 	function tambah($kelas)
 	{
 		

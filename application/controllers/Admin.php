@@ -144,4 +144,20 @@ class Admin extends CI_Controller {
 			$this->load->view('template/footer');
 		}
 	}
+
+	public function settingkomponen()
+	{
+		$this->load->model('Kelas_model');
+		$this->load->model('Transaksi_model');
+		$this->load->model('Siswa_model');
+		$data['kelas'] = $this->Kelas_model->getData();
+		$data['jenisKelas'] = $this->Kelas_model->jenis_kelas();
+		$data['komponen']=$this->Transaksi_model->getKomponen();
+		$data['cek']=$this->Siswa_model->cekSmester();
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('settingkomponen', $data);
+		$this->load->view('template/footer');
+
+	}
 }
