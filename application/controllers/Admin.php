@@ -146,7 +146,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
-//<<<<<<< HEAD
+
 	public function settingkomponen()
 	{
 		$this->load->model('Kelas_model');
@@ -161,7 +161,7 @@ class Admin extends CI_Controller {
 		$this->load->view('settingkomponen', $data);
 		$this->load->view('template/footer');
 	}
-//=======
+
 	public function dataSmester()
 	{
 		$akun = $this->session->userdata('akun');
@@ -196,6 +196,5 @@ class Admin extends CI_Controller {
 			$this->load->view('kelaskomponen', $data);
 			$this->load->view('template/footer');
 		}
-//>>>>>>> 09df96e1cab4197a2b7745f859fec3d60bde54e9
 	}
 }

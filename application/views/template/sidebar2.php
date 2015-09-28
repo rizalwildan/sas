@@ -24,11 +24,9 @@
             <li>
               <a href="<?php echo base_url(); ?>admin/datasiswa"><i class="fa fa-users"></i> <span>Data Siswa</span> </a>
             </li>
-<<<<<<< HEAD
             <li><a href="<?php echo base_url(); ?>index.php/admin/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/KomponenDetail"><i class="fa fa-money"></i><span>Data Komponen Keuangan</span></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/settingkomponen"><i class="fa fa-money"></i><span>Setting Komponen Keuangan</span></a></li>
-=======
             <li>
               <a href="<?php echo base_url(); ?>admin/kelas"><i class="fa fa-users"></i> <span>Data Kelas</span> </a>
             </li>
@@ -38,7 +36,6 @@
               <a href="<?php echo base_url(); ?>admin/user"><i class="fa fa-user"></i> <span>Data User</span> </a>
             </li>
             <li><a href="<?php echo base_url(); ?>admin/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
->>>>>>> 09df96e1cab4197a2b7745f859fec3d60bde54e9
             <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Pengaturan</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
