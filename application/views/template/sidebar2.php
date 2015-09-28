@@ -22,21 +22,29 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li>
-              <a href="<?php echo base_url(); ?>index.php/admin/datasiswa"><i class="fa fa-users"></i> <span>Data Siswa</span> </a>
+              <a href="<?php echo base_url(); ?>admin/datasiswa"><i class="fa fa-users"></i> <span>Data Siswa</span> </a>
             </li>
+<<<<<<< HEAD
             <li><a href="<?php echo base_url(); ?>index.php/admin/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/KomponenDetail"><i class="fa fa-money"></i><span>Data Komponen Keuangan</span></a></li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/settingkomponen"><i class="fa fa-money"></i><span>Setting Komponen Keuangan</span></a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-inbox"></i> <span>Data Kelas</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>index.php/admin/kelas">Kelas</a></li>
-                <li><a href="<?php echo base_url(); ?>index.php/admin/detailkelas">Siswa Kelas</a></li>
-              </ul>
-            </li>
-            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-calendar"></i><span>Data Smester</span></a></li>
+=======
             <li>
-              <a href="<?php echo base_url(); ?>index.php/admin/user"><i class="fa fa-user"></i> <span>Data User</span> </a>
+              <a href="<?php echo base_url(); ?>admin/kelas"><i class="fa fa-users"></i> <span>Data Kelas</span> </a>
+            </li>
+            <li><a href="<?php echo base_url(); ?>admin/KomponenDetail"><i class="fa fa-money"></i><span>Data Komponen Keuangan</span></a></li>
+            <li><a href="<?php echo base_url(); ?>admin/dataSmester"><i class="fa fa-calendar"></i><span>Data Smester</span></a></li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/user"><i class="fa fa-user"></i> <span>Data User</span> </a>
+            </li>
+            <li><a href="<?php echo base_url(); ?>admin/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
+>>>>>>> 09df96e1cab4197a2b7745f859fec3d60bde54e9
+            <li class="treeview">
+              <a href="#"><i class="fa fa-inbox"></i> <span>Pengaturan</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>admin/detailkelas">Siswa Kelas</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/setting_komponen">Komponen Kelas</a></li>
+              </ul>
             </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Rekap Keuangan</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -49,5 +57,3 @@
         </section>
         <!-- /.sidebar -->
       </aside>
-
-   

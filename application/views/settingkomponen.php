@@ -3,7 +3,7 @@ Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Detail Kelas
+            Setting Komponen
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -16,7 +16,7 @@ Content Wrapper. Contains page content -->
           <div class="row">
           <div class="col-xs-12">
 
-            <?php if ($tsk == 'kosong')
+            <?php if ($komponen == 'kosong')
             {
               echo '<div class="callout callout-warning">
                     <h4>Tidak Ada Siswa yang Tidak Punya Kelas</h4>
@@ -25,36 +25,8 @@ Content Wrapper. Contains page content -->
             }
             else{
             ?>
-
-            <?php if($this->session->flashdata('insert'))
-            { ?>
-                  <script type="text/javascript">
-                  $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong>", // Messages
-                    { // options
-                      type: "success", // info, success, warning and danger
-                      ele: "body", // parent container
-                      offset: {
-                      from: "top",
-                      amount: 70
-                    },
-                      align: "right", // right, left or center
-                      width: 350,
-                      delay: 3000,
-                      allow_dismiss: true, // add a close button to the message
-                      stackup_spacing: 10
-                    });
-                  </script>
-            <?php } ?>
-
-            <!--Alert Form Validation-->
-            <?php if(isset($error)){ ?>
-            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <?php echo $error; ?>
-            </div>
-            <?php } ?>
-
-            <form action="<?php echo base_url();?>Siswa/insert_siswa_kelas" method="post">
+            
+            <form action="<?php echo base_url();?>Transaksi/setting_komponen" method="post">
              <div class="row">
                     <div class="col-sm-12">
                       <?php foreach($cek as $smt) { ?>
@@ -65,9 +37,28 @@ Content Wrapper. Contains page content -->
                           Kelas
                           <select class="form-control input-sm" aria-controls="example1" name="kelas">
                             <option value="">--Semua Kelas--</option>
-                            <?php foreach($kelas->result() as $datakelas) { ?>
-                            <option value="<?php echo $datakelas->idkelas; ?>"><?php echo $datakelas->namakelas; ?></option>
+                            <?php foreach($jenisKelas->result() as $datakelas) { ?>
+                            <option value="<?php echo $datakelas->jenis_kelas; ?>"><?php echo $datakelas->jenis_kelas; ?></option>
                             <?php }?>
+                          </select>
+                          </label>
+                          </br>
+                          <label>
+                          Periode
+                          <select class="form-control input-sm" aria-controls="example1" name="periode">
+                            <option value="">--Periode--</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
                           </select>
                           </label>
                         </div>
@@ -84,18 +75,20 @@ Content Wrapper. Contains page content -->
                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Nim</th>
-                        <th>Nama</th>
+                        <th>Nama Komponen</th>
+                        <th>Deskripsi</th>
+                        <th>Jumlah Iuran</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($tsk as $isi) { ?>
+                      <?php foreach ($komponen as $isi) { ?>
                       <tr>
-                        <td><?php echo $isi['nim']; ?></td>
-                        <td><?php echo $isi['namasiswa']; ?></td>
+                        <td><?php echo $isi['nama_komp']; ?></td>
+                        <td><?php echo $isi['deskripsi']; ?></td>
+                        <td><?php echo $isi['iuran'];?></td>
                         <td>
-                        <input type="checkbox" name="nis[]" value="<?php echo $isi['idsiswa']; ?>">
+                        <input type="checkbox" name="idkomponen[]" value="<?php echo $isi['idkomponen']; ?>">
                         </td>
                       </tr>
                       <?php }?>

@@ -3,7 +3,7 @@ Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Detail Kelas
+            Komponen Kelas
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -54,23 +54,32 @@ Content Wrapper. Contains page content -->
             </div>
             <?php } ?>
 
-            <form action="<?php echo base_url();?>Siswa/insert_siswa_kelas" method="post">
+            <form action="<?php echo base_url();?>" method="post">
              <div class="row">
                     <div class="col-sm-12">
-                      <?php foreach($cek as $smt) { ?>
-                      <input type="hidden" name="tahun" value="<?php echo $smt['idtahun']; ?>">
-                      <?php }?>
+
+                      <!--Tahun-->
+                      <input type="hidden" name="tahun" value="">
+                      <!--Kelas-->
                       <div id="example1_length" class="dataTables_length">
                         <label>
-                          Kelas
+                          Pilih Kelas
                           <select class="form-control input-sm" aria-controls="example1" name="kelas">
                             <option value="">--Semua Kelas--</option>
-                            <?php foreach($kelas->result() as $datakelas) { ?>
-                            <option value="<?php echo $datakelas->idkelas; ?>"><?php echo $datakelas->namakelas; ?></option>
-                            <?php }?>
+                            <option value=""></option>
                           </select>
                           </label>
                         </div>
+                        <!--Periode-->
+                        <div id="example1_length" class="dataTables_length">
+                          <label>
+                            Pilih Periode
+                            <select class="form-control input-sm" aria-controls="example1" name="kelas">
+                              <option value=""></option>
+                              <option value=""></option>
+                            </select>
+                            </label>
+                          </div>
                           <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Simpan</button>
                       </div>
               </div>
@@ -84,21 +93,21 @@ Content Wrapper. Contains page content -->
                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Nim</th>
-                        <th>Nama</th>
+                        <th>No</th>
+                        <th>Nama Komponen</th>
+                        <th>Deskripsi Komponen</th>
+                        <th>Jumlah Iuran</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($tsk as $isi) { ?>
                       <tr>
-                        <td><?php echo $isi['nim']; ?></td>
-                        <td><?php echo $isi['namasiswa']; ?></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                        <input type="checkbox" name="nis[]" value="<?php echo $isi['idsiswa']; ?>">
+                        <input type="checkbox" name="nis[]" value="">
                         </td>
                       </tr>
-                      <?php }?>
                     </tbody>
                 </table>
 

@@ -35,16 +35,9 @@ class User extends CI_Controller {
 			'idlevel' => $level
 			);
 
-		$preb = $this->db->insert('user', $datauser);
-		if($preb == 1)
-		{
-			$this->session->set_flashdata('success', 'sukses input');
-		}
-		else
-		{
-			$this->session->set_flashdata('error', 'gagal input');
-		}
+		$this->db->insert('user', $datauser);
 
+		$this->session->set_flashdata('insert', 'Insert Berhasil');
 		redirect(base_url().'Admin/user');
 
 	}
