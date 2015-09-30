@@ -59,11 +59,25 @@ class Transaksi extends CI_Controller {
 	public function setting_komponen()
 	{
 		$this->load->model('transaksi_model');
-		$idkelas = $this->input->post('idkelas');
+		$jeniskelas = $this->input->post('jeniskelas');
 		$idkomponen = $this->input->post('idkomponen');
 		$idtahun = $this->input->post('idtahun');
 		$periode =  $this->input->post('periode');
 
+		$i = 0;
+			foreach ($idkomponen as $banyak)
+			{
+				$i++;
+			}
+			for ($j=0; $j < $i; $j++) {
+				$this->transaksi_model->insert_komponen_setting($jeniskelas, $idkomponen[$j],  $idtahun, $periode);
+			}
+
+			//$this->session->set_flashdata('insert', 'Berhasil');
+
+			//$akun = $this->session->userdata('akun');
+
+		redirect(base_url('index.php/admin/settingkomponen'));
 		
 
 	}
