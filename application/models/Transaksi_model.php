@@ -39,11 +39,11 @@
 			$this->db->update('komponen',$updateKomponen);
 		}
 
-		public function spp_setting()
+		public function insert_komponen_setting($jeniskelas,$idkomponen,$idtahun,$periode)
 		{
-			
+			$sql= "INSERT into spp_setting (jeniskelas,idkomponen,idtahun,periode) values ($jeniskelas,$idkomponen,$idtahun,'$periode')";
+			$this->db->query($sql);
 		}
-
 
 	}
 ?>
