@@ -152,7 +152,7 @@ class Admin extends CI_Controller {
 		$this->load->model('Kelas_model');
 		$this->load->model('Transaksi_model');
 		$this->load->model('Siswa_model');
-		$data['kelas'] = $this->Kelas_model->getData();
+		//$data['kelas'] = $this->Kelas_model->getData();
 		$data['jenisKelas'] = $this->Kelas_model->jenis_kelas();
 		$data['komponen']=$this->Transaksi_model->getKomponen();
 		$data['cek']=$this->Siswa_model->cekSmester();

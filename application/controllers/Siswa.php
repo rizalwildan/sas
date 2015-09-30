@@ -124,15 +124,15 @@ class Siswa extends CI_Controller {
 								 'field'   => 'nis[]', //nama elemen form
 								 'label'   => 'Nis', //keterangan form
 								 'rules'   => 'required',//Harus Diisi
-                 'errors' => array(
-                       'required' => 'Data Harus Dipilih'),//Custom Message
+				                 'errors' => array(
+				                       'required' => 'Data Harus Dipilih'),//Custom Message
 							  ),
 						   array(
 								 'field'   => 'kelas',
 								 'label'   => 'Kelas',
 								 'rules'   => 'required',
-                 'errors' => array(
-                       'required' => 'Kelas Harus Dipilih'),
+				                 'errors' => array(
+				                       'required' => 'Kelas Harus Dipilih'),
                )
 		        );
 						
