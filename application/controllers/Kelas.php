@@ -29,13 +29,13 @@ class Kelas extends CI_Controller {
 
 		if($akun['level'] == 1)
 		{
-		redirect(base_url().'index.php/admin/kelas');
+		redirect(base_url().'Admin/kelas');
 		}
 		else
 		{
-		redirect(base_url().'index.php/home/kelas');
+		redirect(base_url().'Home/kelas');
 		}
 	}
 
-	
+
 }

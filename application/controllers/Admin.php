@@ -118,6 +118,7 @@ class Admin extends CI_Controller {
 		$this->load->model('Kelas_model');
 		$this->load->model('Siswa_model');
 		$data['error'] = $this->session->flashdata('error');
+		$data['insert'] = $this->session->flashdata('insert');
 		$data['tsk'] = $this->Kelas_model->tampil_siswa_kelas();
 		$data['kelas'] = $this->Kelas_model->getData();
 		$data['cek'] = $this->Siswa_model->cekSmester();

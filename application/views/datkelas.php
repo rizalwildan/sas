@@ -17,7 +17,9 @@ Content Wrapper. Contains page content -->
           <div class="col-xs-12">
 
                 <div class="row">
+                  <div class="col-xs-12">
                       <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Tambah Kelas</button>
+                  </div>
                 </div>
 
                        <!-- Modal Tambah Kelas -->
@@ -44,10 +46,10 @@ Content Wrapper. Contains page content -->
       </form>
     </div>
   </div>
-</div>
 </div><!--End Modal-->
 
-            <div class="box box-info" style="margin-top:50px">
+
+            <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-5">
@@ -92,6 +94,6 @@ Content Wrapper. Contains page content -->
             </div>
 
         </div>
-
+      </div><!--Col-xs-12-->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper
