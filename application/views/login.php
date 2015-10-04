@@ -36,7 +36,7 @@
           <?php if(isset($error)){ ?>
           <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?=$error?>
+            <?php echo $error; ?>
           </div>
           <?php } ?>
           <div class="form-group has-feedback">

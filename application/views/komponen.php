@@ -86,12 +86,12 @@
                         <td><?php echo $row['deskripsi'];?></td>
                         <td><?php echo $row['iuran'];?></td>
                         <td>
-                        <a class="btn btn-small" data-toggle="modal" data-target="#editKomponen"
+                        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#editKomponen"
                         data-idkomponen="<?php echo $row['idkomponen']; ?>"
                         data-nama_komp="<?php echo $row['nama_komp']; ?>"
                         data-deskripsi="<?php echo $row['deskripsi']; ?>"
-                        data-iuran="<?php echo $row['iuran']; ?>"><i class="fa fa-edit" ></i> Edit</a>
-                        <a class="btn btn-small" href="#"><i class="fa fa-trash"></i> Hapus</a>
+                        data-iuran="<?php echo $row['iuran']; ?>"><i class="fa fa-edit" ></i> Edit</button>
+                        <button class="btn btn-xs btn-danger" href="#"><i class="fa fa-trash"></i> Hapus</button>
                         </td>
                       </tr>
                       <?php

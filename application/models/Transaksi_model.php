@@ -2,11 +2,11 @@
 	/**
 	*
 	**/
-	class Transaksi_model extends CI_Model 
+	class Transaksi_model extends CI_Model
 	{
 		public function transaksi()
 		{
-			
+
 		}
 
 		public function getKomponen()
@@ -20,7 +20,7 @@
 			}
 			else
 			{
-				foreach ($data->result() as $dataKomponen) 
+				foreach ($data->result() as $dataKomponen)
 				{
 					$kirimData[$index] = array('idkomponen' => $dataKomponen->idkomponen,
 						'nama_komp'=>$dataKomponen->nama_komp,
@@ -41,7 +41,7 @@
 
 		public function insert_komponen_setting($jeniskelas,$idkomponen,$idtahun,$periode)
 		{
-			$sql= "INSERT into spp_setting (jeniskelas,idkomponen,idtahun,periode) values ($jeniskelas,$idkomponen,$idtahun,'$periode')";
+			$sql= "INSERT into spp_setting (jenis_kelas,idkomponen,idtahun,periode) values ($jeniskelas,$idkomponen,$idtahun,'$periode')";
 			$this->db->query($sql);
 		}
 

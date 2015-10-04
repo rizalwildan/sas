@@ -21,16 +21,13 @@ class Smester extends CI_Controller {
 
 	public function insert_smester()
 	{
-		$smester = $this->input->post('smester');
-    $awalsmt = $this->input->post('awalsmt');
-    $akhirsmt = $this->input->post('akhirsmt');
-    $jenisSmt = $this->input->post('jenisSmt');
-    $tahunpel = $this->input->post('tahunpel');
-    $data = array('nama_smester' => $smester,
-            'awal_smester' => $awalsmt,
-            'akhir_smester' => $akhirsmt,
-            'jenis_smester' => $jenisSmt,
-            'tahun_pelajaran' => $tahunpel
+		$tahunpel = $this->input->post('tahunpel');
+    $awaltahun = $this->input->post('awaltahun');
+    $akhirtahun = $this->input->post('akhirtahun');
+    $data = array(
+						'tahun_pelajaran' => $tahunpel,
+            'awal_tahun_pelajaran' => $awaltahun,
+            'akhir_tahun_pelajaran' => $akhirtahun,
           );
 
     $config = array(

@@ -24,7 +24,6 @@ class Auth extends CI_Controller {
 		$this->load->model('Login_model');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$this->Login_model->cek_user($username, $password);
 
 		$config = array(
 						   array(
@@ -42,11 +41,13 @@ class Auth extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$data['error'] = validation_errors();
+			$this->session->set_flashdata('error', validation_errors());
+			$data['error'] = $this->session->flashdata('error');
 			$this->load->view('login', $data);
 		}
 		else
 		{
+			$this->Login_model->cek_user($username, $password);
 			$akun = $this->session->userdata('akun');
 
 			if($akun['level'] == 1)
