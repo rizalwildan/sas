@@ -95,10 +95,12 @@ class Siswa extends CI_Controller {
 			'idkelas' => $kelas,
 			'idtahun' => $tahun
 			);
+		print_r($dataSiswaKelas);
+		die();
 
-		$this->load->model('siswa_model');
+		$this->load->model('Siswa_model');
 
-		$this->siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
+		$this->Siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
 
 		$akun = $this->session->userdata('akun');
 
@@ -135,7 +137,7 @@ class Siswa extends CI_Controller {
 				                       'required' => 'Kelas Harus Dipilih'),
                )
 		        );
-						
+
 		$this->form_validation->set_rules($config);
 		if ($this->form_validation->run() == FALSE)
 		{

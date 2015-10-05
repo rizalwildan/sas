@@ -92,16 +92,7 @@
 
 			$this->db->where('idsiswa', $datasiswa['idsiswa']);
 			$this->db->where('idtahun', $dataSiswaKelas['idtahun']);
-			$preb = $this->db->update('siswa_kelas', $dataSiswaKelas);
-
-			if($preb == 1)
-			{
-				$this->session->set_flashdata('success', 'sukses input');
-			}
-			else
-			{
-				$this->session->set_flashdata('error', 'gagal input');
-			}
+			$this->db->update('siswa_kelas', $dataSiswaKelas);
 		}
 	}
 ?>

@@ -70,7 +70,7 @@ Content Wrapper. Contains page content -->
                           <select class="form-control input-sm" aria-controls="example1" name="kelas">
                             <option value="">--Semua Kelas--</option>
                             <?php foreach($kelas->result() as $datakelas) { ?>
-                            <option value="<?php echo $datakelas->namakelas; ?>"><?php echo $datakelas->namakelas; ?></option>
+                            <option value="<?php echo $datakelas->idkelas; ?>"><?php echo $datakelas->namakelas; ?></option>
                             <?php }?>
                           </select>
                           </label>
