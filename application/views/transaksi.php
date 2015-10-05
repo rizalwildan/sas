@@ -46,13 +46,20 @@ Content Wrapper. Contains page content -->
                       </div>
               </div>
 
-               <div class="row">
+              <div class="row">
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
-
+                        <label>
+                          Kelas
+                          <select class="form-control input-sm" aria-controls="example1" name="example1_length">
+                            <option value="">--Pilih Kelas--</option>
+                            <option value="">X1</option>
+                            <option value="">X2</option>
+                          </select>
+                          </label>
                         </div>
                       </div>
-                </div><!--/row-->
+              </div>
 
                 <div class="row">
                      <div class="col-sm-4">
