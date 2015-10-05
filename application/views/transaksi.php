@@ -1,3 +1,12 @@
+<?php 
+// foreach ($siswa as $key) {
+//   print_r($key);
+//   die();
+// }
+
+?>
+
+
 Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -21,11 +30,8 @@ Content Wrapper. Contains page content -->
                       <div id="example1_length" class="dataTables_length">
                         <label>
                           Tahun Ajaran
-                          <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-                            <option value="X1">--Pilih Tahun Ajaran--</option>
-                            <option value="X2">2014/2015</option>
-                            <option value="X3">2015/2016</option>
-                          </select>
+                          <p> <?= $tahunajaran; ?></p>
+                          
                           </label>
                         </div>
                       </div>
@@ -36,10 +42,20 @@ Content Wrapper. Contains page content -->
                       <div id="example1_length" class="dataTables_length">
                         <label>
                           Transaksi Bulan
-                          <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-                            <option value="X1">--Pilih Tahun Ajaran--</option>
-                            <option value="X2">Juli</option>
-                            <option value="X3">Agustus</option>
+                          <select class="form-control input-sm" aria-controls="example1" name="periode">
+                            <option value="">--Periode--</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
                           </select>
                           </label>
                         </div>
@@ -85,12 +101,14 @@ Content Wrapper. Contains page content -->
                        </tr>
                      </thead>
                      <tbody>
-                       <tr>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                       </tr>
+                      <?php foreach ($siswa as $data) { ?>
+                         <tr>
+                           <td><?= $data['nim']; ?></td>
+                           <td><?= $data['namasiswa']; ?></td>
+                           <td><?= $data['namakelas']; ?></td>
+                           <td><button class="btn btn-xs btn-success" href="#"><i class="fa fa-dashboard"></i> Bayar</button></td>
+                         </tr>
+                       <?php } ?>
                      </tbody>
                  </table>
               </div><!-- /.box body-->
