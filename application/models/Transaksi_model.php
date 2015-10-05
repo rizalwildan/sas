@@ -45,5 +45,34 @@
 			$this->db->query($sql);
 		}
 
+
+		// admin transaksi
+
+		public function getTahunAjaranSekarang(){
+			$data = $this->db->query("SELECT tahun_pelajaran FROM tahun WHERE idtahun=(SELECT max(idtahun) FROM tahun)");
+			
+			if($data->num_rows() < 1){
+				$kirimData = "kosong";
+			}else{
+				foreach ($data->result() as $key) {
+				$kirimData = $key->tahun_pelajaran;
+				}	
+			}
+
+			return $kirimData;
+		}
+
+		public function getAllSiswa(){
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas ORDER BY namakelas");
+
+			if($data->num_rows() < 1 ){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
+
 	}
 ?>

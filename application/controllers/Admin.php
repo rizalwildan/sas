@@ -18,6 +18,22 @@ class Admin extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct()
+		{
+			parent::__construct();
+			
+			// load all model used
+			$this->load->model('Siswa_model');
+			$this->load->model('Kelas_model');
+			$this->load->model('Transaksi_model');
+			$this->load->model('Login_model');
+			
+			if(!$this->session->userdata('akun'))
+			{
+				redirect('futsal/login');
+			}
+		}
+
 
 	public function index()
 	{
@@ -41,8 +57,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Siswa_model');
-		$this->load->model('Kelas_model');
+		
 		$data['kelas'] = $this->Kelas_model->getData();
 		$data['siswa'] = $this->Siswa_model->tampilSiswaall();
 		$data['ceksmt'] = $this->Siswa_model->cekSmester();
@@ -62,10 +77,14 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar2');
-		$this->load->view('transaksi');
-		$this->load->view('template/footer');
+			$data['tahunajaran'] = $this->Transaksi_model->getTahunAjaranSekarang();
+			$data['siswa'] = $this->Transaksi_model->getAllSiswa();
+			// print_r($data['siswa']);
+			// die();
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar2');
+			$this->load->view('transaksi', $data);
+			$this->load->view('template/footer');
 		}
 	}
 
@@ -78,7 +97,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Transaksi_model');
+		
 		$data['komponen'] = $this->Transaksi_model->getKomponen();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
@@ -96,7 +115,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Kelas_model');
+		
 		$data['p'] = $this->Kelas_model->getData();
 
 		$this->load->view('template/header');
@@ -115,8 +134,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Kelas_model');
-		$this->load->model('Siswa_model');
+		
 		$data['error'] = $this->session->flashdata('error');
 		$data['insert'] = $this->session->flashdata('insert');
 		$data['tsk'] = $this->Kelas_model->tampil_siswa_kelas();
@@ -138,7 +156,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('Login_model');
+			
 			$data['user'] = $this->Login_model->tampil_user();
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar2');
@@ -150,9 +168,7 @@ class Admin extends CI_Controller {
 
 	public function settingkomponen()
 	{
-		$this->load->model('Kelas_model');
-		$this->load->model('Transaksi_model');
-		$this->load->model('Siswa_model');
+		
 		//$data['kelas'] = $this->Kelas_model->getData();
 		$data['jenisKelas'] = $this->Kelas_model->jenis_kelas();
 		$data['komponen']=$this->Transaksi_model->getKomponen();
@@ -172,7 +188,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('Siswa_model');
+			
 			$data['smt'] = $this->Siswa_model->cekSmester();
 			$data['error'] = $this->session->flashdata('error');
 			$this->load->view('template/header');
