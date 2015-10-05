@@ -87,6 +87,16 @@ Content Wrapper. Contains page content -->
                     </tbody>
                 </table>
 
+                <!--Pagination-->
+                <div class="row">
+                  <div class="col-md-7">
+                    <?php echo $paging; ?>
+                  </div>
+                </div><!--</pagination-->
+
+              </div><!-- /.box body-->
+            </div>
+
                 </div>
                 </div>
 

@@ -153,25 +153,7 @@ Content Wrapper. Contains page content -->
                 <!--Pagination-->
                 <div class="row">
                   <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers">
-                      <ul class="pagination">
-                        <li class="paginate_button provious disabled">
-                          <a tabindex="0" data-dt-idx="0" aria-controls="example2" href="#">Previous</a>
-                        </li>
-                        <li class="paginate_button active">
-                          <a tabindex="0" data-dt-idx="1" aria-controls="example2" href="#">1</a>
-                        </li>
-                         <li class="paginate_button">
-                          <a tabindex="0" data-dt-idx="2" aria-controls="example2" href="#">2</a>
-                        </li>
-                         <li class="paginate_button">
-                          <a tabindex="0" data-dt-idx="3" aria-controls="example2" href="#">3</a>
-                        </li>
-                         <li class="paginate_button next">
-                          <a tabindex="0" data-dt-idx="4" aria-controls="example2" href="#">Next</a>
-                        </li>
-                      </ul>
-                    </div>
+                    <?php echo $paging; ?>
                   </div>
                 </div><!--</pagination-->
 

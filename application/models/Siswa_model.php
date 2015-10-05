@@ -27,10 +27,10 @@
 			return $dataSmester;
 		}
 
-		public function tampilSiswaall()
+		public function tampilSiswaall($limit, $start)
 		{
-			$sql = "SELECT * FROM siswa_sudah_punya_kelas";
-			$data = $this->db->query($sql);
+			$this->db->limit($limit, $start);
+			$data = $this->db->get("siswa_sudah_punya_kelas");
 			$index =1;
 			if ($data->num_rows()<1)
 			{
@@ -54,6 +54,11 @@
 				}
 			}
 			return $kirimData;
+		}
+
+		public function count_data()
+		{
+			return $this->db->count_all("siswa_sudah_punya_kelas");
 		}
 
 		public function detail_siswa($dataSis)
