@@ -43,28 +43,80 @@ class Siswa extends CI_Controller {
 			'namawali' => $wali,
 			);
 
-		$this->db->insert('siswa', $datasiswa);
-
-		$this->session->set_flashdata('warning', 'Data Berhasil');
-
-		$akun = $this->session->userdata('akun');
-
-		if($akun['level'] == 1)
-		{
-		redirect(base_url().'Admin/datasiswa');
+		//Pengaturan Form Validation
+		$config = array(
+							   array(
+									 'field'   => 'nim', //nama elemen form
+									 'label'   => 'Nim', //keterangan form
+									 'rules'   => 'required',//Harus Diisi
+					                 'errors' => array(
+					                       'required' => 'Data Harus Dipilih'),//Custom Message
+								  ),
+							   array(
+									 'field'   => 'nama',
+									 'label'   => 'Nama Siswa',
+									 'rules'   => 'required',
+					                 'errors' => array(
+					                       'required' => 'Nama Siswa Harus Diisi'),
+	               ),
+								 array(
+									 'field'   => 'jenis',
+									 'label'   => 'Gender',
+									 'rules'   => 'required',
+					                 'errors' => array(
+					                       'required' => 'Gender Harus Diisi'),
+	               ),
+								 array(
+									 'field'   => 'alamat',
+									 'label'   => 'Alamat',
+									 'rules'   => 'required',
+					                 'errors' => array(
+					                       'required' => 'Alamat Harus Diisi'),
+	               ),
+								 array(
+									 'field'   => 'tempat',
+									 'label'   => 'Tempat Lahir',
+									 'rules'   => 'required',
+					                 'errors' => array(
+					                       'required' => 'Tempat Lahir Harus Diisi'),
+	               ),
+								 array(
+									 'field'   => 'tgl',
+									 'label'   => 'Tanggal Lahir',
+									 'rules'   => 'required',
+					                 'errors' => array(
+					                       'required' => 'Tanggal Lahir Harus Diisi'),
+	               ),
+								 array(
+									 'field'   => 'wali',
+									 'label'   => 'Nama Wali',
+									 'rules'   => 'required',
+					                 'errors' => array(
+					                       'required' => 'Nama Wali Harus Diisi'),
+	               )
+			        );
+		//Memanggil Pengaturan Form Validation
+		$this->form_validation->set_rules($config);
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('Admin/datasiswa/');
 		}
-		else
-		{
-		redirect(base_url().'Home/datasiswa');
+		else {
+			$this->db->insert('siswa', $datasiswa);
+
+			$this->session->set_flashdata('insert', 'Data Berhasil');
+
+			$akun = $this->session->userdata('akun');
+
+			if($akun['level'] == 1)
+			{
+			redirect(base_url().'Admin/datasiswa');
+			}
+			else
+			{
+			redirect(base_url().'Home/datasiswa');
+			}
 		}
-	}
-
-
-	public function detail($dataSis)
-	{
-		$this->load->model('siswa_model');
-		$this->siswa_model->detail_siswa($dataSis);
-		$this->load->view('detailsiswa');
 	}
 
 	public function update_siswa()
@@ -77,7 +129,7 @@ class Siswa extends CI_Controller {
 		$alamat = $this->input->post('alamat');
 		$tempat = $this->input->post('tempat');
 		$tgl = $this->input->post('tgl');
-		$tahun = $this->input->post('tahun');
+		$tahun = $this->input->post('idtahun');
 		$wali = $this->input->post('wali');
 
 		$datasiswa = array('idsiswa' => $idsiswa,
@@ -87,7 +139,6 @@ class Siswa extends CI_Controller {
 			'alamat' => $alamat,
 			'tmlahir' => $tempat,
 			'tgllahir' => $tgl,
-			'idtahun' => $tahun,
 			'namawali' => $wali,
 			);
 
@@ -95,22 +146,89 @@ class Siswa extends CI_Controller {
 			'idkelas' => $kelas,
 			'idtahun' => $tahun
 			);
-		print_r($dataSiswaKelas);
-		die();
 
-		$this->load->model('Siswa_model');
-
-		$this->Siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
-
-		$akun = $this->session->userdata('akun');
-
-		if($akun['level'] == 1)
-		{
-		redirect(base_url().'Admin/datasiswa');
+			//Pengaturan Form Validation
+			$config = array(
+				array(
+					'field'   => 'kelas', //nama elemen form
+					'label'   => 'Kelas', //keterangan form
+					'rules'   => 'required',//Harus Diisi
+									'errors' => array(
+												'required' => 'Kelas Harus Dipilih'),//Custom Message
+				 ),
+								   array(
+										 'field'   => 'nim', //nama elemen form
+										 'label'   => 'Nim', //keterangan form
+										 'rules'   => 'required',//Harus Diisi
+						                 'errors' => array(
+						                       'required' => 'Data Harus Dipilih'),//Custom Message
+									  ),
+								   array(
+										 'field'   => 'nama',
+										 'label'   => 'Nama Siswa',
+										 'rules'   => 'required',
+						                 'errors' => array(
+						                       'required' => 'Nama Siswa Harus Diisi'),
+		               ),
+									 array(
+										 'field'   => 'jenis',
+										 'label'   => 'Gender',
+										 'rules'   => 'required',
+						                 'errors' => array(
+						                       'required' => 'Gender Harus Diisi'),
+		               ),
+									 array(
+										 'field'   => 'alamat',
+										 'label'   => 'Alamat',
+										 'rules'   => 'required',
+						                 'errors' => array(
+						                       'required' => 'Alamat Harus Diisi'),
+		               ),
+									 array(
+										 'field'   => 'tempat',
+										 'label'   => 'Tempat Lahir',
+										 'rules'   => 'required',
+						                 'errors' => array(
+						                       'required' => 'Tempat Lahir Harus Diisi'),
+		               ),
+									 array(
+										 'field'   => 'tgl',
+										 'label'   => 'Tanggal Lahir',
+										 'rules'   => 'required',
+						                 'errors' => array(
+						                       'required' => 'Tanggal Lahir Harus Diisi'),
+		               ),
+									 array(
+										 'field'   => 'wali',
+										 'label'   => 'Nama Wali',
+										 'rules'   => 'required',
+						                 'errors' => array(
+						                       'required' => 'Nama Wali Harus Diisi'),
+		               )
+				        );
+		//Memanggil Pengaturan Form Validation
+		$this->form_validation->set_rules($config);
+		if ($this->form_validation->run() == FALSE) {
+				$this->session->set_flashdata('error', validation_errors());
+				redirect('Admin/datasiswa/');
 		}
-		else
-		{
-		redirect(base_url().'Home/datasiswa');
+		else {
+			$this->load->model('Siswa_model');
+
+			$this->Siswa_model->update_siswa($datasiswa, $dataSiswaKelas);
+
+			$this->session->set_flashdata('update', 'Data Berhasil');
+
+			$akun = $this->session->userdata('akun');
+
+			if($akun['level'] == 1)
+			{
+			redirect(base_url().'Admin/datasiswa');
+			}
+			else
+			{
+			redirect(base_url().'Home/datasiswa');
+			}
 		}
 	}
 
@@ -169,5 +287,25 @@ class Siswa extends CI_Controller {
 			}
 		}
 
+	}
+
+	public function delete_siswa()
+	{
+		$idsiswa = $this->input->post('idsiswa');
+		$this->load->model('Siswa_model');
+		$this->Siswa_model->delete($idsiswa);
+
+		$this->session->set_flashdata('delete', 'Data Berhasil');
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'Admin/datasiswa');
+		}
+		else
+		{
+		redirect(base_url().'Home/datasiswa');
+		}
 	}
 }

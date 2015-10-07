@@ -11,7 +11,8 @@ Content Wrapper. Contains page content -->
           </ol>
         </section>
 
-        <?php if($this->session->flashdata('warning'))
+        <!--Notification-->
+        <?php if($this->session->flashdata('insert'))
         { ?>
               <script type="text/javascript">
               $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong> <br> Cek Menu <strong> Siswa Kelas </strong>", // Messages
@@ -29,11 +30,14 @@ Content Wrapper. Contains page content -->
                   stackup_spacing: 10
                 });
               </script>
-        <?php } else if($this->session->flashdata('error')) {?>
-          <script type="text/javascript">
-            $.bootstrapGrowl("Manipulasi Data <strong>Gagal !</strong>", // Messages
+        <?php } ?>
+
+        <?php if($this->session->flashdata('update'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Update Data <strong>Berhasil !</strong>", // Messages
                 { // options
-                  type: "danger", // info, success, warning and danger
+                  type: "success", // info, success, warning and danger
                   ele: "body", // parent container
                   offset: {
                   from: "top",
@@ -45,23 +49,42 @@ Content Wrapper. Contains page content -->
                   allow_dismiss: true, // add a close button to the message
                   stackup_spacing: 10
                 });
-          </script>
-        <?php }?>
+              </script>
+        <?php } ?>
 
+        <?php if($this->session->flashdata('delete'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Delete Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-            <?php if ($siswa == 'kosong')
-            {
-              echo '<div class="callout callout-warning">
-                    <h4>Data Siswa Belum Ada</h4>
-                    <p>Setting Siswa Kelas Terlebih Dahulu</p>
-                    </div>';
-            }
-            else{
-            ?>
+
+            <!--Alert Form Validation-->
+            <?php if(isset($error)){ ?>
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $error; ?>
+            </div>
+            <?php } ?>
+
              <div class="row">
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
@@ -96,59 +119,75 @@ Content Wrapper. Contains page content -->
                     </div>
                 </div>
 
+            <!--Data Table-->
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
+                <div class="row">
+                  <div class="col-xs-12"
                  <a href="<?php echo base_url(); ?>index.php/home/input" >
                       <button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Import Data</button>
                       </a>
 
 
                       <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalTambah" style="margin-right:10px"><i class="fa fa-plus"></i> Tambah Data</button>
+                  </div>
+                  </div>
+                      <?php if ($siswa == 'kosong')
+                      {
+                        echo '<div class="callout callout-warning" style="margin-top:20px">
+                              <h4>Data Siswa Belum Ada</h4>
+                              <p>Setting Siswa Kelas Terlebih Dahulu</p>
+                              </div>';
+                      }
+                      else { ?>
+                        <table id="example1" class="table table-bordered table-striped" style="margin-top:20px">
+                             <thead>
+                               <tr>
+                                 <th>Nis</th>
+                                 <th>Nama</th>
+                                 <th>Kelas</th>
+                                 <th>Alamat</th>
+                                 <th>Nama Orang Tua</th>
+                                 <th>Action</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                               <?php foreach($siswa as $isi) { ?>
+                               <tr>
+                                 <td><?php echo $isi['nim']; ?></td>
+                                 <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#detailSiswa"
+                                   data-namakelas="<?php echo $isi['namakelas']; ?>"
+                                   data-nim="<?php echo $isi['nim']; ?>"
+                                   data-namasiswa="<?php echo $isi['namasiswa']; ?>"
+                                   data-gender="<?php echo $isi['gender']; ?>"
+                                   data-alamat="<?php echo $isi['alamat']; ?>"
+                                   data-tmlahir="<?php echo $isi['tmlahir']; ?>"
+                                   data-tgllahir="<?php echo $isi['tgllahir']; ?>"
+                                   data-namawali="<?php echo $isi['namawali']; ?>"><?php echo $isi['namasiswa']; ?></button></td>
 
-               <table id="example1" class="table table-bordered table-striped" style="margin-top:50px">
-                    <thead>
-                      <tr>
-                        <th>Nis</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Alamat</th>
-                        <th>Nama Orang Tua</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach($siswa as $isi) { ?>
-                      <tr>
-                        <td><?php echo $isi['nim']; ?></td>
-                        <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#detailSiswa"
-                          data-namakelas="<?php echo $isi['namakelas']; ?>"
-                          data-nim="<?php echo $isi['nim']; ?>"
-                          data-namasiswa="<?php echo $isi['namasiswa']; ?>"
-                          data-gender="<?php echo $isi['gender']; ?>"
-                          data-alamat="<?php echo $isi['alamat']; ?>"
-                          data-tmlahir="<?php echo $isi['tmlahir']; ?>"
-                          data-tgllahir="<?php echo $isi['tgllahir']; ?>"
-                          data-namawali="<?php echo $isi['namawali']; ?>"><?php echo $isi['namasiswa']; ?></button></td>
+                                 <td><?php echo $isi['namakelas']; ?></td>
+                                 <td><?php echo $isi['alamat']; ?></td>
+                                 <td><?php echo $isi['namawali']; ?></td>
+                                 <td>
 
-                        <td><?php echo $isi['namakelas']; ?></td>
-                        <td><?php echo $isi['alamat']; ?></td>
-                        <td><?php echo $isi['namawali']; ?></td>
-                        <td>
-                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSiswa"
-                        data-idsiswa="<?php echo $isi['idsiswa']; ?>"
-                        data-nim="<?php echo $isi['nim']; ?>"
-                        data-namasiswa="<?php echo $isi['namasiswa']; ?>"
-                        data-namawali="<?php echo $isi['namawali']; ?>"
-                        data-alamat="<?php echo $isi['alamat']; ?>"
-                        data-tmlahir="<?php echo $isi['tmlahir']; ?>"
-                        data-tgllahir="<?php echo $isi['tgllahir']; ?>"><i class="fa fa-edit"></i> Edit</button>
-                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a></button>
-                        </td>
-                      </tr>
-                      <?php }?>
+                                 <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSiswa"
+                                 data-idsiswa="<?php echo $isi['idsiswa']; ?>"
+                                 data-nim="<?php echo $isi['nim']; ?>"
+                                 data-namasiswa="<?php echo $isi['namasiswa']; ?>"
+                                 data-namawali="<?php echo $isi['namawali']; ?>"
+                                 data-alamat="<?php echo $isi['alamat']; ?>"
+                                 data-tmlahir="<?php echo $isi['tmlahir']; ?>"
+                                 data-tgllahir="<?php echo $isi['tgllahir']; ?>"
+                                 data-idtahun="<?php foreach($ceksmt as $row) { echo $row['idtahun']; }?>"><i class="fa fa-edit"></i> Edit</button>
+                                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiswa" data-idsiswa="<?php echo $isi['idsiswa'];?>"><i class="fa fa-trash"></i> Hapus</button>
+                                 </td>
+                               </tr>
+                               <?php }?>
 
-                    </tbody>
-                </table>
+                             </tbody>
+                         </table>
+                      <?php } ?>
+
 
                 <!--Pagination-->
                 <div class="row">
@@ -232,9 +271,8 @@ Content Wrapper. Contains page content -->
       </form>
     </div>
   </div>
-</div>
 </div><!--End Modal-->
-<?php } ?>
+
 <!--Modal Edit Data Siswa-->
               <div class="modal fade" id="editSiswa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -248,6 +286,7 @@ Content Wrapper. Contains page content -->
         <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Siswa/update_siswa">
 
           <input class="form-control" id="inputEmail3" type="hidden" name="idsiswa">
+          <input class="form-control" id="inputEmail3" type="hidden" name="idtahun">
 
           <div class="form-group">
                     <label class="col-sm-3 control-label">Kelas</label>
@@ -323,7 +362,7 @@ Content Wrapper. Contains page content -->
     </div>
   </div>
 </div><!--End Modal-->
-</div>
+
 
 <!--Modal Detail Data Siswa-->
               <div class="modal fade" id="detailSiswa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -401,8 +440,31 @@ Content Wrapper. Contains page content -->
       </form>
     </div>
   </div>
-</div>
 </div><!--End Modal-->
+
+<!--Modal Delete Data Siswa-->
+              <div class="modal fade" id="deleteSiswa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete Data Siswa</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-horizontal" method="POST" action="<?php echo base_url() ?>Siswa/delete_siswa">
+          <input class="form-control" id="inputEmail3" type="hidden" name="idsiswa">
+          <h5>Anda Yakin Ingin Menghapus Data Ini ? </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Ya</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div><!--End Modal-->
+
 
           </div>
         </div>

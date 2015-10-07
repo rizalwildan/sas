@@ -38,6 +38,8 @@
               $(e.currentTarget).find('input[name="tempat"]').val(tmlahir);
               var tgllahir = $(e.relatedTarget).data('tgllahir');
               $(e.currentTarget).find('input[name="tgl"]').val(tgllahir);
+              var idtahun = $(e.relatedTarget).data('idtahun');
+              $(e.currentTarget).find('input[name="idtahun"]').val(idtahun);
               });
     </SCRIPT>
 
@@ -72,6 +74,14 @@
               $(e.currentTarget).find('input[name="jenis"]').val(gender);
               });
     </SCRIPT>
+
+    <!--JS DELETE DATA SISWA-->
+    <SCRIPT TYPE="text/javascript">
+      $('#deleteSiswa').on('shown.bs.modal', function(e) {
+              var idsiswa = $(e.relatedTarget).data('idsiswa');
+              $(e.currentTarget).find('input[name="idsiswa"]').val(idsiswa);
+      });
+    </script>
 
       <!--JS Edit Komponen-->
     <SCRIPT TYPE="text/javascript">
