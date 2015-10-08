@@ -1,3 +1,4 @@
+<div class="content-wrapper">
 <section class="invoice">
 <!-- title row -->
 <div class="row">
@@ -89,3 +90,4 @@
 </div>
 </div>
 </section>
+</div>

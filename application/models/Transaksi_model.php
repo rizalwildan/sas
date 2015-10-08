@@ -74,5 +74,33 @@
 			return $kirimData;
 		}
 
+		public function getSiswaByKelas($namakelas)
+		{
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE namakelas='$namakelas'");
+
+			if($data->num_rows() < 1 ){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
+
+		public function getAllKelas()
+		{
+			$data = $this->db->query("SELECT * FROM kelas ORDER BY idkelas");
+
+			if($data->num_rows() < 1 ){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
+
+		
+
 	}
 ?>

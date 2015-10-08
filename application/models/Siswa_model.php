@@ -36,7 +36,7 @@
 		{
 			$this->db->limit($limit, $start);
 			$this->db->order_by("namakelas", "ASC");
-			$data = $this->db->get("siswa_sudah_punya_kelas");
+			$data = $this->db->get("view_siswa_sudah_punya_kelas");
 			$index =1;
 			if ($data->num_rows()<1)
 			{
@@ -64,7 +64,7 @@
 
 		public function count_data()
 		{
-			return $this->db->count_all("siswa_sudah_punya_kelas");
+			return $this->db->count_all("view_siswa_sudah_punya_kelas");
 		}
 
 		public function detail_siswa($dataSis)
