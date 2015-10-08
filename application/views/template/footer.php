@@ -21,14 +21,15 @@
     <script src="<?= base_url(). 'asset/bootstrap/js/moment.min.js'; ?>"></script>
     <script src="<?= base_url(). 'asset/bootstrap/js/bootstrap-datepicker.js'; ?>"></script>
     
+    
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="<?= base_url().'asset/DataTables-1.10.9/media/css/jquery.dataTables.css';?>">      
     <!-- jQuery -->
-    <script type="text/javascript" charset="utf8" src="<?= base_url().'asset/DataTables-1.10.9/media/js/jquery.js'; ?>"></script>  
+    
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="<?= base_url().'asset/DataTables-1.10.9/media/js/jquery.dataTables.js'; ?>"></script>
 
-
+    
     <!--JS Edit Siswa-->
     <SCRIPT TYPE="text/javascript">
       $('#editSiswa').on('shown.bs.modal', function(e) {
