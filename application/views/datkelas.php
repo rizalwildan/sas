@@ -11,10 +11,19 @@ Content Wrapper. Contains page content -->
           </ol>
         </section>
 
+
         <!-- Main content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
+
+            <!--Alert Form Validation-->
+            <?php if(isset($error)){ ?>
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $error; ?>
+            </div>
+            <?php } ?>
 
                 <div class="row">
                   <div class="col-xs-12">
@@ -35,8 +44,20 @@ Content Wrapper. Contains page content -->
           <div class="form-group">
               <label class="col-sm-4 control-label">Nama Kelas</label>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" placeholder="Nama Komponen" name="kelas">
+                  <input class="form-control" type="text" placeholder="Nama Kelas" name="kelas">
                 </div>
+          </div>
+
+          <div class="form-group">
+                    <label class="col-sm-4 control-label">Base Kelas</label>
+                    <div class="col-sm-4">
+                    <select class="form-control input-sm" aria-controls="example1" name="basekelas">
+                        <option value="">--Pilih Base Kelas--</option>
+                        <option value="1">X</option>
+                        <option value="2">XI</option>
+                        <option value="3">XII</option>
+                    </select>
+                    </div>
           </div>
       </div>
       <div class="modal-footer">

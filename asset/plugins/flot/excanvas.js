@@ -156,14 +156,12 @@ if (!document.createElement('canvas').getContext) {
 
         var attrs = el.attributes;
         if (attrs.width && attrs.width.specified) {
-          // #TODO:0 use runtimeStyle and coordsize
           // el.getContext().setWidth_(attrs.width.nodeValue);
           el.style.width = attrs.width.nodeValue + 'px';
         } else {
           el.width = el.clientWidth;
         }
         if (attrs.height && attrs.height.specified) {
-          // #TODO:0 use runtimeStyle and coordsize
           // el.getContext().setHeight_(attrs.height.nodeValue);
           el.style.height = attrs.height.nodeValue + 'px';
         } else {
@@ -616,7 +614,7 @@ if (!document.createElement('canvas').getContext) {
   };
 
   contextPrototype.beginPath = function() {
-    // #TODO:0 Branch current matrix so that save/restore has no effect
+
     //       as per safari docs.
     this.currentPath_ = [];
   };
@@ -939,13 +937,8 @@ if (!document.createElement('canvas').getContext) {
                          mr(p.xEnd), ',', mr(p.yEnd));
             break;
         }
-  
-  
-        // #TODO:0 Following is broken for curves due to
-        //       move to proper paths.
-  
-        // Figure out dimensions so we can do gradient fills
-        // properly
+
+
         if (p) {
           if (min.x == null || p.x < min.x) {
             min.x = p.x;
@@ -962,15 +955,15 @@ if (!document.createElement('canvas').getContext) {
         }
       }
       lineStr.push(' ">');
-  
+
       if (!aFill) {
         appendStroke(this, lineStr);
       } else {
         appendFill(this, lineStr, min, max);
       }
-  
+
       lineStr.push('</g_vml_:shape>');
-  
+
       this.element_.insertAdjacentHTML('beforeEnd', lineStr.join(''));
     }
   };
@@ -1005,7 +998,6 @@ if (!document.createElement('canvas').getContext) {
     var width = max.x - min.x;
     var height = max.y - min.y;
     if (fillStyle instanceof CanvasGradient_) {
-      // #TODO:0 Gradients transformed with the transformation matrix.
       var angle = 0;
       var focus = {x: 0, y: 0};
 
@@ -1088,7 +1080,6 @@ if (!document.createElement('canvas').getContext) {
                      deltaLeft / width * arcScaleX * arcScaleX, ',',
                      deltaTop / height * arcScaleY * arcScaleY, '"',
                      ' type="tile"',
-                     // #TODO:0 Figure out the correct size to fit the scale.
                      //' size="', w, 'px ', h, 'px"',
                      ' src="', fillStyle.src_, '" />');
        }
@@ -1280,7 +1271,6 @@ if (!document.createElement('canvas').getContext) {
     if (stroke) {
       appendStroke(this, lineStr);
     } else {
-      // #TODO:0 Fix the min and max params.
       appendFill(this, lineStr, {x: -left, y: 0},
                  {x: right, y: fontStyle.size});
     }
@@ -1328,11 +1318,11 @@ if (!document.createElement('canvas').getContext) {
 
   /******** STUBS ********/
   contextPrototype.clip = function() {
-    // #TODO:0 Implement
+
   };
 
   contextPrototype.arcTo = function() {
-    // #TODO:0 Implement
+
   };
 
   contextPrototype.createPattern = function(image, repetition) {

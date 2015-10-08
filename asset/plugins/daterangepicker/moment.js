@@ -589,7 +589,6 @@
         return res;
     }
 
-    // #TODO:0 remove 'name' arg after deprecation is removed
     function createAdder(direction, name) {
         return function (val, period) {
             var dur, tmp;
@@ -1386,7 +1385,6 @@
             dow = 1;
             doy = 4;
 
-            // #TODO:0 We need to take the current isoWeekYear, but that depends on
             // how we interpret now (local, utc, fixed offset). So create
             // a now version of current config (take local/utc/offset flags, and
             // create now).
@@ -2683,11 +2681,8 @@
 
     function rawMonthSetter(mom, value) {
         var dayOfMonth;
-
-        // #TODO:0 Move this out of here!
         if (typeof value === 'string') {
             value = mom.localeData().monthsParse(value);
-            // #TODO:0 Another silent failure?
             if (typeof value !== 'number') {
                 return mom;
             }

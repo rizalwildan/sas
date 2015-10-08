@@ -763,12 +763,10 @@
 		},
 		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
 			var container = domNode.parentNode;
-			// #TODO:0 = check cross browser stuff with this.
 			return container.clientWidth;
 		},
 		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
 			var container = domNode.parentNode;
-			// #TODO:0 = check cross browser stuff with this.
 			return container.clientHeight;
 		},
 		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
@@ -3079,7 +3077,7 @@
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},
