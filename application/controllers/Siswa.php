@@ -99,7 +99,13 @@ class Siswa extends CI_Controller {
 		$this->form_validation->set_rules($config);
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('error', validation_errors());
-			redirect('Admin/datasiswa/');
+			$akun = $this->session->userdata('akun');
+			if ($akun['level'] == 1 ) {
+				redirect('Admin/detailkelas/');
+			}
+			else {
+				redirect('Home/detailkelas');
+			}
 		}
 		else {
 			$this->db->insert('siswa', $datasiswa);
@@ -209,8 +215,14 @@ class Siswa extends CI_Controller {
 		//Memanggil Pengaturan Form Validation
 		$this->form_validation->set_rules($config);
 		if ($this->form_validation->run() == FALSE) {
-				$this->session->set_flashdata('error', validation_errors());
-				redirect('Admin/datasiswa/');
+			$this->session->set_flashdata('error', validation_errors());
+			$akun = $this->session->userdata('akun');
+			if ($akun['level'] == 1 ) {
+				redirect('Admin/detailkelas/');
+			}
+			else {
+				redirect('Home/detailkelas');
+			}
 		}
 		else {
 			$this->load->model('Siswa_model');
@@ -260,7 +272,14 @@ class Siswa extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->session->set_flashdata('error', validation_errors());
-			redirect('Admin/detailkelas/');
+			$akun = $this->session->userdata('akun');
+			if ($akun['level'] == 1 ) {
+				redirect('Admin/detailkelas/');
+			}
+			else {
+				redirect('Home/detailkelas');
+			}
+
 		}
 		else
 		{

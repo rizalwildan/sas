@@ -692,7 +692,7 @@ function _init() {
 })(jQuery);
 
 /*
- * #TODO:0 LIST CUSTOM PLUGIN
+ * #TODO:200 LIST CUSTOM PLUGIN
  * -----------------------
  * This plugin depends on iCheck plugin for checkbox and radio inputs
  *

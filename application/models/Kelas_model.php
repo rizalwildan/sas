@@ -8,6 +8,7 @@
 
 	public function getData()
 	{
+		$this->db->order_by("namakelas", "ASC");
 		return $this->db->get("kelas");
 	}
 
@@ -21,10 +22,10 @@
 		return $this->db->query($sql);
 	}
 
-	function tambah($kelas)
+	function tambah($kelas, $base)
 	{
 
-		$sql = "INSERT INTO kelas (namakelas) VALUES ('$kelas')";
+		$sql = "INSERT INTO kelas (namakelas, jenis_kelas) VALUES ('$kelas', '$base')";
 		$this->db->query($sql);
 	}
 
