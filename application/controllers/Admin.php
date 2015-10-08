@@ -74,6 +74,9 @@ class Admin extends CI_Controller {
 		$data['kelas'] = $this->Kelas_model->getData();
 		$data['siswa'] = $this->Siswa_model->tampilSiswaall($config["per_page"], $page);
 		$data['ceksmt'] = $this->Siswa_model->cekSmester();
+		$data['error'] = $this->session->flashdata('error');
+		$data['update'] = $this->session->flashdata('update');
+		$data['delete'] = $this->session->flashdata('delete');
 		//panggil pagination
 		$data["paging"] = $this->pagination->create_links();
 		$this->load->view('template/header');

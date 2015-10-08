@@ -21,21 +21,61 @@ class Kelas extends CI_Controller {
 
 	public function input()
 	{
+		$this->load->model('kelas_model');
 		$kelas = $this->input->post('kelas');
+		$base = $this->input->post('basekelas');
 
-		$this->kelas_model->tambah($kelas);
+		//Pengaturan Form Validation
+		$config = array(
+								 array(
+									 'field'   => 'kelas', //nama elemen form
+									 'label'   => 'Nama Kelas', //keterangan form
+									 'rules'   => 'required',//Harus Diisi
+													 'errors' => array(
+																 'required' => 'Nama Kelas Harus Disi'),//Custom Message
+									),
+								 array(
+									 'field'   => 'basekelas',
+									 'label'   => 'Base Kelas',
+									 'rules'   => 'required',
+													 'errors' => array(
+																 'required' => 'Base Kelas Harus Dipilih'),
+								 )
+							);
+			//Memanggil Pengaturan Form Validation
+			$this->form_validation->set_rules($config);
+			if ($this->form_validation->run() == FALSE) {
+					$this->session->set_flashdata('error', validation_errors());
+					$akun = $this->session->userdata('akun');
+					if ($akun['level'] == 1 ) {
+							redirect('Admin/detailkelas/');
+							}
+				  else {
+							  redirect('Home/kelas');
+							}
+			}
+			else {
+				$this->kelas_model->tambah($kelas, $base);
 
-		$akun = $this->session->userdata('akun');
+				$this->session->set_flashdata('insert');
 
-		if($akun['level'] == 1)
-		{
-		redirect(base_url().'Admin/kelas');
-		}
-		else
-		{
-		redirect(base_url().'Home/kelas');
-		}
+				$akun = $this->session->userdata('akun');
+
+				if($akun['level'] == 1)
+				{
+				redirect(base_url().'Admin/kelas');
+				}
+				else
+				{
+				redirect(base_url().'Home/kelas');
+				}
+			}
+
 	}
 
+	public function edit()
+	{
+		# code...
+	}
 
 }

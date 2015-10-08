@@ -53,7 +53,7 @@ $.ui = {
 
 		if (el[scroll] > 0) { return true; }
 
-		// #TODO:0 determine which cases actually cause this to happen
+		// #TODO:470 determine which cases actually cause this to happen
 		// if the element doesn't have the scroll set, see if it's possible to
 		// set the scroll
 		el[scroll] = 1;
@@ -286,7 +286,7 @@ $.widget = function(name, prototype) {
 	// add widget prototype
 	$[namespace][name].prototype = $.extend({}, $.widget.prototype, prototype);
 
-	// #TODO:0 merge getter and getterSetter properties from widget prototype
+	// #TODO:670 merge getter and getterSetter properties from widget prototype
 	// and plugin prototype
 	$[namespace][name].getterSetter = 'option';
 };
@@ -394,7 +394,7 @@ $.ui.mouse = {
 		this.started = false;
 	},
 
-	// #TODO:0 make sure destroying one instance of mouse doesn't mess with
+	// #TODO:640 make sure destroying one instance of mouse doesn't mess with
 	// other instances of mouse
 	_mouseDestroy: function() {
 		this.element.unbind('.'+this.widgetName);
@@ -406,7 +406,7 @@ $.ui.mouse = {
 
 	_mouseDown: function(event) {
 		// don't let more than one widget handle mouseStart
-		// #TODO:0 figure out why we have to use originalEvent
+		// #TODO:540 figure out why we have to use originalEvent
 		event.originalEvent = event.originalEvent || {};
 		if (event.originalEvent.mouseHandled) { return; }
 

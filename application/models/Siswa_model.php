@@ -27,10 +27,20 @@
 			return $dataSmester;
 		}
 
+		public function insert_siswa($value='')
+		{
+			
+		}
+
 		public function tampilSiswaall($limit, $start)
 		{
 			$this->db->limit($limit, $start);
+<<<<<<< HEAD
 			$data = $this->db->get("view_siswa_sudah_punya_kelas");
+=======
+			$this->db->order_by("namakelas", "ASC");
+			$data = $this->db->get("siswa_sudah_punya_kelas");
+>>>>>>> a7fb0efdbd1d937a3511e5478ce2b83f0aa59395
 			$index =1;
 			if ($data->num_rows()<1)
 			{
@@ -76,8 +86,7 @@
 					'alamat' => $detail->alamat,
 					'tmlahir' => $detail->tmlahir,
 					'tgllahir' => $detail->tgllahir,
-					'namawali' => $detail->namawali,
-					'tahun_pelajaran' => $detail->tahun_pelajaran
+					'namawali' => $detail->namawali
 					);
 			}
 
@@ -93,6 +102,15 @@
 			$this->db->where('idsiswa', $datasiswa['idsiswa']);
 			$this->db->where('idtahun', $dataSiswaKelas['idtahun']);
 			$this->db->update('siswa_kelas', $dataSiswaKelas);
+		}
+
+		public function delete($idsiswa)
+		{
+			$this->db->where('idsiswa', $idsiswa);
+			$this->db->delete('siswa');
+
+			$this->db->where('idsiswa', $idsiswa);
+			$this->db->delete('siswa_kelas');
 		}
 	}
 ?>
