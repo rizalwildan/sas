@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2015 at 11:52 AM
+-- Generation Time: Oct 08, 2015 at 07:30 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -383,6 +383,7 @@ CREATE TABLE IF NOT EXISTS `view_siswa_sudah_punya_kelas` (
 ,`nim` int(20)
 ,`namasiswa` varchar(50)
 ,`namakelas` varchar(10)
+,`jenis_kelas` int(2)
 ,`alamat` varchar(30)
 ,`namawali` varchar(50)
 ,`gender` enum('L','P')
@@ -433,7 +434,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_siswa_sudah_punya_kelas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_siswa_sudah_punya_kelas` AS select `siswa`.`idsiswa` AS `idsiswa`,`siswa`.`nim` AS `nim`,`siswa`.`namasiswa` AS `namasiswa`,`kelas`.`namakelas` AS `namakelas`,`siswa`.`alamat` AS `alamat`,`siswa`.`namawali` AS `namawali`,`siswa`.`gender` AS `gender`,`siswa`.`tmlahir` AS `tmlahir`,`siswa`.`tgllahir` AS `tgllahir`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran` from (((`siswa` join `kelas`) join `siswa_kelas`) join `tahun`) where ((`siswa_kelas`.`idsiswa` = `siswa`.`idsiswa`) and (`siswa_kelas`.`idkelas` = `kelas`.`idkelas`) and (`siswa_kelas`.`idtahun` = `tahun`.`idtahun`)) order by `tahun`.`tahun_pelajaran` desc;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_siswa_sudah_punya_kelas` AS select `siswa`.`idsiswa` AS `idsiswa`,`siswa`.`nim` AS `nim`,`siswa`.`namasiswa` AS `namasiswa`,`kelas`.`namakelas` AS `namakelas`,`kelas`.`jenis_kelas` AS `jenis_kelas`,`siswa`.`alamat` AS `alamat`,`siswa`.`namawali` AS `namawali`,`siswa`.`gender` AS `gender`,`siswa`.`tmlahir` AS `tmlahir`,`siswa`.`tgllahir` AS `tgllahir`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran` from (((`siswa` join `kelas`) join `siswa_kelas`) join `tahun`) where ((`siswa_kelas`.`idsiswa` = `siswa`.`idsiswa`) and (`siswa_kelas`.`idkelas` = `kelas`.`idkelas`) and (`siswa_kelas`.`idtahun` = `tahun`.`idtahun`));
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

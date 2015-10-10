@@ -73,6 +73,11 @@
 
 			return $kirimData;
 		}
+		public function delete_komponen($idkomponen)
+		{
+			$this->db->where('idkomponen', $idkomponen);
+			$this->db->delete('komponen');
+		}
 
 	}
 ?>

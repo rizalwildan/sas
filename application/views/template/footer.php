@@ -82,6 +82,14 @@
               $(e.currentTarget).find('input[name="idsiswa"]').val(idsiswa);
       });
     </script>
+    
+    <!--JS DELETE DATA KOMPONEN-->
+    <SCRIPT TYPE="text/javascript">
+      $('#deleteKomponen').on('shown.bs.modal', function(e) {
+              var idkomponen = $(e.relatedTarget).data('idkomponen');
+              $(e.currentTarget).find('input[name="idkomponen"]').val(idkomponen);
+      });
+    </script>
 
       <!--JS Edit Komponen-->
     <SCRIPT TYPE="text/javascript">

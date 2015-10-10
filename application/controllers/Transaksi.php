@@ -81,5 +81,25 @@ class Transaksi extends CI_Controller {
 		
 
 	}
+	public function delete_komponen()
+	{
+		$idkomponen = $this->input->post('idkomponen');
+		$this->load->model('transaksi_model');
+		$this->transaksi_model->delete_komponen($idkomponen);
+
+		$this->session->set_flashdata('delete', 'Data Berhasil');
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'Admin/KomponenDetail');
+		}
+		else
+		{
+		redirect(base_url().'Home/KomponenDetail');
+		}
+
+	}
 	
 }

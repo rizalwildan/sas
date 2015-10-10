@@ -35,12 +35,10 @@
 		public function tampilSiswaall($limit, $start)
 		{
 			$this->db->limit($limit, $start);
-<<<<<<< HEAD
+
 			$data = $this->db->get("view_siswa_sudah_punya_kelas");
-=======
 			$this->db->order_by("namakelas", "ASC");
-			$data = $this->db->get("siswa_sudah_punya_kelas");
->>>>>>> a7fb0efdbd1d937a3511e5478ce2b83f0aa59395
+			$data = $this->db->get("view_siswa_sudah_punya_kelas");
 			$index =1;
 			if ($data->num_rows()<1)
 			{
