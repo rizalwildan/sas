@@ -22,13 +22,13 @@ class Admin extends CI_Controller {
 	public function __construct()
 		{
 			parent::__construct();
-			
+
 			// load all model used
 			$this->load->model('Siswa_model');
 			$this->load->model('Kelas_model');
 			$this->load->model('Transaksi_model');
 			$this->load->model('Login_model');
-			
+
 			if(!$this->session->userdata('akun'))
 			{
 				redirect('futsal/login');
@@ -58,7 +58,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		
+
 		//Config Paggination
 		$config["base_url"] = base_url()."Admin/datasiswa";
 		$config["total_rows"] = $this->Siswa_model->count_data();
@@ -93,6 +93,10 @@ class Admin extends CI_Controller {
 		$data['error'] = $this->session->flashdata('error');
 		$data['update'] = $this->session->flashdata('update');
 		$data['delete'] = $this->session->flashdata('delete');
+		//Pesan upload error
+		$data['upload_error'] = $this->session->flashdata('upload_error');
+		//pesan Import Suksess
+		$data['import'] = $this->session->flashdata('import');
 		//panggil pagination
 		$data["paging"] = $this->pagination->create_links();
 		$this->load->view('template/header');
@@ -118,7 +122,7 @@ class Admin extends CI_Controller {
 		foreach ($datakelas as $key) {
 			$kelas['kelas'][0] = "-Pilih kelas-";
 			$kelas['kelas'][$key['namakelas']] = $key['namakelas'];
-			
+
 		}
 
 		$data['kelas'] = $kelas;
@@ -141,7 +145,7 @@ class Admin extends CI_Controller {
 
 		public function filterkelas()
 	{
-		
+
 			$namakelas = $this->input->post('namakelas');
 			$data['siswa'] = $this->Transaksi_model->getSiswaByKelas($namakelas);
 			// $siswa = $this->Transaksi_model->getSiswaByKelas($namakelas);
@@ -153,7 +157,7 @@ class Admin extends CI_Controller {
 			}else{
 				$this->load->view('siswaperkelas',$data);
 			}
-			
+
 	}
 
 // functions end modul transaksi spp
@@ -167,7 +171,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		
+
 		$data['komponen'] = $this->Transaksi_model->getKomponen();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
@@ -185,7 +189,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		
+
 			//Config Paggination
 		$config["base_url"] = base_url()."Admin/kelas";
 		$config["total_rows"] = $this->Kelas_model->count_data();
@@ -233,7 +237,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		
+
 		$data['error'] = $this->session->flashdata('error');
 		$data['insert'] = $this->session->flashdata('insert');
 		$data['tsk'] = $this->Kelas_model->tampil_siswa_kelas();
@@ -255,7 +259,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			
+
 			$data['user'] = $this->Login_model->tampil_user();
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar2');
@@ -267,7 +271,7 @@ class Admin extends CI_Controller {
 
 	public function settingkomponen()
 	{
-		
+
 		//$data['kelas'] = $this->Kelas_model->getData();
 		$data['jenisKelas'] = $this->Kelas_model->jenis_kelas();
 		$data['komponen']=$this->Transaksi_model->getKomponen();
@@ -287,7 +291,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			
+
 			$data['smt'] = $this->Siswa_model->cekSmester();
 			$data['error'] = $this->session->flashdata('error');
 			$this->load->view('template/header');

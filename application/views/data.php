@@ -72,6 +72,26 @@ Content Wrapper. Contains page content -->
               </script>
         <?php } ?>
 
+        <?php if($this->session->flashdata('import'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Import Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
         <!-- Main content -->
         <section class="content">
           <div class="row">
@@ -82,6 +102,13 @@ Content Wrapper. Contains page content -->
             <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <?php echo $error; ?>
+            </div>
+            <?php } ?>
+
+            <?php if(isset($upload_error)){ ?>
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $upload_error; ?>
             </div>
             <?php } ?>
 
@@ -125,7 +152,7 @@ Content Wrapper. Contains page content -->
                 <div class="row">
                   <div class="col-xs-12"
                  <a href="<?php echo base_url(); ?>index.php/home/input" >
-                      <button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Import Data</button>
+                      <button class="btn btn-success pull-right" data-toggle="modal" data-target="#modalImport"><i class="fa fa-plus"></i> Import Data</button>
                       </a>
 
 
@@ -464,6 +491,34 @@ Content Wrapper. Contains page content -->
     </div>
   </div>
 </div><!--End Modal-->
+
+<!--Modal Import Data Siswa-->
+<div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="myModalLabel">Import Data Siswa</h4>
+</div>
+<div class="modal-body">
+<form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Import/import_csv" enctype="multipart/form-data">
+
+<div class="form-group">
+    <div class="col-md-4">
+    <input type="file" name="userfile">
+    </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+<button type="submit" class="btn btn-primary">Simpan</button>
+</div>
+</form>
+</div>
+</div>
+</div><!--End Modal-->
+
 
 
           </div>

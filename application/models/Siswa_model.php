@@ -29,7 +29,7 @@
 
 		public function insert_siswa($value='')
 		{
-			
+
 		}
 
 		public function tampilSiswaall($limit, $start)
@@ -108,6 +108,11 @@
 
 			$this->db->where('idsiswa', $idsiswa);
 			$this->db->delete('siswa_kelas');
+		}
+
+		public function insert_csv($insert_data)
+		{
+			$this->db->insert('siswa', $insert_data);
 		}
 	}
 ?>

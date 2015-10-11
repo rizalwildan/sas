@@ -23,7 +23,7 @@
                         <label>
                           Tahun Ajaran
                           <p> <?= $tahunajaran; ?></p>
-                          
+
                           </label>
                         </div>
                       </div>
@@ -64,7 +64,7 @@
                           $js = 'id="kelas" class="form-control input-sm" onChange="filterkelas(this.value)"';
                           echo form_dropdown('nama_lap', $kelas['kelas'],'',$js);
                           ?>
-                          
+
                           </label>
                         </div>
                       </div>
@@ -72,7 +72,7 @@
 
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
-                <div id="datasiswa">                      
+                <div id="datasiswa">
                   <table id="siswa" class="stripe table-bordered table-striped">
                        <thead>
                          <tr>
@@ -83,7 +83,7 @@
                          </tr>
                        </thead>
                        <tbody>
-                         
+
                         <?php foreach ($siswa as $data) { ?>
                            <tr>
                              <td><?= $data['nim']; ?></td>
@@ -92,7 +92,7 @@
                              <td><a href="<?= base_url('Admin/bayar'); ?>" class="btn btn-xs btn-success" ><i class="fa fa-dashboard"></i> Bayar</a></td>
                            </tr>
                          <?php } ?>
-                          
+
                        </tbody>
                    </table>
                 </div>
@@ -106,27 +106,27 @@
 
 <script type="text/javascript">
     //perhatikan, kuncinya adalah disini
-        function filterkelas(kelas){ 
-        // var kelas = $("#kelas").val(); 
+        function filterkelas(kelas){
+        // var kelas = $("#kelas").val();
 
            $.ajax({
                 type: "POST",
                 url: "<?php echo site_url('Admin/filterkelas');?>",
                 data:"namakelas="+kelas,
                 success: function(data){
-                    $("#datasiswa").html(data);                    
+                    $("#datasiswa").html(data);
                 },
- 
+
                 error:function(XMLHttpRequest){
                     // alert(XMLHttpRequest.responseText);
                     alert('Siswa Tidak Ada');
                 }
             })
         // alert(kelas);
- 
+
         };
   </script>
-  
+
   <script type="text/javascript">
       $(document).ready(function() {
         $('#siswa').DataTable();
