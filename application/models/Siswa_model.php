@@ -32,14 +32,8 @@
 
 		}
 
-		public function tampilSiswaall($limit, $start)
+		public function tampilSiswaall()
 		{
-			$this->db->limit($limit, $start);
-
-
-			$data = $this->db->get("view_siswa_sudah_punya_kelas");
-			$this->db->order_by("namakelas", "ASC");
-			$data = $this->db->get("view_siswa_sudah_punya_kelas");
 			$this->db->order_by("namakelas", "ASC");
 			$data = $this->db->get("view_siswa_sudah_punya_kelas");
 

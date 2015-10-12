@@ -58,37 +58,8 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-
-		//Config Paggination
-		$config["base_url"] = base_url()."Admin/datasiswa";
-		$config["total_rows"] = $this->Siswa_model->count_data();
-		$config["per_page"] = 10;
-		$config["uri_segment"] = 3;
-
-		//config for bootstrap pagination class integration
-			 $config['full_tag_open'] = '<ul class="pagination">';
-			 $config['full_tag_close'] = '</ul>';
-			 $config['first_link'] = false;
-			 $config['last_link'] = false;
-			 $config['first_tag_open'] = '<li>';
-			 $config['first_tag_close'] = '</li>';
-			 $config['prev_link'] = 'Previous';
-			 $config['prev_tag_open'] = '<li class="paginate_button provious">';
-			 $config['prev_tag_close'] = '</li>';
-			 $config['next_link'] = 'Next';
-			 $config['next_tag_open'] = '<li class="paginate_button next">';
-			 $config['next_tag_close'] = '</li>';
-			 $config['last_tag_open'] = '<li>';
-			 $config['last_tag_close'] = '</li>';
-			 $config['cur_tag_open'] = '<li class="active"><a href="#">';
-			 $config['cur_tag_close'] = '</a></li>';
-			 $config['num_tag_open'] = '<li>';
-			 $config['num_tag_close'] = '</li>';
-
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data['kelas'] = $this->Kelas_model->getData();
-		$data['siswa'] = $this->Siswa_model->tampilSiswaall($config["per_page"], $page);
+		$data['siswa'] = $this->Siswa_model->tampilSiswaall();
 		$data['ceksmt'] = $this->Siswa_model->cekSmester();
 		$data['error'] = $this->session->flashdata('error');
 		$data['update'] = $this->session->flashdata('update');
@@ -98,7 +69,6 @@ class Admin extends CI_Controller {
 		//pesan Import Suksess
 		$data['import'] = $this->session->flashdata('import');
 		//panggil pagination
-		$data["paging"] = $this->pagination->create_links();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
 		$this->load->view('data', $data);

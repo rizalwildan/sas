@@ -112,40 +112,6 @@ Content Wrapper. Contains page content -->
             </div>
             <?php } ?>
 
-             <div class="row">
-                    <div class="col-sm-6">
-                      <div id="example1_length" class="dataTables_length">
-                        <label>
-                          Kelas
-                          <select class="form-control input-sm" aria-controls="example1" name="kelas">
-                            <option value="">--Semua Kelas--</option>
-                            <?php foreach($kelas->result() as $datakelas) { ?>
-                            <option value="<?php echo $datakelas->idkelas; ?>"><?php echo $datakelas->namakelas; ?></option>
-                            <?php }?>
-                          </select>
-                          </label>
-                        </div>
-                      </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>Cari berdasarkan</h4>
-                </div>
-              </div>
-
-                <div class="row">
-                     <div class="col-sm-4">
-                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="NIM"></input>
-                      </div>
-                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Nama"></input>
-                      </div>
-                        <button class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
-                    </div>
-                </div>
-
             <!--Data Table-->
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
@@ -167,7 +133,7 @@ Content Wrapper. Contains page content -->
                               </div>';
                       }
                       else { ?>
-                        <table id="example1" class="table table-bordered table-striped" style="margin-top:20px">
+                        <table id="dataSiswa" class="table table-bordered table-striped" style="margin-top:20px">
                              <thead>
                                <tr>
                                  <th>Nis</th>
@@ -219,7 +185,7 @@ Content Wrapper. Contains page content -->
                 <!--Pagination-->
                 <div class="row">
                   <div class="col-md-7">
-                    <?php echo $paging; ?>
+
                   </div>
                 </div><!--</pagination-->
 
@@ -526,3 +492,9 @@ Content Wrapper. Contains page content -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper-->
+
+      <script type="text/javascript">
+          $(document).ready(function() {
+            $('#dataSiswa').DataTable();
+          } );
+      </script>
