@@ -59,4 +59,10 @@
 		$sql= "INSERT INTO siswa_kelas (idsiswa,idkelas,idtahun) VALUES ($nis, $kelas, $tahun)";
 		$this->db->query($sql);
 	}
+
+	public function delete_kelas($idkelas)
+		{
+			$this->db->where('idkelas', $idkelas);
+			$this->db->delete('kelas');
+		}
 }

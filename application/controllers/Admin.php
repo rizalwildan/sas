@@ -19,6 +19,23 @@ class Admin extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+	public function __construct()
+		{
+			parent::__construct();
+			
+			// load all model used
+			$this->load->model('Siswa_model');
+			$this->load->model('Kelas_model');
+			$this->load->model('Transaksi_model');
+			$this->load->model('Login_model');
+			
+			if(!$this->session->userdata('akun'))
+			{
+				redirect('futsal/login');
+			}
+		}
+
+
 	public function index()
 	{
 		$akun = $this->session->userdata('akun');
@@ -41,8 +58,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Siswa_model');
-		$this->load->model('Kelas_model');
+		
 		//Config Paggination
 		$config["base_url"] = base_url()."Admin/datasiswa";
 		$config["total_rows"] = $this->Siswa_model->count_data();
@@ -86,6 +102,8 @@ class Admin extends CI_Controller {
 		}
 	}
 
+// functions modul transaksi spp
+
 		public function transaksi()
 	{
 		$akun = $this->session->userdata('akun');
@@ -95,12 +113,50 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
+
+		$datakelas = $this->Transaksi_model->getAllKelas();
+		foreach ($datakelas as $key) {
+			$kelas['kelas'][0] = "-Pilih kelas-";
+			$kelas['kelas'][$key['namakelas']] = $key['namakelas'];
+			
+		}
+
+		$data['kelas'] = $kelas;
+		$data['tahunajaran'] = $this->Transaksi_model->getTahunAjaranSekarang();
+		$data['siswa'] = $this->Transaksi_model->getAllSiswa();
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
-		$this->load->view('transaksi');
+		$this->load->view('transaksi',$data);
 		$this->load->view('template/footer');
 		}
 	}
+		public function bayar()
+	{
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('nota');
+		$this->load->view('template/footer');
+	}
+
+		public function filterkelas()
+	{
+		
+			$namakelas = $this->input->post('namakelas');
+			$data['siswa'] = $this->Transaksi_model->getSiswaByKelas($namakelas);
+			// $siswa = $this->Transaksi_model->getSiswaByKelas($namakelas);
+			if($data['siswa']=="kosong"){
+				echo '<div class="alert alert-danger alert-dismissible" role="alert">
+          				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          				Tidak ada siswa !
+        			  </div>'	;
+			}else{
+				$this->load->view('siswaperkelas',$data);
+			}
+			
+	}
+
+// functions end modul transaksi spp
 
 			public function komponenDetail()
 	{
@@ -111,7 +167,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Transaksi_model');
+		
 		$data['komponen'] = $this->Transaksi_model->getKomponen();
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
@@ -129,7 +185,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Kelas_model');
+		
 			//Config Paggination
 		$config["base_url"] = base_url()."Admin/kelas";
 		$config["total_rows"] = $this->Kelas_model->count_data();
@@ -177,8 +233,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Kelas_model');
-		$this->load->model('Siswa_model');
+		
 		$data['error'] = $this->session->flashdata('error');
 		$data['insert'] = $this->session->flashdata('insert');
 		$data['tsk'] = $this->Kelas_model->tampil_siswa_kelas();
@@ -200,7 +255,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('Login_model');
+			
 			$data['user'] = $this->Login_model->tampil_user();
 			$this->load->view('template/header');
 			$this->load->view('template/sidebar2');
@@ -212,9 +267,7 @@ class Admin extends CI_Controller {
 
 	public function settingkomponen()
 	{
-		$this->load->model('Kelas_model');
-		$this->load->model('Transaksi_model');
-		$this->load->model('Siswa_model');
+		
 		//$data['kelas'] = $this->Kelas_model->getData();
 		$data['jenisKelas'] = $this->Kelas_model->jenis_kelas();
 		$data['komponen']=$this->Transaksi_model->getKomponen();
@@ -234,7 +287,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('Siswa_model');
+			
 			$data['smt'] = $this->Siswa_model->cekSmester();
 			$data['error'] = $this->session->flashdata('error');
 			$this->load->view('template/header');

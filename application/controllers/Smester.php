@@ -68,4 +68,5 @@ class Smester extends CI_Controller {
       redirect('Admin/dataSmester/');
     }
   }
+
 }

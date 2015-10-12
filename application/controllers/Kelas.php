@@ -78,4 +78,24 @@ class Kelas extends CI_Controller {
 		# code...
 	}
 
+	public function delete_kelas()
+	{
+		$idkelas = $this->input->post('idkelas');
+		$this->load->model('kelas_model');
+		$this->kelas_model->delete_kelas($idkelas);
+
+		$this->session->set_flashdata('delete', 'Data Berhasil');
+
+		$akun = $this->session->userdata('akun');
+
+		if($akun['level'] == 1)
+		{
+		redirect(base_url().'Admin/Kelas');
+		}
+		else
+		{
+		redirect(base_url().'Home/Kelas');
+		}
+	}
+
 }

@@ -177,6 +177,21 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function rekap()
+	{
+		$akun = $this->session->userdata('akun');
+		if($akun['login'] == FALSE)
+		{
+			redirect(base_url(). 'Home/index');
+		}
+		else
+		{
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('rekapsiswa');
+		$this->load->view('template/footer');
+		}
+	}
 
 
 }

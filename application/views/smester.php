@@ -89,8 +89,7 @@ Content Wrapper. Contains page content -->
   </div>
 </div><!--End Modal-->
 
-
-            <div class="box box-info" style="margin-top:30px">
+           <div class="box box-info" style="margin-top:30px">
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-12">

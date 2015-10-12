@@ -36,9 +36,13 @@
 		{
 			$this->db->limit($limit, $start);
 
+
 			$data = $this->db->get("view_siswa_sudah_punya_kelas");
 			$this->db->order_by("namakelas", "ASC");
 			$data = $this->db->get("view_siswa_sudah_punya_kelas");
+			$this->db->order_by("namakelas", "ASC");
+			$data = $this->db->get("view_siswa_sudah_punya_kelas");
+
 			$index =1;
 			if ($data->num_rows()<1)
 			{

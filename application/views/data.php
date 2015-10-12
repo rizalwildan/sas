@@ -291,9 +291,9 @@ Content Wrapper. Contains page content -->
           <div class="form-group">
                     <label class="col-sm-3 control-label">Kelas</label>
                     <div class="col-sm-4">
-                    <select class="form-control input-sm" aria-controls="example1" name="kelas">
+                    <select class="form-control input-sm" aria-controls="example1" name="kelas" >
                         <option value="">--Pilih Kelas--</option>
-                      <?php foreach($kelas->result() as $isikelas){ ?>
+                          <?php foreach($kelas->result() as $isikelas){ ?>
                         <option value="<?php echo $isikelas->idkelas; ?>"><?php echo $isikelas->namakelas; ?></option>
                       <?php } ?>
                     </select>

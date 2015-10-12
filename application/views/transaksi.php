@@ -1,13 +1,5 @@
-<?php 
-// foreach ($siswa as $key) {
-//   print_r($key);
-//   die();
-// }
 
-?>
-
-
-Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -67,54 +59,76 @@ Content Wrapper. Contains page content -->
                       <div id="example1_length" class="dataTables_length">
                         <label>
                           Kelas
-                          <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-                            <option value="">--Pilih Kelas--</option>
-                            <option value="">X1</option>
-                            <option value="">X2</option>
-                          </select>
+
+                          <?php
+                          $js = 'id="kelas" class="form-control input-sm" onChange="filterkelas(this.value)"';
+                          echo form_dropdown('nama_lap', $kelas['kelas'],'',$js);
+                          ?>
+                          
                           </label>
                         </div>
                       </div>
               </div>
 
-                <div class="row">
-                     <div class="col-sm-4">
-                       <label>
-                         Cari Berdasarkan
-                       </label>
-                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Nim atau Nama"></input>
-                      </div>
-                        <button class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
-                    </div>
-                </div>
-
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                     <thead>
-                       <tr>
-                         <th>Nis</th>
-                         <th>Nama</th>
-                         <th>Kelas</th>
-                         <th>Action</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                      <?php foreach ($siswa as $data) { ?>
+                <div id="datasiswa">                      
+                  <table id="siswa" class="stripe table-bordered table-striped">
+                       <thead>
                          <tr>
-                           <td><?= $data['nim']; ?></td>
-                           <td><?= $data['namasiswa']; ?></td>
-                           <td><?= $data['namakelas']; ?></td>
-                           <td><button class="btn btn-xs btn-success" href="#"><i class="fa fa-dashboard"></i> Bayar</button></td>
+                           <th>Nis</th>
+                           <th>Nama</th>
+                           <th>Kelas</th>
+                           <th>Action</th>
                          </tr>
-                       <?php } ?>
-                     </tbody>
-                 </table>
+                       </thead>
+                       <tbody>
+                         
+                        <?php foreach ($siswa as $data) { ?>
+                           <tr>
+                             <td><?= $data['nim']; ?></td>
+                             <td><?= $data['namasiswa']; ?></td>
+                             <td><?= $data['namakelas']; ?></td>
+                             <td><a href="<?= base_url('Admin/bayar'); ?>" class="btn btn-xs btn-success" ><i class="fa fa-dashboard"></i> Bayar</a></td>
+                           </tr>
+                         <?php } ?>
+                          
+                       </tbody>
+                   </table>
+                </div>
               </div><!-- /.box body-->
             </div>
           </div>
         </div>
 
         </section><!-- /.content -->
-      </div><!-- /.content-wrapper
+      </div><!-- /.content-wrapper -->
+
+<script type="text/javascript">
+    //perhatikan, kuncinya adalah disini
+        function filterkelas(kelas){ 
+        // var kelas = $("#kelas").val(); 
+
+           $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('Admin/filterkelas');?>",
+                data:"namakelas="+kelas,
+                success: function(data){
+                    $("#datasiswa").html(data);                    
+                },
+ 
+                error:function(XMLHttpRequest){
+                    // alert(XMLHttpRequest.responseText);
+                    alert('Siswa Tidak Ada');
+                }
+            })
+        // alert(kelas);
+ 
+        };
+  </script>
+  
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $('#siswa').DataTable();
+      } );
+  </script>

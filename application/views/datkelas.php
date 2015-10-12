@@ -69,6 +69,29 @@ Content Wrapper. Contains page content -->
   </div>
 </div><!--End Modal-->
 
+<!--Modal Delete Kelas-->
+              <div class="modal fade" id="deleteKelas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete Data Siswa</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-horizontal" method="POST" action="<?php echo base_url() ?>Kelas/delete_kelas">
+          <input class="form-control" id="inputEmail3" type="hidden" name="idkelas">
+          <h5>Anda Yakin Ingin Menghapus Data Ini ? </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Ya</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div><!--End Modal-->
+
 
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
@@ -85,6 +108,7 @@ Content Wrapper. Contains page content -->
                       <tr>
                         <th>No</th>
                         <th>Kelas</th>
+                        <th>Jenjang Kelas</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -97,9 +121,10 @@ Content Wrapper. Contains page content -->
                       <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $row->namakelas; ?></td>
+                        <td><?php echo $row->jenis_kelas;?></td>
                         <td>
-                        <button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>
-                        <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
+                        <!--<button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>-->
+                        <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteKelas" data-idkelas="<?php echo $row->idkelas;?>"><i class="fa fa-trash"></i>Hapus</button>
                         </td>
                       </tr>
                       <?php
