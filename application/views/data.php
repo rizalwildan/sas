@@ -112,19 +112,18 @@ Content Wrapper. Contains page content -->
             </div>
             <?php } ?>
 
+            <div class="row">
+              <div class="col-xs-12">
+                  <button class="btn btn-success pull-right" data-toggle="modal" data-target="#modalImport"><i class="fa fa-plus"></i> Import Data</button>
+
+
+                  <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalTambah" style="margin-right:10px"><i class="fa fa-plus"></i> Tambah Data</button>
+              </div>
+              </div>
+
             <!--Data Table-->
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
-                <div class="row">
-                  <div class="col-xs-12"
-                 <a href="<?php echo base_url(); ?>index.php/home/input" >
-                      <button class="btn btn-success pull-right" data-toggle="modal" data-target="#modalImport"><i class="fa fa-plus"></i> Import Data</button>
-                      </a>
-
-
-                      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalTambah" style="margin-right:10px"><i class="fa fa-plus"></i> Tambah Data</button>
-                  </div>
-                  </div>
                       <?php if ($siswa == 'kosong')
                       {
                         echo '<div class="callout callout-warning" style="margin-top:20px">

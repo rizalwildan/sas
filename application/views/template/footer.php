@@ -20,16 +20,16 @@
     <script src="<?= base_url(). 'asset/bootstrap/js/moment.js'; ?>"></script>
     <script src="<?= base_url(). 'asset/bootstrap/js/moment.min.js'; ?>"></script>
     <script src="<?= base_url(). 'asset/bootstrap/js/bootstrap-datepicker.js'; ?>"></script>
-    
-    
+
+
     <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url().'asset/DataTables-1.10.9/media/css/jquery.dataTables.css';?>">      
+    <link rel="stylesheet" type="text/css" href="<?= base_url().'asset/DataTables-1.10.9/media/css/jquery.dataTables.css';?>">
     <!-- jQuery -->
-    
+
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="<?= base_url().'asset/DataTables-1.10.9/media/js/jquery.dataTables.js'; ?>"></script>
 
-    
+
     <!--JS Edit Siswa-->
     <SCRIPT TYPE="text/javascript">
       $('#editSiswa').on('shown.bs.modal', function(e) {
@@ -81,7 +81,7 @@
               $(e.currentTarget).find('input[name="idsiswa"]').val(idsiswa);
       });
     </script>
-    
+
     <!--JS DELETE DATA KOMPONEN-->
     <SCRIPT TYPE="text/javascript">
       $('#deleteKomponen').on('shown.bs.modal', function(e) {

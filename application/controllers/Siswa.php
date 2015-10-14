@@ -101,10 +101,10 @@ class Siswa extends CI_Controller {
 			$this->session->set_flashdata('error', validation_errors());
 			$akun = $this->session->userdata('akun');
 			if ($akun['level'] == 1 ) {
-				redirect('Admin/detailkelas/');
+				redirect('Admin/datasiswa');
 			}
 			else {
-				redirect('Home/detailkelas');
+				redirect('Home/datasiswa');
 			}
 		}
 		else {
@@ -218,10 +218,10 @@ class Siswa extends CI_Controller {
 			$this->session->set_flashdata('error', validation_errors());
 			$akun = $this->session->userdata('akun');
 			if ($akun['level'] == 1 ) {
-				redirect('Admin/detailkelas/');
+				redirect('Admin/datasiswa');
 			}
 			else {
-				redirect('Home/detailkelas');
+				redirect('Home/datasiswa');
 			}
 		}
 		else {
