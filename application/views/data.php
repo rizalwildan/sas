@@ -5,14 +5,10 @@ Content Wrapper. Contains page content -->
           <h1>
             Data Siswa
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
         </section>
 
         <!--Notification-->
-        <?php if($this->session->flashdata('insert'))
+        <?php if($this->session->flashdata('insertsis'))
         { ?>
               <script type="text/javascript">
               $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong> <br> Cek Menu <strong> Siswa Kelas </strong>", // Messages

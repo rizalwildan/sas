@@ -22,13 +22,13 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li>
-              <a href="<?php echo base_url(); ?>Home/datasiswa"><i class="fa fa-users"></i> <span>Siswa</span> </a>
+              <a href="<?php echo base_url(); ?>Home/datasiswa"><i class="fa fa-graduation-cap"></i> <span>Data Siswa</span> </a>
             </li>
-            <li><a href="<?php echo base_url(); ?>Home/transaksi"><i class="fa fa-money"></i><span>Transaksi SPP</span></a></li>
+            <li><a href="<?php echo base_url(); ?>Home/kelas"><i class="fa fa-users"></i> <span>Data Kelas</span> </a></li>
+            <li><a href="<?php echo base_url(); ?>Home/transaksi"><i class="fa fa-credit-card"></i><span>Transaksi SPP</span></a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-inbox"></i> <span>Data Kelas</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-gear"></i> <span>Setting</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>Home/kelas">Kelas</a></li>
                 <li><a href="<?php echo base_url(); ?>Home/detailkelas">Siswa Kelas</a></li>
               </ul>
             </li>

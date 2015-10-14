@@ -5,11 +5,75 @@
           <h1>
             Detail Komponen
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
         </section>
+
+        <?php if($this->session->flashdata('insert'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
+        <?php if($this->session->flashdata('update'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Update Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
+        <?php if($this->session->flashdata('delete'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Delete Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
+        <!--Alert Form Validation-->
+        <?php if(isset($error)){ ?>
+        <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <?php echo $error; ?>
+        </div>
+        <?php } ?>
 
         <!-- Main content -->
         <section class="content">
@@ -75,7 +139,7 @@
         <form class="form-horizontal" method="POST" action="<?php echo base_url() ?>Transaksi/delete_komponen">
           <input class="form-control" id="inputEmail3" type="hidden" name="idkomponen">
           <h5>Anda Yakin Ingin Menghapus Data Ini ? </h5>
-      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-primary">Ya</button>
@@ -167,31 +231,6 @@
   </div>
 </div>
 </div><!--End Modal-->
-
-                <!--Pagination-->
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers">
-                      <ul class="pagination">
-                        <li class="paginate_button provious disabled">
-                          <a tabindex="0" data-dt-idx="0" aria-controls="example2" href="#">Previous</a>
-                        </li>
-                        <li class="paginate_button active">
-                          <a tabindex="0" data-dt-idx="1" aria-controls="example2" href="#">1</a>
-                        </li>
-                         <li class="paginate_button">
-                          <a tabindex="0" data-dt-idx="2" aria-controls="example2" href="#">2</a>
-                        </li>
-                         <li class="paginate_button">
-                          <a tabindex="0" data-dt-idx="3" aria-controls="example2" href="#">3</a>
-                        </li>
-                         <li class="paginate_button next">
-                          <a tabindex="0" data-dt-idx="4" aria-controls="example2" href="#">Next</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div><!--</pagination-->
 
               </div><!-- /.box body-->
             </div>

@@ -55,8 +55,8 @@
     <!--JS Detail Siswa-->
     <SCRIPT TYPE="text/javascript">
       $('#detailSiswa').on('shown.bs.modal', function(e) {
-              var idsiswa = $(e.relatedTarget).data('idsiswa');
-              $(e.currentTarget).find('input[name="idsiswa"]').val(idsiswa);
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="kelas"]').val(namakelas);
               var nim = $(e.relatedTarget).data('nim');
               $(e.currentTarget).find('input[name="nim"]').val(nim);
               var namasiswa = $(e.relatedTarget).data('namasiswa');
@@ -119,6 +119,20 @@
               $(e.currentTarget).find('input[name="iduser"]').val(iduser);
               var username = $(e.relatedTarget).data('username');
               $(e.currentTarget).find('input[name="username"]').val(username);
+              });
+    </SCRIPT>
+
+    <!--JS Edit Smester-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editSmt').on('shown.bs.modal', function(e) {
+              var idtahun = $(e.relatedTarget).data('idtahun');
+              $(e.currentTarget).find('input[name="idtahun"]').val(idtahun);
+              var tahun_pelajaran = $(e.relatedTarget).data('tahun_pelajaran');
+              $(e.currentTarget).find('input[name="tahunpel"]').val(tahun_pelajaran);
+              var awal_tahun = $(e.relatedTarget).data('awal_tahun');
+              $(e.currentTarget).find('input[name="awaltahun"]').val(awal_tahun);
+              var akhir_tahun = $(e.relatedTarget).data('akhir_tahun');
+              $(e.currentTarget).find('input[name="akhirtahun"]').val(akhir_tahun);
               });
     </SCRIPT>
 

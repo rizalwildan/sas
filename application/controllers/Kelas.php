@@ -48,7 +48,7 @@ class Kelas extends CI_Controller {
 					$this->session->set_flashdata('error', validation_errors());
 					$akun = $this->session->userdata('akun');
 					if ($akun['level'] == 1 ) {
-							redirect('Admin/detailkelas/');
+							redirect('Admin/kelas/');
 							}
 				  else {
 							  redirect('Home/kelas');
@@ -57,7 +57,7 @@ class Kelas extends CI_Controller {
 			else {
 				$this->kelas_model->tambah($kelas, $base);
 
-				$this->session->set_flashdata('insert');
+				$this->session->set_flashdata('insert', 'Berhasil');
 
 				$akun = $this->session->userdata('akun');
 

@@ -46,7 +46,7 @@ class Smester extends CI_Controller {
                        'required' => 'Awal Tahun harus diisi'),
                ),
               array(
- 								 'field'   => 'akhitahun',
+ 								 'field'   => 'akhirtahun',
  								 'label'   => 'Akhir Tahun',
  								 'rules'   => 'required',
                  'errors' => array(
@@ -68,5 +68,57 @@ class Smester extends CI_Controller {
       redirect('Admin/dataSmester/');
     }
   }
+
+	public function edit_smester()
+	{
+		$idtahun = $this->input->post('idtahun');
+		$tahunpel = $this->input->post('tahunpel');
+    $awaltahun = $this->input->post('awaltahun');
+    $akhirtahun = $this->input->post('akhirtahun');
+
+		$data = array(
+						'idtahun' => $idtahun,
+						'tahun_pelajaran' => $tahunpel,
+            'awal_tahun_pelajaran' => $awaltahun,
+            'akhir_tahun_pelajaran' => $akhirtahun,
+          );
+
+					$config = array(
+						array(
+							'field'   => 'tahunpel',
+							'label'   => 'tahun pelajaran',
+							'rules'   => 'required',
+							'errors' => array(
+										'required' => 'Tahun Pelajaran harus diisi'),
+					 ),
+									   array(
+											 'field'   => 'awaltahun',
+											 'label'   => 'Awal Tahun',
+											 'rules'   => 'required',
+			                 'errors' => array(
+			                       'required' => 'Awal Tahun harus diisi'),
+			               ),
+			              array(
+			 								 'field'   => 'akhirtahun',
+			 								 'label'   => 'Akhir Tahun',
+			 								 'rules'   => 'required',
+			                 'errors' => array(
+			                       'required' => 'Akhir Tahun harus diisi'),
+			               )
+					        );
+			    $this->form_validation->set_rules($config);
+			    if ($this->form_validation->run() == FALSE)
+			    {
+			      $this->session->set_flashdata('error', validation_errors());
+			      redirect('Admin/dataSmester/');
+			    }
+					else {
+						$this->load->model('Smester_model');
+						$this->Smester_model->edit_smester($data);
+						$this->session->set_flashdata('update', 'berhasil');
+
+						redirect('Admin/dataSmester/');
+					}
+	}
 
 }

@@ -110,7 +110,7 @@ class Siswa extends CI_Controller {
 		else {
 			$this->db->insert('siswa', $datasiswa);
 
-			$this->session->set_flashdata('insert', 'Data Berhasil');
+			$this->session->set_flashdata('insertsis', 'Data Berhasil');
 
 			$akun = $this->session->userdata('akun');
 

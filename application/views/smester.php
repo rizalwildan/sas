@@ -5,10 +5,6 @@ Content Wrapper. Contains page content -->
           <h1>
             Data Smester Aktif
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
         </section>
 
         <!-- Main content -->
@@ -36,6 +32,26 @@ Content Wrapper. Contains page content -->
                   </script>
             <?php } ?>
 
+            <?php if($this->session->flashdata('update'))
+            { ?>
+                  <script type="text/javascript">
+                  $.bootstrapGrowl("Update Data <strong>Berhasil !</strong>", // Messages
+                    { // options
+                      type: "success", // info, success, warning and danger
+                      ele: "body", // parent container
+                      offset: {
+                      from: "top",
+                      amount: 70
+                    },
+                      align: "right", // right, left or center
+                      width: 350,
+                      delay: 3000,
+                      allow_dismiss: true, // add a close button to the message
+                      stackup_spacing: 10
+                    });
+                  </script>
+            <?php } ?>
+
             <!--Alert Form Validation-->
             <?php if(isset($error)){ ?>
             <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
@@ -43,6 +59,7 @@ Content Wrapper. Contains page content -->
               <?php echo $error; ?>
             </div>
             <?php } ?>
+
                 <div class="row">
                   <div class="col-md-12">
                       <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#tambahSmt"><i class="fa fa-plus"></i> Tambah Smester</button>
@@ -111,7 +128,11 @@ Content Wrapper. Contains page content -->
                         <td><?php echo $row['awal_tahun']; ?></td>
                         <td><?php echo $row['akhir_tahun']; ?></td>
                         <td>
-                        <button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>
+                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSmt"
+                        data-idtahun ="<?php echo $row['idtahun']; ?>"
+                        data-tahun_pelajaran ="<?php echo $row['tahun_pelajaran']; ?>"
+                        data-awal_tahun="<?php echo $row['awal_tahun']; ?>"
+                        data-akhir_tahun="<?php echo $row['akhir_tahun']; ?>"><i class='fa fa-edit'></i> Edit</button>
                         <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
                         </td>
                       </tr>
@@ -124,6 +145,52 @@ Content Wrapper. Contains page content -->
 
               </div><!-- /.box body-->
             </div>
+
+            <!-- Modal Edit Smester -->
+<div class="modal fade" id="editSmt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tambah Smester</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Smester/edit_smester">
+          <input type="hidden" name="idtahun">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Tahun Pelajaran</label>
+            <div class="col-sm-4">
+              <input class="form-control" type="text" placeholder="Tahun Pelajaran" name="tahunpel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Awal Tahun Pelajaran</label>
+          <div class="input-group date col-sm-4" data-date-format="yyyy/mm/dd">
+            <input class="form-control" id="startDate" placeholder="Awal Smester" name="awaltahun" style="margin-left:14px">
+            <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Akhir Tahun Pelajaran</label>
+          <div class="input-group date col-sm-4" data-date-format="yyyy/mm/dd">
+            <input class="form-control" id="startDate" placeholder="Akhir Smester" name="akhirtahun" style="margin-left:14px">
+            <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div><!--End Modal-->
+
+
+
+
+
             </div>
         </div>
 

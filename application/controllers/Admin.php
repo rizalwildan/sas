@@ -61,9 +61,8 @@ class Admin extends CI_Controller {
 		$data['kelas'] = $this->Kelas_model->getData();
 		$data['siswa'] = $this->Siswa_model->tampilSiswaall();
 		$data['ceksmt'] = $this->Siswa_model->cekSmester();
+		//Form Validation
 		$data['error'] = $this->session->flashdata('error');
-		$data['update'] = $this->session->flashdata('update');
-		$data['delete'] = $this->session->flashdata('delete');
 		//Pesan upload error
 		$data['upload_error'] = $this->session->flashdata('upload_error');
 		//pesan Import Suksess
@@ -143,6 +142,7 @@ class Admin extends CI_Controller {
 		{
 
 		$data['komponen'] = $this->Transaksi_model->getKomponen();
+		$data['error'] = $this->session->flashdata('error');
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
 		$this->load->view('komponen', $data);
@@ -191,6 +191,7 @@ class Admin extends CI_Controller {
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data['p'] = $this->db->get("kelas", $config["per_page"], $page);
 		$data['paging'] = $this->pagination->create_links();
+		$data['error'] = $this->session->flashdata('error');
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
 		$this->load->view('datkelas', $data);

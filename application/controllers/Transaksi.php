@@ -30,14 +30,44 @@ class Transaksi extends CI_Controller {
 			'iuran'=>$iuran
 		);
 
-		$this->db->insert('komponen', $dataKomponen);
+		$config = array(
+								 array(
+									 'field'   => 'nama_komponen', //nama elemen form
+									 'label'   => 'Nama Komponen', //keterangan form
+									 'rules'   => 'required',//Harus Diisi
+													 'errors' => array(
+																 'required' => 'Data Harus Diisi'),//Custom Message
+									),
+								 array(
+									 'field'   => 'deskripsi',
+									 'label'   => 'Deskripsi',
+									 'rules'   => 'required',
+													 'errors' => array(
+																 'required' => 'Deskripsi Komponen Harus Diisi'),
+								 ),
+								 array(
+									 'field'   => 'iuran',
+									 'label'   => 'Iuran',
+									 'rules'   => 'required',
+													 'errors' => array(
+																 'required' => 'Jumlah Iuran Harus Diisi'),
+								 )
+							 );
 
-		redirect(base_url('index.php/admin/KomponenDetail'));
-		
+							 $this->form_validation->set_rules($config);
+					 		if ($this->form_validation->run() == FALSE) {
+					 			$this->session->set_flashdata('error', validation_errors());
+					 			redirect(base_url('index.php/admin/KomponenDetail'));
+					 		}
+							else {
+								$this->db->insert('komponen', $dataKomponen);
+								$this->session->set_flashdata('insert', 'Berhasil');
+								redirect(base_url('index.php/admin/KomponenDetail'));
+							}
 	}
 
 	public function update_komponen()
-	{	
+	{
 		$idkomponen=$this->input->post('idkomponen');
 		$nama_komponen=$this->input->post('nama_komp');
 		$deskripsi=$this->input->post('deskripsi');
@@ -48,12 +78,42 @@ class Transaksi extends CI_Controller {
 			'deskripsi'=> $deskripsi,
 			'iuran'=>$iuran
 			);
+		$config = array(
+									 array(
+										 'field'   => 'nama_komp', //nama elemen form
+										 'label'   => 'Nama Komponen', //keterangan form
+										 'rules'   => 'required',//Harus Diisi
+														 'errors' => array(
+																	 'required' => 'Data Harus Diisi'),//Custom Message
+										),
+									 array(
+										 'field'   => 'deskripsi',
+										 'label'   => 'Deskripsi',
+										 'rules'   => 'required',
+														 'errors' => array(
+																	 'required' => 'Deskripsi Komponen Harus Diisi'),
+									 ),
+									 array(
+										 'field'   => 'iuran',
+										 'label'   => 'Iuran',
+										 'rules'   => 'required',
+														 'errors' => array(
+																	 'required' => 'Jumlah Iuran Harus Diisi'),
+									 )
+								 );
 
-		$this->load->model('transaksi_model');
+								$this->form_validation->set_rules($config);
+								if ($this->form_validation->run() == FALSE) {
+									$this->session->set_flashdata('error', validation_errors());
+									redirect(base_url('index.php/admin/KomponenDetail'));
+								}
+								else {
+									$this->load->model('transaksi_model');
+									$this->transaksi_model->update_komponen($updateKomponen);
+									$this->session->set_flashdata('update', 'berhasil');
 
-		$this->transaksi_model->update_komponen($updateKomponen);
-
-		redirect(base_url('index.php/admin/KomponenDetail'));
+									redirect(base_url('index.php/admin/KomponenDetail'));
+								}
 	}
 
 	public function setting_komponen()
@@ -78,7 +138,7 @@ class Transaksi extends CI_Controller {
 			//$akun = $this->session->userdata('akun');
 
 		redirect(base_url('index.php/admin/settingkomponen'));
-		
+
 
 	}
 	public function delete_komponen()
@@ -86,20 +146,9 @@ class Transaksi extends CI_Controller {
 		$idkomponen = $this->input->post('idkomponen');
 		$this->load->model('transaksi_model');
 		$this->transaksi_model->delete_komponen($idkomponen);
-
 		$this->session->set_flashdata('delete', 'Data Berhasil');
 
-		$akun = $this->session->userdata('akun');
-
-		if($akun['level'] == 1)
-		{
-		redirect(base_url().'Admin/KomponenDetail');
-		}
-		else
-		{
-		redirect(base_url().'Home/KomponenDetail');
-		}
-
+		redirect(base_url('index.php/admin/KomponenDetail'));
 	}
-	
+
 }

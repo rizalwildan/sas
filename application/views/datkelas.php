@@ -5,12 +5,47 @@ Content Wrapper. Contains page content -->
           <h1>
             Data Kelas
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
         </section>
 
+        <?php if($this->session->flashdata('insert'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
+        <?php if($this->session->flashdata('delete'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Delete Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
 
         <!-- Main content -->
         <section class="content">
