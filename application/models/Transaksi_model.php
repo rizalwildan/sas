@@ -73,11 +73,6 @@
 
 			return $kirimData;
 		}
-		public function delete_komponen($idkomponen)
-		{
-			$this->db->where('idkomponen', $idkomponen);
-			$this->db->delete('komponen');
-		}
 
 		public function getSiswaByKelas($namakelas)
 		{
@@ -105,7 +100,31 @@
 			return $kirimData;
 		}
 
-		
+		public function getSiswaByNim($nim)
+		{
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE nim='$nim'");
+
+			if($data->num_rows() < 1 ){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
+
+		public function getKomponenByBulan($bulan,$tahun,$kelas)
+		{
+			// $data = $ths->db->query("SELECT * FROM view_komponenperkelas WHERE jenis_kelas='$kelas' AND tahun_pelajaran='$tahun' AND periode='$bulan'");
+			$data = $this->db->query("SELECT * FROM view_komponenperkelas WHERE jenis_kelas='$kelas' AND tahun_pelajaran='$tahun' AND periode='$bulan'");
+			if($data->num_rows() < 1 ){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
 
 	}
 ?>

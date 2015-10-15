@@ -1,3 +1,11 @@
+<?php 
+  $jumlah = 0;
+  foreach ($komponen as $key) {
+    $jumlah = $key['iuran'] + $jumlah;
+  }
+  // print_r($jumlah);
+  // die();
+?>
 <div class="content-wrapper">
 <section class="invoice">
 <!-- title row -->
@@ -5,7 +13,7 @@
 <div class="col-xs-12">
 <h2 class="page-header">
 <i class="fa fa-globe"></i> Nota SPP
-<small class="pull-right">Tanggal Transaksi: 2/10/2014</small>
+<small class="pull-right">Tanggal Transaksi: <?= date("j M Y") ?></small>
 </h2>
 </div><!-- /.col -->
 </div>
@@ -13,9 +21,11 @@
 <div class="row invoice-info">
 <div class="col-sm-4 invoice-col">
 <address>
-<strong>Aziz Akhmad Wardoyo</strong><br>
-<b>NIS : 30891 </b><br>
-<b>Kelas : XI </b><br>
+  <?php foreach ($siswa as $data) { ?>
+    <strong><?= $data['namasiswa']; ?></strong><br>
+    <b>NIS : <?= $data['nim']; ?> </b><br>
+    <b>Kelas : <?= $data['namakelas']; ?> </b><br>
+  <?php }?>
 </address>
 </div><!-- /.col -->
 </div><!-- /.row -->
@@ -32,21 +42,15 @@
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td>1</td>
-    <td>Internet</td>
-    <td>Rp 25.000</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Sumbangan Gedung</td>
-    <td>Rp 35.000</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Wisata</td>
-    <td>Rp 25.000</td>
-  </tr>
+  <?php 
+  $no=1;
+  foreach ($komponen as $key) { ?>
+    <tr>
+      <td><?= $no++; ?></td>
+      <td><?= $key['nama_komp']; ?></td>
+      <td><?= $key['iuran']; ?></td>
+    </tr>
+  <?php }?>
 </tbody>
 </table>
 </div><!-- /.col -->
@@ -56,21 +60,21 @@
 <table class="table">
   <tbody><tr>
     <th style="width:50%">Subtotal:</th>
-    <td>Rp 85.000</td>
+    <td><input class="form-control" id="jumlah" value="<?= $jumlah; ?>" type="text" disabled></td>
   </tr>
   <tr>
     <th>Untuk Pembayaran Bulan:</th>
     <td>
-      <input class="form-control" placeholder=".col-xs-5" type="text">
+      <input class="form-control" placeholder="periode" type="text">
     </td>
   </tr>
   <tr>
     <th>Dana Bos :</th>
-    <td><input class="form-control" placeholder=".col-xs-5" type="text"></td>
+    <td><input class="form-control" id="bos" placeholder="Dana BOS" type="text" onChange="penjumlahan();"></td>
   </tr>
   <tr>
     <th>Total:</th>
-    <td>Rp 85.000</td>
+    <td><input class="form-control" id="total" value="0" type="text" disabled></td>
   </tr>
 </tbody></table>
 </div>
@@ -91,3 +95,12 @@
 </div>
 </section>
 </div>
+
+<script type="text/javascript">
+  function penjumlahan(){
+    var spp = $('#jumlah').val();
+    var bos = $('#bos').val();
+
+    document.getElementById('total').value = bos-spp;
+  }
+</script>

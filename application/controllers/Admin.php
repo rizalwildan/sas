@@ -106,9 +106,21 @@ class Admin extends CI_Controller {
 	}
 		public function bayar()
 	{
+
+		$nim = $this->input->post('nim');
+		$kelas = $this->input->post('jenis');
+		$tahun = $this->input->post('tahun');
+		$bulan = $this->input->post('bulan');
+
+		$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
+		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
+
+		// print_r($data['komponen']);
+		// die();
+
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
-		$this->load->view('nota');
+		$this->load->view('nota',$data);
 		$this->load->view('template/footer');
 	}
 
