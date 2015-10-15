@@ -5,16 +5,41 @@ Content Wrapper. Contains page content -->
           <h1>
             Setting Komponen
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
         </section>
+
+        <?php if($this->session->flashdata('insert'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong>", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
+
+            <!--Alert Form Validation-->
+            <?php if(isset($error)){ ?>
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $error; ?>
+            </div>
+            <?php } ?>
 
             <?php if ($komponen == 'kosong')
             {
@@ -25,7 +50,7 @@ Content Wrapper. Contains page content -->
             }
             else{
             ?>
-            
+
             <form action="<?php echo base_url();?>Transaksi/setting_komponen" method="post">
              <div class="row">
                     <div class="col-sm-12">
@@ -34,7 +59,7 @@ Content Wrapper. Contains page content -->
                       <?php }?>
                       <div id="example1_length" class="dataTables_length">
                         <label>
-                          Kelas
+                          Jenis Kelas
                           <select class="form-control input-sm" aria-controls="example1" name="jeniskelas">
                             <option value="">--Semua Kelas--</option>
                             <?php foreach($jenisKelas->result() as $datakelas) { ?>
@@ -94,32 +119,6 @@ Content Wrapper. Contains page content -->
                       <?php }?>
                     </tbody>
                 </table>
-
-                <!--Pagination-->
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers">
-                      <ul class="pagination">
-                        <li class="paginate_button provious disabled">
-                          <a tabindex="0" data-dt-idx="0" aria-controls="example2" href="#">Previous</a>
-                        </li>
-                        <li class="paginate_button active">
-                          <a tabindex="0" data-dt-idx="1" aria-controls="example2" href="#">1</a>
-                        </li>
-                         <li class="paginate_button">
-                          <a tabindex="0" data-dt-idx="2" aria-controls="example2" href="#">2</a>
-                        </li>
-                         <li class="paginate_button">
-                          <a tabindex="0" data-dt-idx="3" aria-controls="example2" href="#">3</a>
-                        </li>
-                         <li class="paginate_button next">
-                          <a tabindex="0" data-dt-idx="4" aria-controls="example2" href="#">Next</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div><!--</pagination-->
-
                 </form>
               </div><!-- /.box body-->
             </div>
