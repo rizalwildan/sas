@@ -121,4 +121,14 @@ class Smester extends CI_Controller {
 					}
 	}
 
+	public function delete_smester()
+	{
+		$idtahun = $this->input->post('idtahun');
+		$this->load->model('Smester_model');
+		$this->Smester_model->delete_smester($idtahun);
+		$this->session->set_flashdata('delete', 'Berhasil');
+
+		redirect('Admin/dataSmester');
+	}
+
 }

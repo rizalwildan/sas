@@ -52,6 +52,26 @@ Content Wrapper. Contains page content -->
                   </script>
             <?php } ?>
 
+            <?php if($this->session->flashdata('delete'))
+            { ?>
+                  <script type="text/javascript">
+                  $.bootstrapGrowl("Delete Data <strong>Berhasil !</strong>", // Messages
+                    { // options
+                      type: "success", // info, success, warning and danger
+                      ele: "body", // parent container
+                      offset: {
+                      from: "top",
+                      amount: 70
+                    },
+                      align: "right", // right, left or center
+                      width: 350,
+                      delay: 3000,
+                      allow_dismiss: true, // add a close button to the message
+                      stackup_spacing: 10
+                    });
+                  </script>
+            <?php } ?>
+
             <!--Alert Form Validation-->
             <?php if(isset($error)){ ?>
             <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
@@ -110,6 +130,14 @@ Content Wrapper. Contains page content -->
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-12">
+                  <?php if ($smt == 'kosong')
+                  {
+                    echo '<div class="callout callout-warning" style="margin-top:20px">
+                          <h4>Data Tahun Pelajaran Belum Ada</h4>
+                          <p>Tambah Tahun Pelajaran Terlebih Dahulu</p>
+                          </div>';
+                  }
+                  else { ?>
                <table id='example1' class='table table-bordered table-striped'>
                     <thead>
                       <tr>
@@ -133,13 +161,14 @@ Content Wrapper. Contains page content -->
                         data-tahun_pelajaran ="<?php echo $row['tahun_pelajaran']; ?>"
                         data-awal_tahun="<?php echo $row['awal_tahun']; ?>"
                         data-akhir_tahun="<?php echo $row['akhir_tahun']; ?>"><i class='fa fa-edit'></i> Edit</button>
-                        <button class="btn btn-danger btn-xs"><i class='fa fa-trash'></i> Hapus</button>
+                        <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSmt"
+                        data-idtahun ="<?php echo $row['idtahun']; ?>"><i class='fa fa-trash'></i> Hapus</button>
                         </td>
                       </tr>
                       <?php }?>
                     </tbody>
                 </table>
-
+                <?php }?>
                 </div>
                 </div>
 
@@ -152,7 +181,7 @@ Content Wrapper. Contains page content -->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Tambah Smester</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit Smester</h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Smester/edit_smester">
@@ -186,6 +215,27 @@ Content Wrapper. Contains page content -->
   </div>
 </div>
 </div><!--End Modal-->
+
+      <!-- Modal Delete Smester -->
+        <div class="modal fade" id="deleteSmt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Delete Smester</h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>Smester/delete_smester">
+                  <h4>Anda Yakin Ingin Menghapus Data Ini ?</h4>
+                  <input type="disable" name="idtahun">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                  <button type="submit" class="btn btn-primary">Ya</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div><!--End Modal-->
 
 
 

@@ -60,6 +60,13 @@ class Siswa extends CI_Controller {
 					                       'required' => 'Nama Siswa Harus Diisi'),
 	               ),
 								 array(
+									'field'   => 'kelas',
+									'label'   => 'Kelas',
+									'rules'   => 'required',
+													'errors' => array(
+																'required' => 'Kelas Harus Diisi'),
+								),
+								 array(
 									 'field'   => 'jenis',
 									 'label'   => 'Gender',
 									 'rules'   => 'required',
@@ -110,7 +117,12 @@ class Siswa extends CI_Controller {
 		else {
 			$this->db->insert('siswa', $datasiswa);
 
-			$this->session->set_flashdata('insertsis', 'Data Berhasil');
+			$this->load->model('Siswa_model');
+
+			//insert satu siswa ke kelas
+			$this->Siswa_model->insert_siswa($kelas);
+
+			$this->session->set_flashdata('insert', 'Data Berhasil');
 
 			$akun = $this->session->userdata('akun');
 

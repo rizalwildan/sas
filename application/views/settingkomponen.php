@@ -48,6 +48,12 @@ Content Wrapper. Contains page content -->
                     <p>Semua siswa sudah punya kelas </p>
                     </div>';
             }
+            elseif ($cek == 'kosong') {
+              echo '<div class="callout callout-warning">
+                    <h4>Data Tahun Pelajaran Belum Ditambahkan</h4>
+                    <p>Tambahkan Data Tahun Pelajaran Terlebih Dahulu.</p>
+                    </div>';
+            }
             else{
             ?>
 

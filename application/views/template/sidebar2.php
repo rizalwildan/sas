@@ -7,7 +7,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="<?= base_url(). 'asset/dist/img/user2-160x160.jpg" class="img-circle'; ?>" alt="User Image">
+              <img src="<?= base_url(). 'asset/dist/img/logo2.jpg" class="'; ?>" alt="User Image">
             </div>
             <div class="pull-left info">
               <?php $akun = $this->session->userdata('akun'); ?>
@@ -24,7 +24,7 @@
             <li><a href="<?php echo base_url(); ?>admin/datasiswa"><i class="fa fa-graduation-cap"></i> <span>Data Siswa</span> </a></li>
             <li><a href="<?php echo base_url(); ?>index.php/admin/KomponenDetail"><i class="fa fa-money"></i><span>Data Komponen Keuangan</span></a></li>
             <li><a href="<?php echo base_url(); ?>admin/kelas"><i class="fa fa-users"></i> <span>Data Kelas</span> </a></li>
-            <li><a href="<?php echo base_url(); ?>admin/dataSmester"><i class="fa fa-calendar"></i><span>Data Smester</span></a></li>
+            <li><a href="<?php echo base_url(); ?>admin/dataSmester"><i class="fa fa-calendar"></i><span>Data Tahun Pelajaran</span></a></li>
             <li><a href="<?php echo base_url(); ?>admin/user"><i class="fa fa-user"></i> <span>Data User</span> </a></li>
             <li><a href="<?php echo base_url(); ?>admin/transaksi"><i class="fa fa-credit-card"></i><span>Transaksi SPP</span></a></li>
             <li class="treeview">

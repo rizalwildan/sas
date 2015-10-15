@@ -1,7 +1,7 @@
 <!-- REQUIRED JS SCRIPTS -->
  <!-- Main Footer -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2014-2015 <a href="#">Imagine Studio</a>.</strong> Powered By <a href="http://almsaeedstudio.com">AdminLTE</a> All rights reserved.
       </footer>
     </div><!-- ./wrapper -->
 
@@ -133,6 +133,14 @@
               $(e.currentTarget).find('input[name="awaltahun"]').val(awal_tahun);
               var akhir_tahun = $(e.relatedTarget).data('akhir_tahun');
               $(e.currentTarget).find('input[name="akhirtahun"]').val(akhir_tahun);
+              });
+    </SCRIPT>
+
+    <!--JS Delete Smester-->
+    <SCRIPT TYPE="text/javascript">
+      $('#deleteSmt').on('shown.bs.modal', function(e) {
+              var idtahun = $(e.relatedTarget).data('idtahun');
+              $(e.currentTarget).find('input[name="idtahun"]').val(idtahun);
               });
     </SCRIPT>
 

@@ -8,10 +8,10 @@ Content Wrapper. Contains page content -->
         </section>
 
         <!--Notification-->
-        <?php if($this->session->flashdata('insertsis'))
+        <?php if($this->session->flashdata('insert'))
         { ?>
               <script type="text/javascript">
-              $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong> <br> Cek Menu <strong> Siswa Kelas </strong>", // Messages
+              $.bootstrapGrowl("Insert Data <strong>Berhasil !</strong>", // Messages
                 { // options
                   type: "success", // info, success, warning and danger
                   ele: "body", // parent container
@@ -71,7 +71,7 @@ Content Wrapper. Contains page content -->
         <?php if($this->session->flashdata('import'))
         { ?>
               <script type="text/javascript">
-              $.bootstrapGrowl("Import Data <strong>Berhasil !</strong>", // Messages
+              $.bootstrapGrowl("Import Data <strong>Berhasil !</strong> <br> Cek Menu <strong> Siswa Kelas </strong>", // Messages
                 { // options
                   type: "success", // info, success, warning and danger
                   ele: "body", // parent container
@@ -211,6 +211,18 @@ Content Wrapper. Contains page content -->
                       <input class="form-control" id="inputEmail3" placeholder="Nama" name="nama">
                     </div>
           </div>
+
+          <div class="form-group">
+                   <label class="col-sm-3 control-label">Kelas</label>
+                   <div class="col-sm-4">
+                   <select class="form-control input-sm" aria-controls="example1" name="kelas">
+                       <option value="">Pilih Kelas</option>
+                       <?php foreach ($kelas->result() as $row) { ?>
+                        <<option value="<?= $row->idkelas; ?>"><?= $row->namakelas ?></option>
+                       <?php } ?>
+                   </select>
+                   </div>
+         </div>
 
            <div class="form-group">
                     <label class="col-sm-3 control-label">Jenis Kelamin</label>
