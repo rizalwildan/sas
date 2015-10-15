@@ -124,23 +124,53 @@ class Transaksi extends CI_Controller {
 		$idtahun = $this->input->post('idtahun');
 		$periode =  $this->input->post('periode');
 
-		$i = 0;
-			foreach ($idkomponen as $banyak)
-			{
-				$i++;
-			}
-			for ($j=0; $j < $i; $j++) {
-				$this->transaksi_model->insert_komponen_setting($jeniskelas, $idkomponen[$j],  $idtahun, $periode);
-			}
+		$config = array(
+									 array(
+										 'field'   => 'jeniskelas', //nama elemen form
+										 'label'   => 'Jenis Kelas', //keterangan form
+										 'rules'   => 'required',//Harus Diisi
+														 'errors' => array(
+																	 'required' => 'Jenis Kelas Harus Dipilih'),//Custom Message
+										),
+									 array(
+										 'field'   => 'periode',
+										 'label'   => 'periode',
+										 'rules'   => 'required',
+														 'errors' => array(
+																	 'required' => 'Periode Harus Dipilih'),
+									 ),
+									 array(
+										 'field'   => 'idkomponen[]',
+										 'label'   => 'idkomponen',
+										 'rules'   => 'required',
+														 'errors' => array(
+																	 'required' => 'Komponen Harus Dipilih'),
+									 )
+								 );
 
-			//$this->session->set_flashdata('insert', 'Berhasil');
+								 $this->form_validation->set_rules($config);
+						 		if ($this->form_validation->run() == FALSE) {
+						 			$this->session->set_flashdata('error', validation_errors());
+						 			redirect(base_url('index.php/admin/settingkomponen'));
+						 		}
+								else {
+									$i = 0;
+										foreach ($idkomponen as $banyak)
+										{
+											$i++;
+										}
+										for ($j=0; $j < $i; $j++) {
+											$this->transaksi_model->insert_komponen_setting($jeniskelas, $idkomponen[$j],  $idtahun, $periode);
+										}
 
-			//$akun = $this->session->userdata('akun');
+										$this->session->set_flashdata('insert', 'Berhasil');
 
-		redirect(base_url('index.php/admin/settingkomponen'));
+										//$akun = $this->session->userdata('akun');
 
-
+									redirect(base_url('index.php/admin/settingkomponen'));
+								}
 	}
+
 	public function delete_komponen()
 	{
 		$idkomponen = $this->input->post('idkomponen');

@@ -67,19 +67,19 @@
               </script>
         <?php } ?>
 
-        <!--Alert Form Validation-->
-        <?php if(isset($error)){ ?>
-        <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <?php echo $error; ?>
-        </div>
-        <?php } ?>
-
         <!-- Main content -->
         <section class="content">
 
           <div class="row">
             <div class="col-xs-12">
+
+              <!--Alert Form Validation-->
+              <?php if(isset($error)){ ?>
+              <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo $error; ?>
+              </div>
+              <?php } ?>
 
         <div class="row">
           <div class="col-sm-4">
@@ -152,7 +152,7 @@
 
          <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
-               <table id="example1" class="table table-bordered table-striped">
+               <table id="komponen" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -239,3 +239,9 @@
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
+
+      <script type="text/javascript">
+          $(document).ready(function() {
+            $('#komponen').DataTable();
+          } );
+      </script>

@@ -259,6 +259,7 @@ class Admin extends CI_Controller {
 		$data['jenisKelas'] = $this->Kelas_model->jenis_kelas();
 		$data['komponen']=$this->Transaksi_model->getKomponen();
 		$data['cek']=$this->Siswa_model->cekSmester();
+		$data['error'] = $this->session->flashdata('error');
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
 		$this->load->view('settingkomponen', $data);

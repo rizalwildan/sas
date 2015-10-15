@@ -28,7 +28,7 @@
             <li><a href="<?php echo base_url(); ?>admin/user"><i class="fa fa-user"></i> <span>Data User</span> </a></li>
             <li><a href="<?php echo base_url(); ?>admin/transaksi"><i class="fa fa-credit-card"></i><span>Transaksi SPP</span></a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-inbox"></i> <span>Setting</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-gear"></i> <span>Setting</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>admin/detailkelas">Siswa Kelas</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/settingkomponen">Komponen Keuangan</a></li>
