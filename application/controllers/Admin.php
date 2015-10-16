@@ -141,7 +141,7 @@ class Admin extends CI_Controller {
 
 	}
 
-// functions end modul transaksi spp
+// end functions modul transaksi spp
 
 			public function komponenDetail()
 	{

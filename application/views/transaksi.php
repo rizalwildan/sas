@@ -59,7 +59,7 @@
                         <label>
                           Transaksi Bulan
                           <select class="form-control input-sm" aria-controls="example1" id="periode" name="periode" onChange="functionbulan(this.value)">
-                            <!-- <option value="">--Periode--</option> -->
+                            <option value="">--Periode--</option>
                             <option value="Januari">Januari</option>
                             <option value="Februari">Februari</option>
                             <option value="Maret">Maret</option>

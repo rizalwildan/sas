@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2015 at 07:30 PM
+-- Generation Time: Oct 16, 2015 at 04:56 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -370,6 +370,7 @@ INSERT INTO `user` (`iduser`, `username`, `password`, `idlevel`) VALUES
 CREATE TABLE IF NOT EXISTS `view_komponenperkelas` (
 `jenis_kelas` int(10)
 ,`nama_komp` varchar(100)
+,`iuran` int(10)
 ,`tahun_pelajaran` varchar(11)
 ,`periode` varchar(20)
 );
@@ -425,7 +426,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_komponenperkelas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_komponenperkelas` AS select `spp_setting`.`jenis_kelas` AS `jenis_kelas`,`komponen`.`nama_komp` AS `nama_komp`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran`,`spp_setting`.`periode` AS `periode` from ((`spp_setting` join `komponen`) join `tahun`) where ((`spp_setting`.`idkomponen` = `komponen`.`idkomponen`) and (`spp_setting`.`idtahun` = `tahun`.`idtahun`)) order by `spp_setting`.`jenis_kelas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_komponenperkelas` AS select `spp_setting`.`jenis_kelas` AS `jenis_kelas`,`komponen`.`nama_komp` AS `nama_komp`,`komponen`.`iuran` AS `iuran`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran`,`spp_setting`.`periode` AS `periode` from ((`spp_setting` join `komponen`) join `tahun`) where ((`spp_setting`.`idkomponen` = `komponen`.`idkomponen`) and (`spp_setting`.`idtahun` = `tahun`.`idtahun`)) order by `spp_setting`.`jenis_kelas`;
 
 -- --------------------------------------------------------
 
