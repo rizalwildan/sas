@@ -17,4 +17,10 @@
 			$this->db->update('tahun', $data);
 		}
 
+		public function delete_smester($idtahun)
+		{
+			$this->db->WHERE('idtahun', $idtahun);
+			$this->db->delete('tahun');
+		}
+
 }

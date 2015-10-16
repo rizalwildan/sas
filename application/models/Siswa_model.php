@@ -27,9 +27,10 @@
 			return $dataSmester;
 		}
 
-		public function insert_siswa($value='')
+		public function insert_siswa($kelas)
 		{
-
+			$sql = "INSERT INTO siswa_kelas VALUES('',(SELECT idsiswa FROM siswa ORDER BY idsiswa DESC LIMIT 1),$kelas,(SELECT idtahun FROM cek_smester))";
+			$this->db->query($sql);
 		}
 
 		public function tampilSiswaall()
