@@ -18,6 +18,21 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct()
+	{
+			parent::__construct();
+
+			// load all model used
+			$this->load->model('Siswa_model');
+			$this->load->model('Kelas_model');
+			$this->load->model('Transaksi_model');
+			$this->load->model('Login_model');
+
+			if(!$this->session->userdata('akun'))
+			{
+				redirect('futsal/login');
+			}
+	}
 
 	public function index()
 	{
@@ -41,9 +56,7 @@ class Home extends CI_Controller {
 		}
 		else
 		{
-		$this->load->model('Siswa_model');
-		$this->load->model('Kelas_model');
-
+		
 		$data['kelas'] = $this->Kelas_model->getData();
 		$data['siswa'] = $this->Siswa_model->tampilSiswaall();
 		$data['ceksmt'] = $this->Siswa_model->cekSmester();
@@ -60,22 +73,111 @@ class Home extends CI_Controller {
 		}
 	}
 
+	// 	public function transaksi()
+	// {
+	// 	$akun = $this->session->userdata('akun');
+	// 	if($akun['login'] == FALSE)
+	// 	{
+	// 		redirect(base_url(). 'Home/index');
+	// 	}
+	// 	else
+	// 	{
+	// 	$this->load->view('template/header');
+	// 	$this->load->view('template/sidebar');
+	// 	$this->load->view('transaksi');
+	// 	$this->load->view('template/footer');
+	// 	}
+	// }
+
+	// functions modul transaksi spp
+
 		public function transaksi()
 	{
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'Home/index');
+			redirect(base_url(). 'Admin/index');
 		}
 		else
 		{
+
+		$datakelas = $this->Transaksi_model->getAllKelas();
+		foreach ($datakelas as $key) {
+			$kelas['kelas'][0] = "-Pilih kelas-";
+			$kelas['kelas'][$key['namakelas']] = $key['namakelas'];
+
+		}
+
+		$data['kelas'] = $kelas;
+		$data['tahunajaran'] = $this->Transaksi_model->getTahunAjaranSekarang();
+		$data['siswa'] = $this->Transaksi_model->getAllSiswa();
+
 		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
-		$this->load->view('transaksi');
+		$this->load->view('template/sidebar2');
+		$this->load->view('transaksi',$data);
 		$this->load->view('template/footer');
 		}
 	}
+		public function bayar()
+	{
 
+		$nim = $this->input->post('nim');
+		$kelas = $this->input->post('jenis');
+		$tahun = $this->input->post('tahun');
+		$bulan = $this->input->post('bulan');
+
+		$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
+		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
+
+		// print_r($data['komponen']);
+		// die();
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('nota',$data);
+		$this->load->view('template/footer');
+	}
+
+		public function filterkelas()
+	{
+
+			$namakelas = $this->input->post('namakelas');
+			$data['siswa'] = $this->Transaksi_model->getSiswaByKelas($namakelas);
+			// $siswa = $this->Transaksi_model->getSiswaByKelas($namakelas);
+			if($data['siswa']=="kosong"){
+				echo '<div class="alert alert-danger alert-dismissible" role="alert">
+          				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          				Tidak ada siswa !
+        			  </div>'	;
+			}else{
+				$this->load->view('siswaperkelas',$data);
+			}
+
+	}
+
+// end functions modul transaksi spp
+
+
+
+	public function komponenDetail()
+	{
+		$akun = $this->session->userdata('akun');
+		if($akun['login'] == FALSE)
+		{
+			redirect(base_url(). 'Admin/index');
+		}
+		else
+		{
+
+		$data['komponen'] = $this->Transaksi_model->getKomponen();
+		$data['error'] = $this->session->flashdata('error');
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('komponen', $data);
+		$this->load->view('template/footer');
+		}
+	}
+	
 	public function kelas()
 	{
 		$akun = $this->session->userdata('akun');

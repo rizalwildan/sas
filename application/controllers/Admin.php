@@ -23,16 +23,14 @@ class Admin extends CI_Controller {
 		{
 			parent::__construct();
 
+			// load library
+			$this->load->library('pdf');
+
 			// load all model used
 			$this->load->model('Siswa_model');
 			$this->load->model('Kelas_model');
 			$this->load->model('Transaksi_model');
 			$this->load->model('Login_model');
-
-			if(!$this->session->userdata('akun'))
-			{
-				redirect('futsal/login');
-			}
 		}
 
 
@@ -139,6 +137,30 @@ class Admin extends CI_Controller {
 				$this->load->view('siswaperkelas',$data);
 			}
 
+	}
+
+	public function submitPayment()
+	{
+
+		$nim = $this->input->post('nim');
+		$kelas = $this->input->post('kelas');
+		$tahun = $this->input->post('tahun');
+		$bulan = $this->input->post('bulan');
+
+		$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
+		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
+		$data['totalpembayaran'] = $this->input->post('totalpembayaran');
+		$data['danabos'] = $this->input->post('danabos');
+		$data['bulanpembayaran'] = $this->input->post('bulanpembayaran');		
+
+		// tulis ke database
+
+
+		// Print and print preview
+		$HTML = $this->load->view('printpreview',$data,true);
+		$filename = $nim.'_NOTA_'.$bulan.'_'.$tahun;
+		$this->pdf->pdf_create($HTML,$filename,'A4','potrait');
+		
 	}
 
 // end functions modul transaksi spp
@@ -299,6 +321,22 @@ class Admin extends CI_Controller {
 			$this->load->view('template/sidebar2');
 			$this->load->view('kelaskomponen', $data);
 			$this->load->view('template/footer');
+		}
+	}
+
+	public function rekap()
+	{
+		$akun = $this->session->userdata('akun');
+		if($akun['login'] == FALSE)
+		{
+			redirect(base_url(). 'Home/index');
+		}
+		else
+		{
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('rekapsiswa');
+		$this->load->view('template/footer');
 		}
 	}
 }

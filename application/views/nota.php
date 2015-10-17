@@ -1,3 +1,12 @@
+<?php 
+  // foreach ($komponen as $key) {
+  //   print_r($key);
+  // }
+  // die();
+  
+?>
+
+
 <div class="content-wrapper">
 <section class="invoice">
   <!-- title row -->
@@ -74,7 +83,7 @@
       </tr>
       <tr>
         <th>Untuk Pembayaran Bulan:</th>
-        <td><input class="form-control" placeholder="periode" type="text"></td>
+        <td><input class="form-control" id="pembayaranbulan" placeholder="periode" type="text" onChange="pembayaranbulan();"></td>
       </tr>
       <tr>
         <th>Dana Bos :</th>
@@ -91,9 +100,22 @@
 <!-- this row will not appear when printing -->
   <div class="row no-print">
     <div class="col-xs-12">
-      <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-      <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-      <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+
+      <!-- data untuk print -->
+      <form action="<?= base_url('Admin/submitPayment');?>" method="post">
+        <!-- <input type="text" name="tgltransaksi" value="<?= date("j M Y") ?>"> -->
+        <input type="hidden" name="nim" value="<?= $data['nim']; ?>">
+        <input type="hidden" name="bulan" value="<?= $key['periode']; ?>">
+        <input type="hidden" name="tahun" value="<?= $key['tahun_pelajaran']; ?>">
+        <input type="hidden" name="kelas" value="<?= $key['jenis_kelas']; ?>">
+        <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="0">
+        
+        <input type="hidden" id="danabos" name="danabos" value="">
+        <input type="hidden" id="bulanpembayaran" name="bulanpembayaran" value="">
+        
+        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Input Pembayaran</button>
+      </form>    
+      
     </div>
   </div>
 </section>
@@ -105,5 +127,14 @@
     var bos = $('#bos').val();
 
     document.getElementById('total').value = bos-spp;
+    document.getElementById('totalpembayaran').value = bos-spp;
+    document.getElementById('danabos').value = bos;
+  }
+</script>
+<script type="text/javascript">
+  function pembayaranbulan(){
+    var bulan = $('#pembayaranbulan').val();
+    // alert(bulan);
+    document.getElementById('bulanpembayaran').value = bulan;
   }
 </script>

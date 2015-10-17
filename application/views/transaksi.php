@@ -107,11 +107,18 @@
                              <td><?= $data['namakelas']; ?></td>
                              <!-- <td><a href="<?= base_url('Admin/bayar');?>?nim=<?= $data['nim']; ?>&jenis=<?= $data['jenis_kelas']; ?>&thn=<?= $tahunajaran; ?>" class="btn btn-xs btn-success" ><i class="fa fa-dashboard"></i> Bayar</a></td> -->
                              <td>
-                              <form action="<?= base_url('Admin/bayar');?>" method="post">
-                                <input type="text" class="nim" name="nim" value="<?= $data['nim']; ?>">
-                                <input type="text" id="jenis" name="jenis" value="<?= $data['jenis_kelas']; ?>">
-                                <input type="text" id="tahun" name="tahun" value="<?= $tahunajaran; ?>"> 
-                                <input type="text" id="bulan" name="bulan" value="<?= $bulan; ?>">
+                              <?php 
+                                $akun = $this->session->userdata('akun');
+                                if($akun['level']==1){?>
+                                    <form action="<?= base_url('Admin/bayar');?>" method="post">
+                               <?php }else{ ?>
+                                    <form action="<?= base_url('Home/bayar');?>" method="post">
+                               <?php }?>
+                              
+                                <input type="hidden" class="nim" name="nim" value="<?= $data['nim']; ?>">
+                                <input type="hidden" id="jenis" name="jenis" value="<?= $data['jenis_kelas']; ?>">
+                                <input type="hidden" id="tahun" name="tahun" value="<?= $tahunajaran; ?>"> 
+                                <input type="hidden" id="bulan" name="bulan" value="<?= $bulan; ?>">
                                 <input type="submit" class="btn btn-xs btn-success" value="Bayar">
                               </form>
 

@@ -1,7 +1,7 @@
 1. view komponen per kelas
 
 create view view_komponenperkelas as 
-    select spp_setting.jenis_kelas, komponen.nama_komp, tahun.tahun_pelajaran, spp_setting.periode 
+    select spp_setting.jenis_kelas, komponen.nama_komp, komponen.iuran, tahun.tahun_pelajaran, spp_setting.periode, spp_setting.idsppsetting 
     from spp_setting, komponen, tahun 
     where 
     	spp_setting.idkomponen = komponen.idkomponen and 
