@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tr>
         </thead>
         <tbody>
-          <?php 
+          <?php
           $no=1;
           if($komponen=="kosong"){
             echo '<tr><div class="alert alert-danger alert-dismissible" role="alert">
@@ -89,20 +89,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <td><?= $key['nama_komp']; ?></td>
               <td><?= $key['iuran']; ?></td>
             </tr>
-          <?php } }?>            
+          <?php } }?>
         </tbody>
       </table>
     </div><!-- /.col -->
   </div><!-- /.row -->
 
-<?php 
+<?php
   $jumlah = 0;
   if ($komponen=="kosong") {
     $jumlah = 0;
-  }else{  
+  }else{
     foreach ($komponen as $key) {
       $jumlah = $key['iuran'] + $jumlah;
-    }    
+    }
   }
 ?>
 
@@ -130,6 +130,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 <!-- this row will not appear when printing -->
-  
+
 </section>
 </div>

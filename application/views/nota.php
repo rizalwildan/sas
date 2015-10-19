@@ -1,9 +1,9 @@
-<?php 
+<?php
   // foreach ($komponen as $key) {
   //   print_r($key);
   // }
   // die();
-  
+
 ?>
 
 
@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <?php 
+          <?php
           $no=1;
           if($komponen=="kosong"){
             echo '<tr><div class="alert alert-danger alert-dismissible" role="alert">
@@ -57,20 +57,20 @@
               <td><?= $key['nama_komp']; ?></td>
               <td><?= $key['iuran']; ?></td>
             </tr>
-          <?php } }?>            
+          <?php } }?>
         </tbody>
       </table>
     </div><!-- /.col -->
   </div><!-- /.row -->
 
-<?php 
+<?php
   $jumlah = 0;
   if ($komponen=="kosong") {
     $jumlah = 0;
-  }else{  
+  }else{
     foreach ($komponen as $key) {
       $jumlah = $key['iuran'] + $jumlah;
-    }    
+    }
   }
 ?>
 
@@ -109,13 +109,13 @@
         <input type="hidden" name="tahun" value="<?= $key['tahun_pelajaran']; ?>">
         <input type="hidden" name="kelas" value="<?= $key['jenis_kelas']; ?>">
         <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="0">
-        
+
         <input type="hidden" id="danabos" name="danabos" value="">
         <input type="hidden" id="bulanpembayaran" name="bulanpembayaran" value="">
-        
+
         <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Input Pembayaran</button>
-      </form>    
-      
+      </form>
+
     </div>
   </div>
 </section>
