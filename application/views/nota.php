@@ -1,12 +1,3 @@
-<?php
-  // foreach ($komponen as $key) {
-  //   print_r($key);
-  // }
-  // die();
-
-?>
-
-
 <div class="content-wrapper">
 <section class="invoice">
   <!-- title row -->
@@ -91,7 +82,7 @@
       </tr>
       <tr>
         <th>Total:</th>
-        <td><input class="form-control" id="total" value="0" type="text" disabled></td>
+        <td><input class="form-control" id="total" value="<?= $jumlah?>" type="text" disabled></td>
       </tr>
     </tbody>
   </table>
@@ -110,7 +101,7 @@
         <input type="hidden" name="bulan" value="<?= $key['periode']; ?>">
         <input type="hidden" name="tahun" value="<?= $key['tahun_pelajaran']; ?>">
         <input type="hidden" name="kelas" value="<?= $key['jenis_kelas']; ?>">
-        <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="0">
+        <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="<?= $jumlah?>">
         <input type="hidden" name="nominalspp" value="<?= $jumlah; ?>">
 
         <input type="hidden" id="danabos" name="danabos" value="">
