@@ -39,6 +39,7 @@
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>admin/rekap">Per Siswa</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/rekap_kelas">Per Kelas</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/rekap_bos">Bos</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->

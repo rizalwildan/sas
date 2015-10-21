@@ -168,6 +168,7 @@ class Admin extends CI_Controller {
 								// 'nominalspp' => $nominalspp,
 								// coba rekap per siswa diganti
 								'nominalspp' => $data['totalpembayaran'],
+								'danabos' => $data['danabos'],
 								'sppstatus' => "lunas"
 
 		 );
@@ -573,5 +574,42 @@ class Admin extends CI_Controller {
 			$this->load->view('rekapkelas',$rekap);
 			$this->load->view('template/footer');
 		}
+	}
+
+	public function rekap_bos()
+	{
+
+		$siswa = $this->Rekap_model->daftarSiswa();
+			foreach ($siswa as $key) {
+				// print_r($key['nim']);
+				$data[$key['nim']] = array('nim' => $key['nim'],
+										 'nama' => $key['namasiswa'],
+										 'Januari' => $this->Rekap_model->getBos($key['nim'],'Januari'),
+										 'Februari' => $this->Rekap_model->getBos($key['nim'],'Februari'),
+										 'Maret' => $this->Rekap_model->getBos($key['nim'],'Maret'),
+										 'April' => $this->Rekap_model->getBos($key['nim'],'April'),
+										 'Mei' => $this->Rekap_model->getBos($key['nim'],'Mei'),
+										 'Juni' => $this->Rekap_model->getBos($key['nim'],'Juni'),
+										 'Juli' => $this->Rekap_model->getBos($key['nim'],'Juli'),	
+										 'Agustus' => $this->Rekap_model->getBos($key['nim'],'Agustus'),
+										 'September' => $this->Rekap_model->getBos($key['nim'],'September'),
+										 'Oktober' => $this->Rekap_model->getBos($key['nim'],'Oktober'),
+										 'November' => $this->Rekap_model->getBos($key['nim'],'November'),
+										 'Desember' => $this->Rekap_model->getBos($key['nim'],'Desember'),
+										 'total' => $this->Rekap_model->totalBosByNim($key['nim'])
+
+										 );
+			}
+			
+			// print_r($data);
+			// die();
+			$rekap['bos'] =$data;
+
+
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('rekapbos', $rekap);
+		$this->load->view('template/footer');
 	}
 }

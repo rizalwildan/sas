@@ -103,6 +103,21 @@
 			return $kirimData;
 		}
 
+		public function getBos($nim, $bulan)
+		{
+			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
+
+			if($data->num_rows() < 1){
+				$kirimData = 0;
+			}else{
+				foreach ($data->result() as $key) {
+					$kirimData = $key->danabos;
+				}
+			}
+
+			return $kirimData;
+		}
+
 		public function totalSPPByNim($nim)
 		{
 			$data = $this->db->query("SELECT sum(nominalspp) as jumlah FROM spp WHERE nim='$nim'");
@@ -118,6 +133,20 @@
 			return $kirimData;
 		}
 
+		public function totalBosByNim($nim)
+		{
+			$data = $this->db->query("SELECT sum(danabos) as jumlah FROM spp WHERE nim='$nim'");
+
+			if($data->num_rows() < 1){
+				$kirimData = 0;
+			}else{
+				foreach ($data->result() as $key) {
+					$kirimData = $key->jumlah;
+				}
+			}
+
+			return $kirimData;
+		}
 		// End Rekap per siswa
 
 	}

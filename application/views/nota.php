@@ -104,7 +104,7 @@
         <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="<?= $jumlah?>">
         <input type="hidden" name="nominalspp" value="<?= $jumlah; ?>">
 
-        <input type="hidden" id="danabos" name="danabos" value="">
+        <input type="hidden" id="danabos" name="danabos" value="0">
         <input type="hidden" id="bulanpembayaran" name="bulanpembayaran" value="">
 
         <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Input Pembayaran</button>
