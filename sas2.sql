@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2015 at 06:31 PM
+-- Generation Time: Oct 21, 2015 at 08:44 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -249,15 +249,17 @@ CREATE TABLE IF NOT EXISTS `spp` (
   `nominalspp` int(10) NOT NULL,
   `sppstatus` varchar(50) NOT NULL,
   PRIMARY KEY (`idspp`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `spp`
 --
 
 INSERT INTO `spp` (`idspp`, `tanggal`, `periode`, `tahun`, `nim`, `namasiswa`, `jeniskelas`, `nominalspp`, `sppstatus`) VALUES
-(3, '21 Oct 2015', 'Juli', '2017/2018', 27890, 'Riki', 1, 20010, 'lunas'),
-(4, '21 Oct 2015', 'Maret', '2017/2018', 27890, 'Riki', 1, 40010, 'lunas');
+(5, '21 Oct 2015', 'Juli', '2017/2018', 27890, 'Riki', 1, 50, 'lunas'),
+(6, '21 Oct 2015', 'Maret', '2017/2018', 27890, 'Riki', 1, 30, 'lunas'),
+(7, '21 Oct 2015', 'Juli', '2017/2018', 31350, 'Jeny', 1, 70, 'lunas'),
+(8, '21 Oct 2015', 'Maret', '2017/2018', 31350, 'Jeny', 1, 30, 'lunas');
 
 -- --------------------------------------------------------
 

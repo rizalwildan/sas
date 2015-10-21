@@ -66,14 +66,53 @@
 			return $kirimData;
 		}
 
+		
+
+
+		
+
+
+
+
+
+		public function daftarSiswa()
+		{
+			$data = $this->db->query("SELECT * FROM spp GROUP BY nim ");
+
+			if($data->num_rows() < 1){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
+
 		public function getStatus($nim, $bulan)
 		{
 			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
 
 			if($data->num_rows() < 1){
-				$kirimData = "kosong";
+				$kirimData = 0;
 			}else{
-				$kirimData = "lunas";
+				foreach ($data->result() as $key) {
+					$kirimData = $key->nominalspp;
+				}
+			}
+
+			return $kirimData;
+		}
+
+		public function totalSPPByNim($nim)
+		{
+			$data = $this->db->query("SELECT sum(nominalspp) as jumlah FROM spp WHERE nim='$nim'");
+
+			if($data->num_rows() < 1){
+				$kirimData = 0;
+			}else{
+				foreach ($data->result() as $key) {
+					$kirimData = $key->jumlah;
+				}
 			}
 
 			return $kirimData;
