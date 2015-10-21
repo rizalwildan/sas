@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2015 at 04:56 AM
+-- Generation Time: Oct 21, 2015 at 06:31 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -240,14 +240,24 @@ INSERT INTO `siswa_kelas` (`id_siswa_kelas`, `idsiswa`, `idkelas`, `idtahun`) VA
 
 CREATE TABLE IF NOT EXISTS `spp` (
   `idspp` int(10) NOT NULL AUTO_INCREMENT,
-  `tanggal` date NOT NULL,
-  `transaksi` varchar(20) NOT NULL,
-  `idtahun` int(11) NOT NULL,
-  `idsiswa` int(11) NOT NULL,
-  `idkelas` int(11) NOT NULL,
+  `tanggal` varchar(15) NOT NULL,
+  `periode` varchar(20) NOT NULL,
+  `tahun` varchar(11) NOT NULL,
+  `nim` int(20) NOT NULL,
+  `namasiswa` varchar(50) NOT NULL,
+  `jeniskelas` int(2) NOT NULL,
+  `nominalspp` int(10) NOT NULL,
   `sppstatus` varchar(50) NOT NULL,
   PRIMARY KEY (`idspp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `spp`
+--
+
+INSERT INTO `spp` (`idspp`, `tanggal`, `periode`, `tahun`, `nim`, `namasiswa`, `jeniskelas`, `nominalspp`, `sppstatus`) VALUES
+(3, '21 Oct 2015', 'Juli', '2017/2018', 27890, 'Riki', 1, 20010, 'lunas'),
+(4, '21 Oct 2015', 'Maret', '2017/2018', 27890, 'Riki', 1, 40010, 'lunas');
 
 -- --------------------------------------------------------
 
@@ -258,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `spp` (
 CREATE TABLE IF NOT EXISTS `spp_detail` (
   `idsppdetail` int(10) NOT NULL AUTO_INCREMENT,
   `idspp` int(10) NOT NULL,
-  `idkomp` int(10) NOT NULL,
+  `idsppsetting` int(10) NOT NULL,
   `jumlah` int(10) NOT NULL,
   PRIMARY KEY (`idsppdetail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -373,6 +383,7 @@ CREATE TABLE IF NOT EXISTS `view_komponenperkelas` (
 ,`iuran` int(10)
 ,`tahun_pelajaran` varchar(11)
 ,`periode` varchar(20)
+,`idsppsetting` int(10)
 );
 -- --------------------------------------------------------
 
@@ -426,7 +437,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_komponenperkelas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_komponenperkelas` AS select `spp_setting`.`jenis_kelas` AS `jenis_kelas`,`komponen`.`nama_komp` AS `nama_komp`,`komponen`.`iuran` AS `iuran`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran`,`spp_setting`.`periode` AS `periode` from ((`spp_setting` join `komponen`) join `tahun`) where ((`spp_setting`.`idkomponen` = `komponen`.`idkomponen`) and (`spp_setting`.`idtahun` = `tahun`.`idtahun`)) order by `spp_setting`.`jenis_kelas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_komponenperkelas` AS select `spp_setting`.`jenis_kelas` AS `jenis_kelas`,`komponen`.`nama_komp` AS `nama_komp`,`komponen`.`iuran` AS `iuran`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran`,`spp_setting`.`periode` AS `periode`,`spp_setting`.`idsppsetting` AS `idsppsetting` from ((`spp_setting` join `komponen`) join `tahun`) where ((`spp_setting`.`idkomponen` = `komponen`.`idkomponen`) and (`spp_setting`.`idtahun` = `tahun`.`idtahun`)) order by `spp_setting`.`jenis_kelas`;
 
 -- --------------------------------------------------------
 

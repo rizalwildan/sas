@@ -31,6 +31,7 @@ class Admin extends CI_Controller {
 			$this->load->model('Kelas_model');
 			$this->load->model('Transaksi_model');
 			$this->load->model('Login_model');
+			$this->load->model('Rekap_model');
 		}
 
 
@@ -147,6 +148,10 @@ class Admin extends CI_Controller {
 		$tahun = $this->input->post('tahun');
 		$bulan = $this->input->post('bulan');
 
+		$nama = $this->input->post('nama');
+		$tgltransaksi = $this->input->post('tgltransaksi');
+		$nominalspp = $this->input->post('nominalspp');
+
 		$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
 		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
 		$data['totalpembayaran'] = $this->input->post('totalpembayaran');
@@ -154,9 +159,25 @@ class Admin extends CI_Controller {
 		$data['bulanpembayaran'] = $this->input->post('bulanpembayaran');
 
 		// tulis ke database
-		$this->load->view('printpreview2',$data);
+		$datapembayaran = array('tanggal' => $tgltransaksi,
+								'periode' => $bulan,
+								'tahun' => $tahun,
+								'nim' => $nim,
+								'namasiswa' => $nama,
+								'jeniskelas' => $kelas,
+								'nominalspp' => $nominalspp,
+								'sppstatus' => "lunas"
+
+		 );
+
+		$this->db->insert('spp', $datapembayaran);
+		// print_r($datapembayaran);
+		// die();
 
 		// Print and print preview
+		$this->load->view('printpreview2',$data);
+
+		
 		/**
 		$HTML = $this->load->view('printpreview2',$data,true);
 		$filename = $nim.'_NOTA_'.$bulan.'_'.$tahun;
@@ -334,10 +355,118 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar2');
-		$this->load->view('rekapsiswa');
-		$this->load->view('template/footer');
+
+			
+			// $data = $this->Rekap_model->getStatus("27890","Juli");
+			// print_r($data);
+			// die();
+			// if($this->Rekap_model->getStatus("27890","Juni")=="lunas"){
+			// 	print_r($this->Rekap_model->getStatus("27890","Juni"));
+			// }else{
+			// 	print_r($this->Rekap_model->getStatus("27890","Juni"));
+			// }
+
+			// die();
+
+			// get all siswa
+			$siswa = $this->Rekap_model->getSiswa();
+
+			// total spp per kelas
+			$totalsppkelas1 = $this->Rekap_model->getSPP(1);
+			$totalsppkelas2 = $this->Rekap_model->getSPP(2);
+			$totalsppkelas3 = $this->Rekap_model->getSPP(3);		
+	
+
+			// jumlah spp per bulan berdasarkan kelas
+			$bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+
+			for ($i=0; $i <12; $i++) { 					
+					$sppkelas1[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(1,$bulan[$i]);
+					$sppkelas2[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(2,$bulan[$i]);
+					$sppkelas3[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(3,$bulan[$i]);
+				}	
+
+			// print_r($sppkelas1);
+			// die();
+
+
+
+			// foreach ($siswa as $data) {
+			// 	for ($i=0; $i <12; $i++) { 
+					
+			// 		$sppkelas1[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(1,$bulan[$i]);
+			// 		$sppkelas2[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(2,$bulan[$i]);
+			// 		$sppkelas3[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(3,$bulan[$i]);
+			// 	}	
+			// }
+			
+
+			foreach ($siswa as $key) {
+				if ($key['jenis_kelas']==1) {
+					$data[$key['nim']] =  array('nim' => $key['nim'] ,
+									 'nama' => $key['namasiswa'] ,
+									 'Januari' => $sppkelas1['Januari'],
+									 'Februari' => $sppkelas1['Februari'],
+									 'Maret' => $sppkelas1['Maret'],
+									 'April' => $sppkelas1['April'],
+									 'Mei' => $sppkelas1['Mei'],
+									 'Juni' => $sppkelas1['Juni'],
+									 'Juli' => $sppkelas1['Juli'],	
+									 'Agustus' => $sppkelas1['Agustus'],
+									 'September' => $sppkelas1['September'],
+									 'Oktober' => $sppkelas1['Oktober'],
+									 'November' => $sppkelas1['November'],
+									 'Desember' => $sppkelas1['Desember'],
+									 'total' => $totalsppkelas1
+						 							  );
+				}elseif ($key['jenis_kelas']==2) {
+					$data[$key['nim']] =  array('nim' => $key['nim'] ,
+									 'nama' => $key['namasiswa'] ,
+									 'Januari' => $sppkelas2['Januari'],
+									 'Februari' => $sppkelas2['Februari'],
+									 'Maret' => $sppkelas2['Maret'],
+									 'April' => $sppkelas2['April'],
+									 'Mei' => $sppkelas2['Mei'],
+									 'Juni' => $sppkelas2['Juni'],
+									 'Juli' => $sppkelas2['Juli'],	
+									 'Agustus' => $sppkelas2['Agustus'],
+									 'September' => $sppkelas2['September'],
+									 'Oktober' => $sppkelas2['Oktober'],
+									 'November' => $sppkelas2['November'],
+									 'Desember' => $sppkelas2['Desember'],
+									 'total' => $totalsppkelas2
+						 							  );
+				}else{
+					$data[$key['nim']] =  array('nim' => $key['nim'] ,
+									 'nama' => $key['namasiswa'] ,
+									 'Januari' => $sppkelas3['Januari'],
+									 'Februari' => $sppkelas3['Februari'],
+									 'Maret' => $sppkelas3['Maret'],
+									 'April' => $sppkelas3['April'],
+									 'Mei' => $sppkelas3['Mei'],
+									 'Juni' => $sppkelas3['Juni'],
+									 'Juli' => $sppkelas3['Juli'],	
+									 'Agustus' => $sppkelas3['Agustus'],
+									 'September' => $sppkelas3['September'],
+									 'Oktober' => $sppkelas3['Oktober'],
+									 'November' => $sppkelas3['November'],
+									 'Desember' => $sppkelas3['Desember'],
+									 'total' => $totalsppkelas3
+						 							  );
+				}
+			}
+
+
+			$rekap['spp'] =$data;
+
+			// print_r($rekap['spp']);
+			// die();
+
+
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar2');
+			$this->load->view('rekapsiswa', $rekap);
+			$this->load->view('template/footer');
 		}
 	}
 
@@ -349,11 +478,96 @@ class Admin extends CI_Controller {
 			redirect(base_url(). 'Admin/index');
 		}
 		else
-		{
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar2');
-		$this->load->view('rekapkelas');
-		$this->load->view('template/footer');
+		{	
+			// total spp per kelas
+			$totalsppkelas1 = $this->Rekap_model->getSPP(1);
+			$totalsppkelas2 = $this->Rekap_model->getSPP(2);
+			$totalsppkelas3 = $this->Rekap_model->getSPP(3);
+			
+			// jumlah spp per bulan berdasarkan kelas
+			$bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+			for ($i=0; $i <12; $i++) { 
+				$sppkelas1[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(1,$bulan[$i]);
+				$sppkelas2[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(2,$bulan[$i]);
+				$sppkelas3[$bulan[$i]] = $this->Rekap_model->getSPPPerBulan(3,$bulan[$i]);
+			}
+
+			// $spp = array('sppkelas1' => $sppkelas1,
+			// 			 'sppkelas2' => $sppkelas2,
+			// 			 'sppkelas3' => $sppkelas3	
+			// );
+
+			// print_r($sppkelas1['Januari']);
+			// die();
+
+			
+
+			$kelas = $this->Rekap_model->getKelas();
+			// print_r($kelas);
+			// die();
+
+			foreach ($kelas as $key) {
+				if ($key['jenis_kelas']==1) {
+					$data[$key['namakelas']] =  array('namakelas' => $key['namakelas'] ,
+									 'Januari' => $sppkelas1['Januari'],
+									 'Februari' => $sppkelas1['Februari'],
+									 'Maret' => $sppkelas1['Maret'],
+									 'April' => $sppkelas1['April'],
+									 'Mei' => $sppkelas1['Mei'],
+									 'Juni' => $sppkelas1['Juni'],
+									 'Juli' => $sppkelas1['Juli'],	
+									 'Agustus' => $sppkelas1['Agustus'],
+									 'September' => $sppkelas1['September'],
+									 'Oktober' => $sppkelas1['Oktober'],
+									 'November' => $sppkelas1['November'],
+									 'Desember' => $sppkelas1['Desember'],
+									 'total' => $totalsppkelas1
+						 							  );
+				}elseif ($key['jenis_kelas']==2) {
+					$data[$key['namakelas']] =  array('namakelas' => $key['namakelas'] ,
+									 'Januari' => $sppkelas2['Januari'],
+									 'Februari' => $sppkelas2['Februari'],
+									 'Maret' => $sppkelas2['Maret'],
+									 'April' => $sppkelas2['April'],
+									 'Mei' => $sppkelas2['Mei'],
+									 'Juni' => $sppkelas2['Juni'],
+									 'Juli' => $sppkelas2['Juli'],	
+									 'Agustus' => $sppkelas2['Agustus'],
+									 'September' => $sppkelas2['September'],
+									 'Oktober' => $sppkelas2['Oktober'],
+									 'November' => $sppkelas2['November'],
+									 'Desember' => $sppkelas2['Desember'],
+									 'total' => $totalsppkelas2
+						 							  );
+				}else{
+					$data[$key['namakelas']] =  array('namakelas' => $key['namakelas'] ,
+									 'Januari' => $sppkelas3['Januari'],
+									 'Februari' => $sppkelas3['Februari'],
+									 'Maret' => $sppkelas3['Maret'],
+									 'April' => $sppkelas3['April'],
+									 'Mei' => $sppkelas3['Mei'],
+									 'Juni' => $sppkelas3['Juni'],
+									 'Juli' => $sppkelas3['Juli'],	
+									 'Agustus' => $sppkelas3['Agustus'],
+									 'September' => $sppkelas3['September'],
+									 'Oktober' => $sppkelas3['Oktober'],
+									 'November' => $sppkelas3['November'],
+									 'Desember' => $sppkelas3['Desember'],
+									 'total' => $totalsppkelas3
+						 							  );
+				}
+					
+			
+			}			
+			
+			$rekap['spp'] =$data;
+			// print_r($rekap['spp']);
+			// die();
+
+			$this->load->view('template/header');
+			$this->load->view('template/sidebar2');
+			$this->load->view('rekapkelas',$rekap);
+			$this->load->view('template/footer');
 		}
 	}
 }

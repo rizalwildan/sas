@@ -103,12 +103,15 @@
 
       <!-- data untuk print -->
       <form action="<?= base_url('Admin/submitPayment');?>" method="post">
-        <!-- <input type="text" name="tgltransaksi" value="<?= date("j M Y") ?>"> -->
+
+        <input type="hidden" name="tgltransaksi" value="<?= date("j M Y") ?>">
+        <input type="hidden" name="nama" value="<?= $data['namasiswa']; ?>">
         <input type="hidden" name="nim" value="<?= $data['nim']; ?>">
         <input type="hidden" name="bulan" value="<?= $key['periode']; ?>">
         <input type="hidden" name="tahun" value="<?= $key['tahun_pelajaran']; ?>">
         <input type="hidden" name="kelas" value="<?= $key['jenis_kelas']; ?>">
         <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="0">
+        <input type="hidden" name="nominalspp" value="<?= $jumlah; ?>">
 
         <input type="hidden" id="danabos" name="danabos" value="">
         <input type="hidden" id="bulanpembayaran" name="bulanpembayaran" value="">

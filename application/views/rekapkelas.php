@@ -1,4 +1,3 @@
-Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -17,10 +16,9 @@ Content Wrapper. Contains page content -->
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-12">
-                 <table id='example1' class='table table-bordered table-striped'>
+                 <table id='rekapkelas' class='table table-bordered table-striped'>
                     <thead>
                       <tr>
-                        <th>Nis</th>
                         <th>Nama Kelas</th>
                         <th>January</th>
                         <th>February</th>
@@ -38,23 +36,24 @@ Content Wrapper. Contains page content -->
                       </tr>
                     </thead>
                     <tbody>
+                      <?php foreach ($spp as $key) { ?>
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= $key['namakelas']?></td>
+                        <td><?= $key['Januari']?></td>
+                        <td><?= $key['Februari']?></td>
+                        <td><?= $key['Maret']?></td>
+                        <td><?= $key['April']?></td>
+                        <td><?= $key['Mei']?></td>
+                        <td><?= $key['Juni']?></td>
+                        <td><?= $key['Juli']?></td>
+                        <td><?= $key['Agustus']?></td>
+                        <td><?= $key['September']?></td>
+                        <td><?= $key['Oktober']?></td>
+                        <td><?= $key['November']?></td>
+                        <td><?= $key['Desember']?></td>
+                        <td><?= $key['total']?></td>                        
                       </tr>
+                      <?php }?>
                     </tbody>
                 </table>
 
@@ -77,4 +76,10 @@ Content Wrapper. Contains page content -->
         </div>
       </div><!--Col-xs-12-->
         </section><!-- /.content -->
-      </div><!-- /.content-wrapper
+      </div><!-- /.content-wrapper-->
+
+<script type="text/javascript">
+      // $(document).ready(function() {
+      //   $('#rekapkelas').DataTable();
+      // } );
+  </script>
