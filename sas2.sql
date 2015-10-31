@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.2.12deb2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 21, 2015 at 10:02 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: Oct 31, 2015 at 08:57 PM
+-- Server version: 5.6.25-0ubuntu0.15.04.1
+-- PHP Version: 5.6.4-4ubuntu6.3
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -27,11 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `bos` (
-  `id_bos` int(11) NOT NULL AUTO_INCREMENT,
+`id_bos` int(11) NOT NULL,
   `id_siswa_kelas` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  PRIMARY KEY (`id_bos`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -51,11 +50,10 @@ CREATE TABLE IF NOT EXISTS `cek_smester` (
 --
 
 CREATE TABLE IF NOT EXISTS `kelas` (
-  `idkelas` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id kode kelas',
+`idkelas` int(10) NOT NULL COMMENT 'id kode kelas',
   `jenis_kelas` int(2) NOT NULL,
-  `namakelas` varchar(10) NOT NULL,
-  PRIMARY KEY (`idkelas`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+  `namakelas` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kelas`
@@ -99,12 +97,11 @@ INSERT INTO `kelas` (`idkelas`, `jenis_kelas`, `namakelas`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `komponen` (
-  `idkomponen` int(10) NOT NULL AUTO_INCREMENT,
+`idkomponen` int(10) NOT NULL,
   `nama_komp` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `iuran` int(10) NOT NULL,
-  PRIMARY KEY (`idkomponen`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+  `iuran` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komponen`
@@ -116,7 +113,7 @@ INSERT INTO `komponen` (`idkomponen`, `nama_komp`, `deskripsi`, `iuran`) VALUES
 (14, 'asdfghsdfg', 'dfbrb', 10000),
 (15, 'huhuhahahsdhushuda', 'qwqwqw', 10000),
 (16, 'asd', 'asdsasdsasd', 10),
-(17, 'komputer', 'komputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\ndomputer yang digunakan untuk keperluan belajar mengajar di dalamm lab maupun yang ada di halaman sekolah   skldhaslfjbwksjdfbsld\nvsdvsodjfbvlksrdg\nvrsdg\nvs\ndgv\ndfb\nrsdhfvdjfcvs\ndvdf\ncv\ndfcb\nd\n ', 100000000);
+(17, 'komputer', 'iuran komputer', 100000000);
 
 -- --------------------------------------------------------
 
@@ -125,11 +122,10 @@ INSERT INTO `komponen` (`idkomponen`, `nama_komp`, `deskripsi`, `iuran`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `komponen_setting` (
-  `idkompsetting` int(10) NOT NULL AUTO_INCREMENT,
+`idkompsetting` int(10) NOT NULL,
   `idkomponen` int(10) NOT NULL,
-  `iuran` int(10) NOT NULL,
-  PRIMARY KEY (`idkompsetting`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `iuran` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komponen_setting`
@@ -149,8 +145,7 @@ INSERT INTO `komponen_setting` (`idkompsetting`, `idkomponen`, `iuran`) VALUES
 
 CREATE TABLE IF NOT EXISTS `level` (
   `idlevel` int(10) NOT NULL,
-  `namalevel` varchar(20) NOT NULL,
-  PRIMARY KEY (`idlevel`)
+  `namalevel` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -168,7 +163,7 @@ INSERT INTO `level` (`idlevel`, `namalevel`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `siswa` (
-  `idsiswa` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id table',
+`idsiswa` int(10) NOT NULL COMMENT 'id table',
   `nim` int(20) NOT NULL COMMENT 'nim siswa',
   `namasiswa` varchar(50) NOT NULL,
   `gender` enum('L','P') NOT NULL,
@@ -176,10 +171,8 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `tmlahir` varchar(11) NOT NULL COMMENT 'tempat lahir',
   `tgllahir` date NOT NULL COMMENT 'tanggal lahir',
   `idtahun` varchar(4) NOT NULL,
-  `namawali` varchar(50) NOT NULL COMMENT 'nama wali',
-  PRIMARY KEY (`idsiswa`),
-  UNIQUE KEY `nim` (`nim`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  `namawali` varchar(50) NOT NULL COMMENT 'nama wali'
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `siswa`
@@ -192,7 +185,7 @@ INSERT INTO `siswa` (`idsiswa`, `nim`, `namasiswa`, `gender`, `alamat`, `tmlahir
 (5, 190867, 'Amin', 'L', 'Bantul', '0', '1994-02-12', '5', 'Dhoni'),
 (6, 31350, 'Jeny', 'P', 'Kaliurang', '0', '1994-02-11', '5', 'Deni'),
 (7, 56789, 'Ria', 'P', 'Paris', '0', '1994-03-15', '5', 'Hadi'),
-(8, 27890, 'Riki', '', 'Garut josss\r\n', 'Bandung', '1994-05-12', '', 'Toni blank'),
+(8, 27890, 'Riki A', 'L', 'Garut josss\r\n', 'Bandung', '1994-05-12', '', 'Toni blank'),
 (9, 37098, 'Rio', 'L', 'Magelang', '0', '1994-02-11', '5', 'Bambang'),
 (12, 14567, 'Rere', 'P', 'Ponorogo', 'Madiun', '2015-09-07', '', 'Prapto');
 
@@ -213,12 +206,11 @@ CREATE TABLE IF NOT EXISTS `siswa_belum_dapat_kelas` (
 --
 
 CREATE TABLE IF NOT EXISTS `siswa_kelas` (
-  `id_siswa_kelas` int(10) NOT NULL AUTO_INCREMENT,
+`id_siswa_kelas` int(10) NOT NULL,
   `idsiswa` int(10) NOT NULL,
   `idkelas` int(10) NOT NULL,
-  `idtahun` int(10) NOT NULL,
-  PRIMARY KEY (`id_siswa_kelas`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `idtahun` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `siswa_kelas`
@@ -239,30 +231,28 @@ INSERT INTO `siswa_kelas` (`id_siswa_kelas`, `idsiswa`, `idkelas`, `idtahun`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `spp` (
-  `idspp` int(10) NOT NULL AUTO_INCREMENT,
+`idspp` int(10) NOT NULL,
   `tanggal` varchar(15) NOT NULL,
   `periode` varchar(20) NOT NULL,
   `tahun` varchar(11) NOT NULL,
   `nim` int(20) NOT NULL,
   `namasiswa` varchar(50) NOT NULL,
   `jeniskelas` int(2) NOT NULL,
+  `namakelas` varchar(30) NOT NULL,
   `nominalspp` int(10) NOT NULL,
   `danabos` int(10) NOT NULL,
-  `sppstatus` varchar(50) NOT NULL,
-  PRIMARY KEY (`idspp`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `sppstatus` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `spp`
 --
 
-INSERT INTO `spp` (`idspp`, `tanggal`, `periode`, `tahun`, `nim`, `namasiswa`, `jeniskelas`, `nominalspp`, `danabos`, `sppstatus`) VALUES
-(5, '21 Oct 2015', 'Juli', '2017/2018', 27890, 'Riki', 1, 50, 20060, 'lunas'),
-(6, '21 Oct 2015', 'Maret', '2017/2018', 27890, 'Riki', 1, 30, 40040, 'lunas'),
-(7, '21 Oct 2015', 'Juli', '2017/2018', 31350, 'Jeny', 1, 70, 20080, 'lunas'),
-(8, '21 Oct 2015', 'Maret', '2017/2018', 31350, 'Jeny', 1, 30, 40040, 'lunas'),
-(12, '21 Oct 2015', 'Juli', '2017/2018', 37098, 'Rio', 1, 20010, 0, 'lunas'),
-(13, '21 Oct 2015', 'Juli', '2017/2018', 190867, 'Amin', 1, 70, 20080, 'lunas');
+INSERT INTO `spp` (`idspp`, `tanggal`, `periode`, `tahun`, `nim`, `namasiswa`, `jeniskelas`, `namakelas`, `nominalspp`, `danabos`, `sppstatus`) VALUES
+(4, '24 Oct 2015', 'Maret', '2017/2018', 27890, 'Riki A', 1, 'X5', 20010, 0, 'lunas'),
+(5, '24 Oct 2015', 'Maret', '2017/2018', 327981, 'rizal', 1, 'X2', 30010, 0, 'lunas'),
+(6, '24 Oct 2015', 'Juli', '2017/2018', 27890, 'Riki A', 1, 'X5', 40010, 0, 'lunas'),
+(7, '24 Oct 2015', 'Agustus', '2017/2018', 27890, 'Riki A', 1, 'X5', 40000, 0, 'lunas');
 
 -- --------------------------------------------------------
 
@@ -271,12 +261,11 @@ INSERT INTO `spp` (`idspp`, `tanggal`, `periode`, `tahun`, `nim`, `namasiswa`, `
 --
 
 CREATE TABLE IF NOT EXISTS `spp_detail` (
-  `idsppdetail` int(10) NOT NULL AUTO_INCREMENT,
+`idsppdetail` int(10) NOT NULL,
   `idspp` int(10) NOT NULL,
   `idsppsetting` int(10) NOT NULL,
-  `jumlah` int(10) NOT NULL,
-  PRIMARY KEY (`idsppdetail`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `jumlah` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -285,13 +274,12 @@ CREATE TABLE IF NOT EXISTS `spp_detail` (
 --
 
 CREATE TABLE IF NOT EXISTS `spp_setting` (
-  `idsppsetting` int(10) NOT NULL AUTO_INCREMENT,
+`idsppsetting` int(10) NOT NULL,
   `jenis_kelas` int(10) NOT NULL,
   `idkomponen` int(10) NOT NULL,
   `idtahun` int(10) NOT NULL,
-  `periode` varchar(20) NOT NULL,
-  PRIMARY KEY (`idsppsetting`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `periode` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `spp_setting`
@@ -316,7 +304,10 @@ INSERT INTO `spp_setting` (`idsppsetting`, `jenis_kelas`, `idkomponen`, `idtahun
 (16, 1, 13, 6, 'Juli'),
 (17, 2, 14, 6, 'Juli'),
 (18, 2, 15, 6, 'Juli'),
-(19, 2, 16, 6, 'Juli');
+(19, 2, 16, 6, 'Juli'),
+(20, 1, 14, 6, 'Agustus'),
+(21, 1, 15, 6, 'Agustus'),
+(22, 1, 6, 6, 'Agustus');
 
 -- --------------------------------------------------------
 
@@ -325,12 +316,11 @@ INSERT INTO `spp_setting` (`idsppsetting`, `jenis_kelas`, `idkomponen`, `idtahun
 --
 
 CREATE TABLE IF NOT EXISTS `tahun` (
-  `idtahun` int(10) NOT NULL AUTO_INCREMENT,
+`idtahun` int(10) NOT NULL,
   `awal_tahun_pelajaran` date NOT NULL,
   `akhir_tahun_pelajaran` date NOT NULL,
-  `tahun_pelajaran` varchar(11) NOT NULL,
-  PRIMARY KEY (`idtahun`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `tahun_pelajaran` varchar(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tahun`
@@ -365,8 +355,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `iduser` int(10) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `idlevel` int(10) NOT NULL,
-  PRIMARY KEY (`iduser`)
+  `idlevel` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -374,6 +363,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`iduser`, `username`, `password`, `idlevel`) VALUES
+(0, '', 'd41d8cd98f00b204e9800998ecf842', 0),
 (1, 'root', 'root', 1),
 (2, 'admin', 'admin', 2);
 
@@ -453,6 +443,136 @@ DROP TABLE IF EXISTS `view_siswa_sudah_punya_kelas`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_siswa_sudah_punya_kelas` AS select `siswa`.`idsiswa` AS `idsiswa`,`siswa`.`nim` AS `nim`,`siswa`.`namasiswa` AS `namasiswa`,`kelas`.`namakelas` AS `namakelas`,`kelas`.`jenis_kelas` AS `jenis_kelas`,`siswa`.`alamat` AS `alamat`,`siswa`.`namawali` AS `namawali`,`siswa`.`gender` AS `gender`,`siswa`.`tmlahir` AS `tmlahir`,`siswa`.`tgllahir` AS `tgllahir`,`tahun`.`tahun_pelajaran` AS `tahun_pelajaran` from (((`siswa` join `kelas`) join `siswa_kelas`) join `tahun`) where ((`siswa_kelas`.`idsiswa` = `siswa`.`idsiswa`) and (`siswa_kelas`.`idkelas` = `kelas`.`idkelas`) and (`siswa_kelas`.`idtahun` = `tahun`.`idtahun`));
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bos`
+--
+ALTER TABLE `bos`
+ ADD PRIMARY KEY (`id_bos`);
+
+--
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+ ADD PRIMARY KEY (`idkelas`);
+
+--
+-- Indexes for table `komponen`
+--
+ALTER TABLE `komponen`
+ ADD PRIMARY KEY (`idkomponen`);
+
+--
+-- Indexes for table `komponen_setting`
+--
+ALTER TABLE `komponen_setting`
+ ADD PRIMARY KEY (`idkompsetting`);
+
+--
+-- Indexes for table `level`
+--
+ALTER TABLE `level`
+ ADD PRIMARY KEY (`idlevel`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+ ADD PRIMARY KEY (`idsiswa`), ADD UNIQUE KEY `nim` (`nim`);
+
+--
+-- Indexes for table `siswa_kelas`
+--
+ALTER TABLE `siswa_kelas`
+ ADD PRIMARY KEY (`id_siswa_kelas`);
+
+--
+-- Indexes for table `spp`
+--
+ALTER TABLE `spp`
+ ADD PRIMARY KEY (`idspp`);
+
+--
+-- Indexes for table `spp_detail`
+--
+ALTER TABLE `spp_detail`
+ ADD PRIMARY KEY (`idsppdetail`);
+
+--
+-- Indexes for table `spp_setting`
+--
+ALTER TABLE `spp_setting`
+ ADD PRIMARY KEY (`idsppsetting`);
+
+--
+-- Indexes for table `tahun`
+--
+ALTER TABLE `tahun`
+ ADD PRIMARY KEY (`idtahun`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`iduser`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bos`
+--
+ALTER TABLE `bos`
+MODIFY `id_bos` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+MODIFY `idkelas` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id kode kelas',AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT for table `komponen`
+--
+ALTER TABLE `komponen`
+MODIFY `idkomponen` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `komponen_setting`
+--
+ALTER TABLE `komponen_setting`
+MODIFY `idkompsetting` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `siswa`
+--
+ALTER TABLE `siswa`
+MODIFY `idsiswa` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id table',AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `siswa_kelas`
+--
+ALTER TABLE `siswa_kelas`
+MODIFY `id_siswa_kelas` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `spp`
+--
+ALTER TABLE `spp`
+MODIFY `idspp` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `spp_detail`
+--
+ALTER TABLE `spp_detail`
+MODIFY `idsppdetail` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `spp_setting`
+--
+ALTER TABLE `spp_setting`
+MODIFY `idsppsetting` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `tahun`
+--
+ALTER TABLE `tahun`
+MODIFY `idtahun` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -144,6 +144,293 @@
               });
     </SCRIPT>
 
+    <!--JS Edit Rekap Januari-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapJanuari').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var januari = $(e.relatedTarget).data('januari');
+              $(e.currentTarget).find('input[name="nominal"]').val(januari);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Februari-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapFebruari').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var februari = $(e.relatedTarget).data('februari');
+              $(e.currentTarget).find('input[name="nominal"]').val(februari);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Maret-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapMaret').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var maret = $(e.relatedTarget).data('maret');
+              $(e.currentTarget).find('input[name="nominal"]').val(maret);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap April-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapApril').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var april = $(e.relatedTarget).data('april');
+              $(e.currentTarget).find('input[name="nominal"]').val(april);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Mei-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapMei').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var mei = $(e.relatedTarget).data('mei');
+              $(e.currentTarget).find('input[name="nominal"]').val(mei);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Juni-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapJuni').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var juni = $(e.relatedTarget).data('juni');
+              $(e.currentTarget).find('input[name="nominal"]').val(juni);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Juli-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapJuli').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var juli = $(e.relatedTarget).data('juli');
+              $(e.currentTarget).find('input[name="nominal"]').val(juli);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Agustus-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapAgustus').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var agustus = $(e.relatedTarget).data('agustus');
+              $(e.currentTarget).find('input[name="nominal"]').val(agustus);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap September-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapSeptember').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var september = $(e.relatedTarget).data('september');
+              $(e.currentTarget).find('input[name="nominal"]').val(september);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Oktober-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapOktober').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var oktober = $(e.relatedTarget).data('oktober');
+              $(e.currentTarget).find('input[name="nominal"]').val(oktober);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap November-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapNovember').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var november = $(e.relatedTarget).data('november');
+              $(e.currentTarget).find('input[name="nominal"]').val(november);
+
+              });
+    </SCRIPT>
+
+    <!--JS Edit Rekap Desember-->
+    <SCRIPT TYPE="text/javascript">
+      $('#editRekapDesember').on('shown.bs.modal', function(e) {
+              var idspp = $(e.relatedTarget).data('idspp');
+              $(e.currentTarget).find('input[name="idspp"]').val(idspp);
+
+              var nim = $(e.relatedTarget).data('nim');
+              $(e.currentTarget).find('input[name="nim"]').val(nim);
+
+              var namasiswa = $(e.relatedTarget).data('namasiswa');
+              $(e.currentTarget).find('input[name="nama"]').val(namasiswa);
+
+              var namakelas = $(e.relatedTarget).data('namakelas');
+              $(e.currentTarget).find('input[name="namakelas"]').val(namakelas);
+
+              var periode = $(e.relatedTarget).data('periode');
+              $(e.currentTarget).find('input[name="periode"]').val(periode);
+
+              var desember = $(e.relatedTarget).data('desember');
+              $(e.currentTarget).find('input[name="nominal"]').val(desember);
+
+              });
+    </SCRIPT>
 
 
     <!--Js Date Time Picker-->

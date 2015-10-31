@@ -6,7 +6,7 @@ Content Wrapper. Contains page content -->
             Setting Komponen
           </h1>
         </section>
-
+        <!--
         <?php if($this->session->flashdata('insert'))
         { ?>
               <script type="text/javascript">
@@ -25,7 +25,7 @@ Content Wrapper. Contains page content -->
                   stackup_spacing: 10
                 });
               </script>
-        <?php } ?>
+        <?php } ?>-->
 
 
         <!-- Main content -->
@@ -33,13 +33,13 @@ Content Wrapper. Contains page content -->
           <div class="row">
           <div class="col-xs-12">
 
-            <!--Alert Form Validation-->
+            <!--Alert Form Validation
             <?php if(isset($error)){ ?>
-            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <?php echo $error; ?>
             </div>
-            <?php } ?>
+            <?php } ?>-->
 
             <?php if ($komponen == 'kosong')
             {
@@ -103,7 +103,7 @@ Content Wrapper. Contains page content -->
 
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
-               <table id="example1" class="table table-bordered table-striped">
+               <table id="komponen" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>Nama Komponen</th>
@@ -133,4 +133,9 @@ Content Wrapper. Contains page content -->
         </div>
 
         </section><!-- /.content -->
-      </div><!-- /.content-wrapper
+      </div><!-- /.content-wrapper-->
+      <script type="text/javascript">
+          $(document).ready(function() {
+            $('#komponen').DataTable();
+          } );
+      </script>

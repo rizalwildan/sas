@@ -7,7 +7,7 @@ Content Wrapper. Contains page content -->
             Data User
           </h1>
         </section>
-
+    <!--
     <?php if($this->session->flashdata('insert'))
     { ?>
           <script type="text/javascript">
@@ -26,7 +26,7 @@ Content Wrapper. Contains page content -->
               stackup_spacing: 10
             });
           </script>
-    <?php } ?>
+    <?php } ?> -->
 
         <!-- Main content -->
         <section class="content">

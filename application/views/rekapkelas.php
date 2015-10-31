@@ -2,7 +2,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Rekap Keuangan
+            Rekap Keuangan Per Kelas
           </h1>
         </section>
 
@@ -51,7 +51,7 @@
                         <td><?= $key['Oktober']?></td>
                         <td><?= $key['November']?></td>
                         <td><?= $key['Desember']?></td>
-                        <td><?= $key['total']?></td>                        
+                        <td><?= $key['total']?></td>
                       </tr>
                       <?php }?>
                     </tbody>

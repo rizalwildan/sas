@@ -151,7 +151,7 @@ class Transaksi extends CI_Controller {
 								 $this->form_validation->set_rules($config);
 						 		if ($this->form_validation->run() == FALSE) {
 						 			$this->session->set_flashdata('error', validation_errors());
-						 			redirect(base_url('index.php/admin/settingkomponen'));
+						 			redirect(base_url('admin/settingkomponen'));
 						 		}
 								else {
 									$i = 0;
@@ -167,7 +167,7 @@ class Transaksi extends CI_Controller {
 
 										//$akun = $this->session->userdata('akun');
 
-									redirect(base_url('index.php/admin/settingkomponen'));
+									redirect(base_url('admin/settingkomponen'));
 								}
 	}
 
@@ -178,7 +178,28 @@ class Transaksi extends CI_Controller {
 		$this->transaksi_model->delete_komponen($idkomponen);
 		$this->session->set_flashdata('delete', 'Data Berhasil');
 
-		redirect(base_url('index.php/admin/KomponenDetail'));
+		redirect(base_url('admin/KomponenDetail'));
+	}
+
+	public function edit_rekap()
+	{
+		$idspp = $this->input->post('idspp');
+		$nim = $this->input->post('nim');
+		$namasiswa = $this->input->post('nama');
+	  $namakelas = $this->input->post('namakelas');
+		$periode = $this->input->post('periode');
+		$nominalspp = $this->input->post('nominal');
+
+		$data = array(
+									'nim' => $this->input->post('nim'),
+									'namasiswa' => $this->input->post('nama'),
+									'namakelas' => $this->input->post('namakelas'),
+									'periode' => $this->input->post('periode'),
+									'nominalspp' => $this->input->post('nominal')
+								);
+		$this->load->model('Rekap_model');
+		$this->Rekap_model->edit_rekap($data);
+		redirect(base_url('Home/rekap'));
 	}
 
 }

@@ -2,7 +2,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Rekap Keuangan
+            Rekap Keuangan BOS
           </h1>
         </section>
 
@@ -15,7 +15,7 @@
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                 <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="overflow:auto;">
                  <table id='rekapsiswa' class='table table-bordered table-striped'>
                     <thead>
                       <tr>
@@ -37,8 +37,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php 
-                      foreach ($bos as $key) { ?>                      
+                      <?php
+                      foreach ($bos as $key) { ?>
                       <tr>
                         <td><?= $key['nim']?></td>
                         <td><?= $key['nama']?></td>
@@ -57,7 +57,7 @@
                         <td><?= $key['total']?></td>
                       </tr>
                       <?php }?>
-                      
+
                     </tbody>
                 </table>
 
@@ -83,7 +83,7 @@
       </div><!-- /.content-wrapper -->
 
 <script type="text/javascript">
-      // $(document).ready(function() {
-      //   $('#rekapsiswa').DataTable();
-      // } );
+      $(document).ready(function() {
+      $('#rekapsiswa').DataTable();
+      } );
   </script>

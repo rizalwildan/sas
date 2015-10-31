@@ -36,7 +36,7 @@
                       </div>
               </div>
 
-              
+
               <!-- <div class="row">
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
@@ -52,7 +52,7 @@
                         </div>
                       </div>
               </div> -->
-            
+
             <div class="row">
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
@@ -74,7 +74,7 @@
                             <option value="Desember">Desember</option>
                           </select>
 
-                          <?php 
+                          <?php
                             if(isset($_GET['bln'])){
                               $bulan = $_GET['bln'];
                             }else{
@@ -89,7 +89,7 @@
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                 <div id="datasiswa">
-                  
+
                   <table id="siswa" class="stripe table-bordered table-striped">
                        <thead>
                          <tr>
@@ -107,17 +107,17 @@
                              <td><?= $data['namakelas']; ?></td>
                              <!-- <td><a href="<?= base_url('Admin/bayar');?>?nim=<?= $data['nim']; ?>&jenis=<?= $data['jenis_kelas']; ?>&thn=<?= $tahunajaran; ?>" class="btn btn-xs btn-success" ><i class="fa fa-dashboard"></i> Bayar</a></td> -->
                              <td>
-                              <?php 
+                              <?php
                                 $akun = $this->session->userdata('akun');
                                 if($akun['level']==1){?>
                                     <form action="<?= base_url('Admin/bayar');?>" method="post">
                                <?php }else{ ?>
                                     <form action="<?= base_url('Home/bayar');?>" method="post">
                                <?php }?>
-                              
+
                                 <input type="hidden" class="nim" name="nim" value="<?= $data['nim']; ?>">
                                 <input type="hidden" id="jenis" name="jenis" value="<?= $data['jenis_kelas']; ?>">
-                                <input type="hidden" id="tahun" name="tahun" value="<?= $tahunajaran; ?>"> 
+                                <input type="hidden" id="tahun" name="tahun" value="<?= $tahunajaran; ?>">
                                 <input type="hidden" id="bulan" name="bulan" value="<?= $bulan; ?>">
                                 <input type="submit" class="btn btn-xs btn-success" value="Bayar">
                               </form>
@@ -128,7 +128,7 @@
 
                        </tbody>
                    </table>
-                   
+
                 </div>
               </div><!-- /.box body-->
             </div>
@@ -140,9 +140,18 @@
 
 <script type="text/javascript">
         function functionbulan(bulan){
-          window.location.href = "http://localhost/sas/admin/transaksi?bln=" + bulan; 
-        } 
-        
+          <?php
+            $akun = $this->session->userdata('akun');
+            if($akun['level'] == 1)
+            {?>
+              window.location.href = "http://localhost/sas/admin/transaksi?bln=" + bulan;
+       <?php }
+           else{ ?>
+            window.location.href = "http://localhost/sas/home/transaksi?bln=" + bulan;
+          <?php } ?>
+
+        }
+
 </script>
 
 <script type="text/javascript">

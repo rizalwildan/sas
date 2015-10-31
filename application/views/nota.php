@@ -94,7 +94,7 @@
 
       <!-- data untuk print -->
       <form action="<?= base_url('Admin/submitPayment');?>" method="post">
-
+        <input type="hidden" name="namakelas" value="<?= $data['namakelas'] ?>">
         <input type="hidden" name="tgltransaksi" value="<?= date("j M Y") ?>">
         <input type="hidden" name="nama" value="<?= $data['namasiswa']; ?>">
         <input type="hidden" name="nim" value="<?= $data['nim']; ?>">
@@ -120,8 +120,8 @@
     var spp = $('#jumlah').val();
     var bos = $('#bos').val();
 
-    document.getElementById('total').value = bos-spp;
-    document.getElementById('totalpembayaran').value = bos-spp;
+    document.getElementById('total').value = spp-bos;
+    document.getElementById('totalpembayaran').value = spp-bos;
     document.getElementById('danabos').value = bos;
   }
 </script>

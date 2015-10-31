@@ -45,18 +45,24 @@
 			$this->db->query($sql);
 		}
 
+		public function delete_komponen($idkomponen)
+		{
+			$this->db->WHERE('idkomponen', $idkomponen);
+			$this->db->delete('komponen', $idkomponen);
+		}
+
 
 		// admin transaksi
 
 		public function getTahunAjaranSekarang(){
 			$data = $this->db->query("SELECT tahun_pelajaran FROM tahun WHERE idtahun=(SELECT max(idtahun) FROM tahun)");
-			
+
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";
 			}else{
 				foreach ($data->result() as $key) {
 				$kirimData = $key->tahun_pelajaran;
-				}	
+				}
 			}
 
 			return $kirimData;

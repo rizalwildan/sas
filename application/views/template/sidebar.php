@@ -27,16 +27,11 @@
             <li><a href="<?php echo base_url(); ?>Home/kelas"><i class="fa fa-users"></i> <span>Data Kelas</span> </a></li>
             <li><a href="<?php echo base_url(); ?>Home/transaksi"><i class="fa fa-credit-card"></i><span>Transaksi SPP</span></a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-gear"></i> <span>Setting</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>Home/detailkelas">Siswa Kelas</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Rekap Keuangan</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>Home/rekap">Per Siswa</a></li>
-                <li><a href="<?php echo base_url(); ?>Home/rekap">Per Kelas</a></li>
+                <li><a href="<?php echo base_url(); ?>Home/rekap_kelas">Per Kelas</a></li>
+                <li><a href="<?php echo base_url(); ?>Home/rekap_bos">Bos</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->

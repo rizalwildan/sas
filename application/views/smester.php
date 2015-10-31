@@ -11,7 +11,7 @@ Content Wrapper. Contains page content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-            <!--Pesan Insert sukses-->
+            <!--Pesan Insert sukses
             <?php if($this->session->flashdata('insert'))
             { ?>
                   <script type="text/javascript">
@@ -70,15 +70,15 @@ Content Wrapper. Contains page content -->
                       stackup_spacing: 10
                     });
                   </script>
-            <?php } ?>
+            <?php } ?>-->
 
-            <!--Alert Form Validation-->
+            <!--Alert Form Validation
             <?php if(isset($error)){ ?>
-            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <?php echo $error; ?>
             </div>
-            <?php } ?>
+            <?php } ?>-->
 
                 <div class="row">
                   <div class="col-md-12">

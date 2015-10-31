@@ -93,19 +93,19 @@
           <tbody>
             <tr>
               <th style="width:50%">Subtotal:</th>
-              <td><input class="form-control" id="jumlah" value="<?= $jumlah; ?>" type="text" disabled></td>
+              <td><b><?= $jumlah; ?></b></td>
             </tr>
             <tr>
               <th>Untuk Pembayaran Bulan:</th>
-              <td><input class="form-control" placeholder="periode" type="text" value="<?= $bulanpembayaran; ?>" disabled></td>
+              <td><b><?= $bulanpembayaran; ?></b></td>
             </tr>
             <tr>
               <th>Dana Bos :</th>
-              <td><input class="form-control" placeholder="Dana BOS" type="text" value="<?= $danabos; ?>" disabled></td>
+              <td><b><?= $danabos; ?></b></td>
             </tr>
             <tr>
               <th>Total:</th>
-              <td><input class="form-control" id="total" value="<?= $totalpembayaran; ?>" type="text" disabled></td>
+              <td><b><?= $totalpembayaran; ?> </b></td>
             </tr>
           </tbody>
         </table>
