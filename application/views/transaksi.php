@@ -19,6 +19,27 @@
           </ol>
         </section>
 
+        <!--Notification-->
+        <?php if($this->session->flashdata('gagal'))
+        { ?>
+              <script type="text/javascript">
+              $.bootstrapGrowl("Siswa Sudah Melakukan Pembayaran Pada Periode Ini", // Messages
+                { // options
+                  type: "success", // info, success, warning and danger
+                  ele: "body", // parent container
+                  offset: {
+                  from: "top",
+                  amount: 70
+                },
+                  align: "right", // right, left or center
+                  width: 350,
+                  delay: 3000,
+                  allow_dismiss: true, // add a close button to the message
+                  stackup_spacing: 10
+                });
+              </script>
+        <?php } ?>
+
         <!-- Main content -->
         <section class="content">
           <div class="row">
@@ -144,10 +165,10 @@
             $akun = $this->session->userdata('akun');
             if($akun['level'] == 1)
             {?>
-              window.location.href = "http://localhost/sas/admin/transaksi?bln=" + bulan;
+              window.location.href = "http://127.0.0.1:8080/sas/admin/transaksi?bln=" + bulan;
        <?php }
            else{ ?>
-            window.location.href = "http://localhost/sas/home/transaksi?bln=" + bulan;
+            window.location.href = "http://127.0.0.1:8080/sas/home/transaksi?bln=" + bulan;
           <?php } ?>
 
         }

@@ -35,11 +35,18 @@
               </ul>
             </li>
             <li class="treeview">
+              <a href="#"><i class="fa fa-envelope"></i> <span>Pesan</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>admin/pesan">Tulis Pesan</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/">Kotak Masuk</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/">Outbox</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/">Pesan Terkirim</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
               <a href="#"><i class="fa fa-inbox"></i> <span>Rekap Keuangan</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>admin/rekap">Per Siswa</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/rekap_kelas">Per Kelas</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/rekap_bos">Bos</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->

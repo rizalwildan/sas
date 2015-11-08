@@ -116,12 +116,12 @@ Content Wrapper. Contains page content -->
               <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
             </div>
           </div>
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
       </form>
+    </div>
     </div>
   </div>
 </div><!--End Modal-->

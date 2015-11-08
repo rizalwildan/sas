@@ -11,7 +11,7 @@
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-          <div class="row">
+          <!-- <div class="row">
                   <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
                   <div class="col-sm-6">
                     <div id="example1_length" class="dataTables_length">
@@ -26,11 +26,30 @@
                         </label>
                       </div>
                     </div>
-            </div>
+            </div> -->
+
+            <div class="row">
+                    <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
+                    <div class="col-sm-6">
+                      <div id="example1_length" class="dataTables_length">
+                        <label>
+                          Tahun Pelajaran
+                          <select class="form-control input-sm" aria-controls="example1" name="kelas" >
+                              <option value="">--Pilih Kelas--</option>
+                                <?php foreach($kelas->result() as $isikelas){ ?>
+                              <option value="<?php echo $isikelas->namakelas; ?>"><?php echo $isikelas->namakelas; ?></option>
+                            <?php } ?>
+                          </select>
+                          </label>
+                        </div>
+                        <button class="btn btn-success pull-left" type="submit" id="filter" name="filter"> Go</button>
+                      </div>
+              </div>
+
 
           <div class="row">
             <div class="col-xs-12">
-            <button class="btn btn-primary pull-right" type="submit"><i class="fa fa-print"></i> Print</button>
+            <button class="btn btn-primary pull-right" type="submit" id="print" name="print"><i class="fa fa-print"></i> Print</button>
             </div>
           </div>
           </form>
@@ -38,7 +57,7 @@
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-12" style="overflow:auto;">
-                 <table id='rekapsiswa' class='table table-bordered table-striped'>
+                 <table id='' class='table table-bordered table-striped'>
                     <thead>
                       <tr>
                         <th>Nis</th>
@@ -57,7 +76,6 @@
                         <th>November</th>
                         <th>Desember</th>
                         <th>Total</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -188,13 +206,11 @@
                           </button>
                         </td>
                         <td><?= $key['total']?></td>
-                        <td>
-
-                        </td>
                       </tr>
                       <?php }?>
                     </tbody>
                 </table>
+
               </div><!-- /.box body-->
             </div>
 
@@ -642,4 +658,17 @@
        $(document).ready(function() {
        $('#rekapsiswa').DataTable();
       } );
+  </script>
+
+  <script type="text/javascript">
+  function printDiv(divName) {
+var printContents = document.getElementById(divName).innerHTML;
+var originalContents = document.body.innerHTML;
+
+document.body.innerHTML = printContents;
+
+window.print();
+
+document.body.innerHTML = originalContents;
+}
   </script>

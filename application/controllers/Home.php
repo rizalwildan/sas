@@ -441,31 +441,36 @@ class Home extends CI_Controller {
 	public function print_rekap_siswa()
 	{
 		$kelas = $this->input->post('kelas');
-		$siswa = $this->Rekap_model->daftarSiswaByKelas($kelas);
-		foreach ($siswa as $key) {
-			$data[$key['nim']] = array('nim' => $key['nim'],
-									 'nama' => $key['namasiswa'],
-									 'namakelas' => $key['namakelas'],
-									 'Januari' => $this->Rekap_model->getstatuskelas($key['nim'],'Januari'),
-									 'Februari' => $this->Rekap_model->getstatuskelas($key['nim'],'Februari'),
-									 'Maret' => $this->Rekap_model->getstatuskelas($key['nim'],'Maret'),
-									 'April' => $this->Rekap_model->getstatuskelas($key['nim'],'April'),
-									 'Mei' => $this->Rekap_model->getstatuskelas($key['nim'],'Mei'),
-									 'Juni' => $this->Rekap_model->getstatuskelas($key['nim'],'Juni'),
-									 'Juli' => $this->Rekap_model->getstatuskelas($key['nim'],'Juli'),
-									 'Agustus' => $this->Rekap_model->getstatuskelas($key['nim'],'Agustus'),
-									 'September' => $this->Rekap_model->getstatuskelas($key['nim'],'September'),
-									 'Oktober' => $this->Rekap_model->getstatuskelas($key['nim'],'Oktober'),
-									 'November' => $this->Rekap_model->getstatuskelas($key['nim'],'November'),
-									 'Desember' => $this->Rekap_model->getstatuskelas($key['nim'],'Desember'),
-									 'total' => $this->Rekap_model->totalSPPByNim($key['nim'])
-									 );
+			$siswa = $this->Rekap_model->daftarSiswaByKelas($kelas);
+			foreach ($siswa as $key) {
+				$data[$key['nim']] = array('nim' => $key['nim'],
+										 'nama' => $key['namasiswa'],
+										 'namakelas' => $key['namakelas'],
+										 'Januari' => $this->Rekap_model->getstatuskelas($key['nim'],'Januari'),
+										 'Februari' => $this->Rekap_model->getstatuskelas($key['nim'],'Februari'),
+										 'Maret' => $this->Rekap_model->getstatuskelas($key['nim'],'Maret'),
+										 'April' => $this->Rekap_model->getstatuskelas($key['nim'],'April'),
+										 'Mei' => $this->Rekap_model->getstatuskelas($key['nim'],'Mei'),
+										 'Juni' => $this->Rekap_model->getstatuskelas($key['nim'],'Juni'),
+										 'Juli' => $this->Rekap_model->getstatuskelas($key['nim'],'Juli'),
+										 'Agustus' => $this->Rekap_model->getstatuskelas($key['nim'],'Agustus'),
+										 'September' => $this->Rekap_model->getstatuskelas($key['nim'],'September'),
+										 'Oktober' => $this->Rekap_model->getstatuskelas($key['nim'],'Oktober'),
+										 'November' => $this->Rekap_model->getstatuskelas($key['nim'],'November'),
+										 'Desember' => $this->Rekap_model->getstatuskelas($key['nim'],'Desember'),
+										 'total' => $this->Rekap_model->totalSPPByNim($key['nim'])
+										 );
+		}
+		//print_r($data);
+		//die();
+		$rekap['spp'] = $data;
+		$rekap['kelas'] = $this->Kelas_model->getData();
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('filterrekap', $rekap);
+		$this->load->view('template/footer');
+
 	}
-	//print_r($data);
-	//die();
-	$rekap['spp'] =$data;
-	$this->load->view('printrekapsiswa', $rekap);
-}
 
 
 }

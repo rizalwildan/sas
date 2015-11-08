@@ -30,7 +30,7 @@
           <tr>
             <th>No</th>
             <th>Komponen</th>
-            <th>Subtotal</th>
+            <th>Iuran</th>
           </tr>
         </thead>
         <tbody>
@@ -65,24 +65,12 @@
   }
 ?>
 
-<div class="table-responsive" style="margin-left:370px">
+<div class="table-responsive" style="margin-left:630px">
   <table class="table">
     <tbody>
       <tr>
-        <th style="width:50%">Subtotal:</th>
+        <th style="margin-left:50px">Total:</th>
         <td><input class="form-control" id="jumlah" value="<?= $jumlah; ?>" type="text" disabled></td>
-      </tr>
-      <tr>
-        <th>Untuk Pembayaran Bulan:</th>
-        <td><input class="form-control" id="pembayaranbulan" placeholder="periode" type="text" onChange="pembayaranbulan();"></td>
-      </tr>
-      <tr>
-        <th>Dana Bos :</th>
-        <td><input class="form-control" id="bos" placeholder="Dana BOS" type="text" onChange="penjumlahan();"></td>
-      </tr>
-      <tr>
-        <th>Total:</th>
-        <td><input class="form-control" id="total" value="<?= $jumlah?>" type="text" disabled></td>
       </tr>
     </tbody>
   </table>
@@ -93,7 +81,7 @@
     <div class="col-xs-12">
 
       <!-- data untuk print -->
-      <form action="<?= base_url('Admin/submitPayment');?>" method="post">
+      <form action="<?= base_url('Transaksi/submitPayment');?>" method="post">
         <input type="hidden" name="namakelas" value="<?= $data['namakelas'] ?>">
         <input type="hidden" name="tgltransaksi" value="<?= date("j M Y") ?>">
         <input type="hidden" name="nama" value="<?= $data['namasiswa']; ?>">
@@ -104,9 +92,6 @@
         <input type="hidden" id="totalpembayaran" name="totalpembayaran" value="<?= $jumlah?>">
         <input type="hidden" name="nominalspp" value="<?= $jumlah; ?>">
 
-        <input type="hidden" id="danabos" name="danabos" value="0">
-        <input type="hidden" id="bulanpembayaran" name="bulanpembayaran" value="">
-
         <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Input Pembayaran</button>
       </form>
 
@@ -114,21 +99,3 @@
   </div>
 </section>
 </div>
-
-<script type="text/javascript">
-  function penjumlahan(){
-    var spp = $('#jumlah').val();
-    var bos = $('#bos').val();
-
-    document.getElementById('total').value = spp-bos;
-    document.getElementById('totalpembayaran').value = spp-bos;
-    document.getElementById('danabos').value = bos;
-  }
-</script>
-<script type="text/javascript">
-  function pembayaranbulan(){
-    var bulan = $('#pembayaranbulan').val();
-    // alert(bulan);
-    document.getElementById('bulanpembayaran').value = bulan;
-  }
-</script>
