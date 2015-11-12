@@ -28,11 +28,10 @@ class User extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$level = $this->input->post('level');
-		$pas_enkrip = md5($password);
 
 		$datauser = array('username' => $username,
-			'password' => $pas_enkrip,
-			'idlevel' => $level
+			'password' => $password,
+			'level' => $level
 			);
 
 		$this->db->insert('user', $datauser);
@@ -49,7 +48,7 @@ class User extends CI_Controller {
 		$dataUser = array (
 		'iduser' => $this->input->post('iduser'),
 		'username' => $this->input->post('username'),
-		'idlevel' => $this->input->post('level')
+		'level' => $this->input->post('level')
 		);
 		$this->Login_model->edit_user($dataUser);
 	}

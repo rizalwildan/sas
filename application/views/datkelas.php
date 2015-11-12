@@ -143,7 +143,6 @@ Content Wrapper. Contains page content -->
                       <tr>
                         <th>No</th>
                         <th>Kelas</th>
-                        <th>Jenjang Kelas</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -155,11 +154,10 @@ Content Wrapper. Contains page content -->
                       ?>
                       <tr>
                         <td><?php echo $no++; ?></td>
-                        <td><?php echo $row->namakelas; ?></td>
-                        <td><?php echo $row->jenis_kelas;?></td>
+                        <td><?php echo $row->nama_kelas; ?></td>
                         <td>
                         <!--<button class="btn btn-primary btn-xs"><i class='fa fa-edit'></i> Edit</button>-->
-                        <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteKelas" data-idkelas="<?php echo $row->idkelas;?>"><i class="fa fa-trash"></i>Hapus</button>
+                        <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteKelas" data-idkelas="<?php echo $row->id_kelas;?>"><i class="fa fa-trash"></i>Hapus</button>
                         </td>
                       </tr>
                       <?php

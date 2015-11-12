@@ -13,7 +13,23 @@
     <div class="col-xs-12">
 
       <div class="row">
-              <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
+              <form method="post" action="<?= base_url('Home/filter_rekap');?>">
+              <div class="col-sm-6">
+                <div id="example1_length" class="dataTables_length">
+                  <label>
+                    Tahun Pelajaran
+                    <select class="form-control input-sm" aria-controls="example1" name="kelas" >
+                        <option value="">--Pilih Tahun--</option>
+                          <?php foreach($tahun->result() as $isitahun){ ?>
+                        <option value="<?php echo $isitahun->tahun_pelajaran; ?>"><?php echo $isitahun->tahun_pelajaran; ?></option>
+                      <?php } ?>
+                    </select>
+                    </label>
+                  </div>
+                </div>
+        </div>
+
+      <div class="row">
               <div class="col-sm-6">
                 <div id="example1_length" class="dataTables_length">
                   <label>
@@ -41,7 +57,7 @@
         <div class="box-body">
           <div class="row">
           <div class="col-md-12" style="overflow:auto;">
-           <table id='rekapsiswa' class='table table-bordered table-striped'>
+           <table id='' class='table table-bordered table-striped'>
               <thead>
                 <tr>
                   <th>Nis</th>

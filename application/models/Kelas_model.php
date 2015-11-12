@@ -8,7 +8,7 @@
 
 	public function getData()
 	{
-		$this->db->order_by("namakelas", "ASC");
+		$this->db->order_by("nama_kelas", "ASC");
 		return $this->db->get("kelas");
 	}
 
@@ -25,13 +25,13 @@
 	function tambah($kelas, $base)
 	{
 
-		$sql = "INSERT INTO kelas (namakelas, jenis_kelas) VALUES ('$kelas', '$base')";
+		$sql = "INSERT INTO kelas (nama_kelas, jenis_kelas) VALUES ('$kelas', '$base')";
 		$this->db->query($sql);
 	}
 
 	public function tampil_siswa_kelas()
 	{
-		$sql = "SELECT * FROM siswa_belum_dapat_kelas";
+		$sql = "SELECT * FROM view_siswa_belum_dapat_kelas";
 		$data = $this->db->query($sql);
 
 		if($data->num_rows()>0)
@@ -40,9 +40,9 @@
 			foreach ($data->result() as $tampil)
 			{
 				$dataSiswa[$index] = array(
-					'idsiswa' => $tampil->idsiswa,
-					'nim' => $tampil->nim,
-					'namasiswa' => $tampil->namasiswa
+					'idsiswa' => $tampil->id_siswa,
+					'nim' => $tampil->nis,
+					'namasiswa' => $tampil->nama_siswa
 					);
 				$index++;
 			}
@@ -56,13 +56,13 @@
 
 	public function input_kelas_siswa($nis, $kelas, $tahun)
 	{
-		$sql= "INSERT INTO siswa_kelas (idsiswa,idkelas,idtahun) VALUES ($nis, $kelas, $tahun)";
+		$sql= "INSERT INTO siswa_kelas (id_siswa,id_kelas,id_tahun) VALUES ($nis, $kelas, $tahun)";
 		$this->db->query($sql);
 	}
 
 	public function delete_kelas($idkelas)
 		{
-			$this->db->where('idkelas', $idkelas);
+			$this->db->where('id_kelas', $idkelas);
 			$this->db->delete('kelas');
 		}
 }

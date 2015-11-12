@@ -135,43 +135,46 @@ Content Wrapper. Contains page content -->
                                  <th>Nama</th>
                                  <th>Kelas</th>
                                  <th>Alamat</th>
-                                 <th>Nama Orang Tua</th>
+                                 <th>Nama Wali</th>
+                                 <th>No Hp Wali</th>
                                  <th>Action</th>
                                </tr>
                              </thead>
                              <tbody>
                                <?php foreach($siswa as $isi) { ?>
                                <tr>
-                                 <td><?php echo $isi['nim']; ?></td>
+                                 <td><?php echo $isi['nis']; ?></td>
                                  <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#detailSiswa"
-                                   data-namakelas="<?php echo $isi['namakelas']; ?>"
-                                   data-nim="<?php echo $isi['nim']; ?>"
-                                   data-namasiswa="<?php echo $isi['namasiswa']; ?>"
+                                   data-namakelas="<?php echo $isi['nama_kelas']; ?>"
+                                   data-nim="<?php echo $isi['nis']; ?>"
+                                   data-namasiswa="<?php echo $isi['nama_siswa']; ?>"
                                    data-gender="<?php echo $isi['gender']; ?>"
                                    data-alamat="<?php echo $isi['alamat']; ?>"
-                                   data-tmlahir="<?php echo $isi['tmlahir']; ?>"
-                                   data-tgllahir="<?php echo $isi['tgllahir']; ?>"
-                                   data-namawali="<?php echo $isi['namawali']; ?>"><?php echo $isi['namasiswa']; ?></button></td>
+                                   data-tmlahir="<?php echo $isi['tempat_lahir']; ?>"
+                                   data-tgllahir="<?php echo $isi['tgl_lahir']; ?>"
+                                   data-namawali="<?php echo $isi['nama_wali']; ?>"
+                                   data-nohp = "<?php echo $isi['nohp']; ?>"><?php echo $isi['nama_siswa']; ?></button></td>
 
-                                 <td><?php echo $isi['namakelas']; ?></td>
+                                 <td><?php echo $isi['nama_kelas']; ?></td>
                                  <td><?php echo $isi['alamat']; ?></td>
-                                 <td><?php echo $isi['namawali']; ?></td>
+                                 <td><?php echo $isi['nama_wali']; ?></td>
+                                 <td><?php echo $isi['nohp']; ?></td>
                                  <td>
-
                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSiswa"
-                                 data-idsiswa="<?php echo $isi['idsiswa']; ?>"
-                                 data-nim="<?php echo $isi['nim']; ?>"
-                                 data-namasiswa="<?php echo $isi['namasiswa']; ?>"
-                                 data-namawali="<?php echo $isi['namawali']; ?>"
+                                 data-idsiswa="<?php echo $isi['id_siswa']; ?>"
+                                 data-nim="<?php echo $isi['nis']; ?>"
+                                 data-namasiswa="<?php echo $isi['nama_siswa']; ?>"
+                                 data-namawali="<?php echo $isi['nama_wali']; ?>"
+                                 data-nohp = "<?php echo $isi['nohp']; ?>"
                                  data-alamat="<?php echo $isi['alamat']; ?>"
-                                 data-tmlahir="<?php echo $isi['tmlahir']; ?>"
-                                 data-tgllahir="<?php echo $isi['tgllahir']; ?>"
-                                 data-idtahun="<?php foreach($ceksmt as $row) { echo $row['idtahun']; }?>"><i class="fa fa-edit"></i> Edit</button>
-                                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiswa" data-idsiswa="<?php echo $isi['idsiswa'];?>"><i class="fa fa-trash"></i> Hapus</button>
+                                 data-tmlahir="<?php echo $isi['tempat_lahir']; ?>"
+                                 data-tgllahir="<?php echo $isi['tgl_lahir']; ?>"
+                                 data-idtahun="<?php foreach($ceksmt as $row) { echo $row['id_tahun']; }?>"><i class="fa fa-edit"></i> Edit</button>
+                                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiswa" data-idsiswa="<?php echo $isi['id_siswa'];?>"><i class="fa fa-trash"></i> Hapus</button>
                                  </td>
                                </tr>
-                               <?php }?>
 
+                               <?php }?>
                              </tbody>
                          </table>
                       <?php } ?>
@@ -218,7 +221,7 @@ Content Wrapper. Contains page content -->
                    <select class="form-control input-sm" aria-controls="example1" name="kelas">
                        <option value="">Pilih Kelas</option>
                        <?php foreach ($kelas->result() as $row) { ?>
-                        <<option value="<?= $row->idkelas; ?>"><?= $row->namakelas ?></option>
+                        <<option value="<?= $row->id_kelas; ?>"><?= $row->nama_kelas ?></option>
                        <?php } ?>
                    </select>
                    </div>
@@ -263,6 +266,13 @@ Content Wrapper. Contains page content -->
                       <input class="form-control" id="inputEmail3" placeholder="Nama Wali" name="wali">
                     </div>
               </div>
+
+              <div class="form-group">
+                    <label class="col-sm-3 control-label">No Hp Wali</label>
+                    <div class="col-sm-4">
+                      <input class="form-control" id="inputEmail3" placeholder="No Hp Wali" name="nohp">
+                    </div>
+              </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -294,7 +304,7 @@ Content Wrapper. Contains page content -->
                     <select class="form-control input-sm" aria-controls="example1" name="kelas" >
                         <option value="">--Pilih Kelas--</option>
                           <?php foreach($kelas->result() as $isikelas){ ?>
-                        <option value="<?php echo $isikelas->idkelas; ?>"><?php echo $isikelas->namakelas; ?></option>
+                        <option value="<?php echo $isikelas->id_kelas; ?>"><?php echo $isikelas->nama_kelas; ?></option>
                       <?php } ?>
                     </select>
                     </div>
@@ -351,6 +361,13 @@ Content Wrapper. Contains page content -->
                     <label class="col-sm-3 control-label">Nama Wali</label>
                     <div class="col-sm-4">
                       <input class="form-control" id="inputEmail3" placeholder="Nama Wali" name="wali" value="wali 9">
+                    </div>
+              </div>
+
+              <div class="form-group">
+                    <label class="col-sm-3 control-label">No Hp Wali</label>
+                    <div class="col-sm-4">
+                      <input class="form-control" id="inputEmail3" placeholder="No Hp Wali" name="nohp">
                     </div>
               </div>
       </div>
@@ -431,6 +448,13 @@ Content Wrapper. Contains page content -->
                     <label class="col-sm-3 control-label">Nama Wali :</label>
                     <div class="col-sm-4">
                      <input class="form-control" type="text" disabled="" name="wali">
+                    </div>
+              </div>
+
+              <div class="form-group">
+                    <label class="col-sm-3 control-label">No Hp Wali</label>
+                    <div class="col-sm-4">
+                      <input class="form-control" disabled="" id="inputEmail3" placeholder="No Hp Wali" name="nohp">
                     </div>
               </div>
       </div>

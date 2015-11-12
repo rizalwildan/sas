@@ -87,7 +87,7 @@
           </div>
         </div>
 
-        <!-- Modal Komponen -->
+        <!-- Modal Tambah Komponen -->
 <div class="modal fade" id="tambahKomponen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -137,7 +137,7 @@
       <div class="modal-body">
 
         <form class="form-horizontal" method="POST" action="<?php echo base_url() ?>Transaksi/delete_komponen">
-          <input class="form-control" id="inputEmail3" type="disable" name="idkomponen">
+          <input class="form-control" id="inputEmail3" type="hidden" name="idkomponen">
           <h5>Anda Yakin Ingin Menghapus Data Ini ? </h5>
 
       <div class="modal-footer">

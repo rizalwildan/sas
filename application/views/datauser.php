@@ -7,7 +7,7 @@ Content Wrapper. Contains page content -->
             Data User
           </h1>
         </section>
-    <!--
+
     <?php if($this->session->flashdata('insert'))
     { ?>
           <script type="text/javascript">
@@ -26,7 +26,7 @@ Content Wrapper. Contains page content -->
               stackup_spacing: 10
             });
           </script>
-    <?php } ?> -->
+    <?php } ?>
 
         <!-- Main content -->
         <section class="content">
@@ -104,7 +104,16 @@ Content Wrapper. Contains page content -->
                       <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $row['username']; ?></td>
-                        <td><?php echo $row['namalevel']; ?></td>
+                        <td>
+                        <?php
+                        if ($row['level'] == 1) {
+                          echo "Root";
+                        }
+                        else {
+                          echo "Admin";
+                        }
+                        ?>
+                        </td>
                         <td>
                         <?php if($row['username'] == 'root') { ?>
                         <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#editUser'

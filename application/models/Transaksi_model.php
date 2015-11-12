@@ -11,7 +11,7 @@
 
 		public function getKomponen()
 		{
-			$sql = "SELECT * from komponen";
+			$sql = "SELECT * from komponen_pembayaran";
 			$data = $this->db->query($sql);
 			$index=1;
 			if ($data->num_rows()<1)
@@ -22,9 +22,9 @@
 			{
 				foreach ($data->result() as $dataKomponen)
 				{
-					$kirimData[$index] = array('idkomponen' => $dataKomponen->idkomponen,
-						'nama_komp'=>$dataKomponen->nama_komp,
-						'deskripsi'=>$dataKomponen->deskripsi,
+					$kirimData[$index] = array('idkomponen' => $dataKomponen->id_komponen,
+						'nama_komp'=>$dataKomponen->nama_komponen,
+						'deskripsi'=>$dataKomponen->deskripsi_komponen,
 						'iuran'=>$dataKomponen->iuran
 						);
 					$index++;
@@ -35,8 +35,8 @@
 
 		public function update_komponen($updateKomponen)
 		{
-			$this->db->where('idkomponen',$updateKomponen['idkomponen']);
-			$this->db->update('komponen',$updateKomponen);
+			$this->db->where('id_komponen',$updateKomponen['id_komponen']);
+			$this->db->update('komponen_pembayaran',$updateKomponen);
 		}
 
 		public function insert_komponen_setting($jeniskelas,$idkomponen,$idtahun,$periode)
@@ -47,29 +47,15 @@
 
 		public function delete_komponen($idkomponen)
 		{
-			$this->db->WHERE('idkomponen', $idkomponen);
-			$this->db->delete('komponen', $idkomponen);
+			$this->db->WHERE('id_komponen', $idkomponen);
+			$this->db->delete('komponen_pembayaran');
 		}
 
 
 		// admin transaksi
 
-		public function getTahunAjaranSekarang(){
-			$data = $this->db->query("SELECT tahun_pelajaran FROM tahun WHERE idtahun=(SELECT max(idtahun) FROM tahun)");
-
-			if($data->num_rows() < 1){
-				$kirimData = "kosong";
-			}else{
-				foreach ($data->result() as $key) {
-				$kirimData = $key->tahun_pelajaran;
-				}
-			}
-
-			return $kirimData;
-		}
-
 		public function getAllSiswa(){
-			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas ORDER BY namakelas");
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_dapat_kelas ORDER BY nama_kelas");
 
 			if($data->num_rows() < 1 ){
 				$kirimData = "kosong";
@@ -95,7 +81,7 @@
 
 		public function getAllKelas()
 		{
-			$data = $this->db->query("SELECT * FROM kelas ORDER BY idkelas");
+			$data = $this->db->query("SELECT * FROM kelas ORDER BY id_kelas");
 
 			if($data->num_rows() < 1 ){
 				$kirimData = "kosong";
@@ -106,9 +92,9 @@
 			return $kirimData;
 		}
 
-		public function getSiswaByNim($nim)
+		public function getSiswaById($idsiswa)
 		{
-			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE nim='$nim'");
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_dapat_kelas WHERE id_siswa='$idsiswa'");
 
 			if($data->num_rows() < 1 ){
 				$kirimData = "kosong";
@@ -119,10 +105,10 @@
 			return $kirimData;
 		}
 
-		public function getKomponenByBulan($bulan,$tahun,$kelas)
+		public function getKomponenByBulan($bulan,$idtahun,$jeniskelas)
 		{
 			// $data = $ths->db->query("SELECT * FROM view_komponenperkelas WHERE jenis_kelas='$kelas' AND tahun_pelajaran='$tahun' AND periode='$bulan'");
-			$data = $this->db->query("SELECT * FROM view_komponenperkelas WHERE jenis_kelas='$kelas' AND tahun_pelajaran='$tahun' AND periode='$bulan'");
+			$data = $this->db->query("SELECT * FROM view_komponenperkelas WHERE jenis_kelas='$jeniskelas' AND id_tahun='$idtahun' AND periode='$bulan'");
 			if($data->num_rows() < 1 ){
 				$kirimData = "kosong";
 			}else{

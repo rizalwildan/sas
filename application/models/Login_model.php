@@ -8,12 +8,12 @@
 
 	public function cek_user($username, $password)
 	{
-		$sql = 'SELECT * FROM user where username="'.$username.'" AND password="'.$password.'";';
+		$sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
 		$hasil = $this->db->query($sql);
 		if ($hasil->num_rows() == 1) {
 			foreach($hasil->result() as $ses)
 			{
-				$data = array('username' => $ses->username, 'login' => TRUE, 'level' => $ses->idlevel );
+				$data = array('iduser' => $ses->iduser, 'username' => $ses->username, 'login' => TRUE, 'level' => $ses->level);
 				$this->session->set_userdata('akun',$data);
 			}
 			return TRUE;
@@ -25,7 +25,7 @@
 
 	public function tampil_user()
 	{
-		$sql = "SELECT*FROM tampil_user";
+		$sql = "SELECT*FROM user";
 		$hasil = $this->db->query($sql);
 		$index = 1;
 		if($hasil->num_rows()<1)
@@ -39,7 +39,7 @@
 				$kirimData[$index] = array('iduser' => $dataUser->iduser,
 					'username' => $dataUser->username,
 					'password' => $dataUser->password,
-					'namalevel' => $dataUser->namalevel
+					'level' => $dataUser->level
 					);
 				$index++;
 			}

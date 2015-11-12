@@ -50,9 +50,9 @@
           <div class="col-sm-4 invoice-col">
           <address>
             <?php foreach ($siswa as $data) { ?>
-              <strong><?= $data['namasiswa']; ?></strong><br>
-              <b>NIS : <?= $data['nim']; ?> </b><br>
-              <b>Kelas : <?= $data['namakelas']; ?> </b><br>
+              <strong><?= $data['nama_siswa']; ?></strong><br>
+              <b>NIS : <?= $data['nis']; ?> </b><br>
+              <b>Kelas : <?= $data['nama_kelas']; ?> </b><br>
             <?php }?>
           </address>
           </div><!-- /.col -->
@@ -61,7 +61,7 @@
         <!-- Table row -->
         <div class="row">
           <div class="col-xs-12 table-responsive">
-            <table class="table">
+            <table border="0" style="width:100%">
               <thead>
                 <tr>
                   <th>No</th>
@@ -81,7 +81,7 @@
                   foreach ($komponen as $key) { ?>
                   <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $key['nama_komp']; ?></td>
+                    <td><?= $key['nama_komponen']; ?></td>
                     <td><?= $key['iuran']; ?></td>
                   </tr>
                 <?php } }?>
@@ -101,12 +101,18 @@
         }
       ?>
 
-      <div class="table-responsive" style="margin-left:320px">
-        <table class="table">
+      <div class="" style="margin-left:260px">
+        <table class="">
           <tbody>
             <tr>
               <th style="width:10%">Subtotal:</th>
               <td><b><?= $jumlah; ?></b></td>
+            </tr>
+            <tr>
+              <td>
+                Petugas</br></br></br>
+                Rizal
+              </td>
             </tr>
           </tbody>
         </table>

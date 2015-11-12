@@ -49,6 +49,8 @@
               $(e.currentTarget).find('input[name="tgl"]').val(tgllahir);
               var idtahun = $(e.relatedTarget).data('idtahun');
               $(e.currentTarget).find('input[name="idtahun"]').val(idtahun);
+              var nohp = $(e.relatedTarget).data('nohp');
+              $(e.currentTarget).find('input[name="nohp"]').val(nohp);
               });
     </SCRIPT>
 
@@ -71,6 +73,8 @@
               $(e.currentTarget).find('input[name="tgl"]').val(tgllahir);
               var gender = $(e.relatedTarget).data('gender');
               $(e.currentTarget).find('input[name="jenis"]').val(gender);
+              var nohp = $(e.relatedTarget).data('nohp');
+              $(e.currentTarget).find('input[name="nohp"]').val(nohp);
               });
     </SCRIPT>
 

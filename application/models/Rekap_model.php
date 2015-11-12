@@ -106,7 +106,7 @@
 
 		public function daftarSiswa()
 		{
-			$data = $this->db->query("SELECT * FROM spp GROUP BY nim ");
+			$data = $this->db->query("SELECT * FROM view_spp GROUP BY id_siswa ");
 
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";
@@ -117,15 +117,15 @@
 			return $kirimData;
 		}
 
-		public function getStatus($nim, $bulan)
+		public function getStatus($id_siswa, $bulan)
 		{
-			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
+			$data = $this->db->query("SELECT * FROM view_spp WHERE id_siswa='$id_siswa' AND periode='$bulan'");
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;
 			}else{
 				foreach ($data->result() as $key) {
-					$kirimData = $key->nominalspp;
+					$kirimData = $key->nominal_spp;
 				}
 			}
 
@@ -147,9 +147,9 @@
 			return $kirimData;
 		}
 
-		public function totalSPPByNim($nim)
+		public function totalSPPByNim($id_siswa)
 		{
-			$data = $this->db->query("SELECT sum(nominalspp) as jumlah FROM spp WHERE nim='$nim'");
+			$data = $this->db->query("SELECT sum(nominal_spp) as jumlah FROM view_spp WHERE id_siswa='$id_siswa'");
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;

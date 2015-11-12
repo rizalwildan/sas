@@ -37,13 +37,14 @@ class Import extends CI_Controller
           if (isset($row['nim']))
           {
             $insert_data = array(
-              'nim' => $row['nim'],
-              'namasiswa' => $row ['nama_siswa'],
+              'nis' => $row['nim'],
+              'nama_siswa' => $row ['nama_siswa'],
               'gender' => $row['gender'],
               'alamat' => $row['alamat'],
-              'tmlahir' => $row['tempat_lahir'],
-              'tgllahir' => $row['tgl_lahir'],
-              'namawali' => $row['nama_wali'],
+              'tempat_lahir' => $row['tempat_lahir'],
+              'tgl_lahir' => $row['tgl_lahir'],
+              'nama_wali' => $row['nama_wali'],
+              'no_hp_wali' => $row['no_hp_wali']
             );
             $this->Siswa_model->insert_csv($insert_data);
           }

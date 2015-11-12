@@ -143,8 +143,6 @@ Content Wrapper. Contains page content -->
                       <tr>
                         <th>No</th>
                         <th>Tahun Pelajaran</th>
-                        <th>Awal Tahun Pelajaran</th>
-                        <th>Akhir Tahun Pelajaran</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -152,17 +150,14 @@ Content Wrapper. Contains page content -->
                       <?php foreach ($smt as $row) { ?>
                       <tr>
                         <td><?php echo $no=1; ?></td>
-                          <td><?php echo $row['tahun_pelajaran']; ?></td>
-                        <td><?php echo $row['awal_tahun']; ?></td>
-                        <td><?php echo $row['akhir_tahun']; ?></td>
+                          <td><?php echo $row['nama_tahun_pelajaran']; ?></td>
                         <td>
                         <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editSmt"
-                        data-idtahun ="<?php echo $row['idtahun']; ?>"
-                        data-tahun_pelajaran ="<?php echo $row['tahun_pelajaran']; ?>"
-                        data-awal_tahun="<?php echo $row['awal_tahun']; ?>"
-                        data-akhir_tahun="<?php echo $row['akhir_tahun']; ?>"><i class='fa fa-edit'></i> Edit</button>
+                        data-idtahun ="<?php echo $row['id_tahun']; ?>"
+                        data-tahun_pelajaran ="<?php echo $row['nama_tahun_pelajaran']; ?>">
+                        <i class='fa fa-edit'></i> Edit</button>
                         <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSmt"
-                        data-idtahun ="<?php echo $row['idtahun']; ?>"><i class='fa fa-trash'></i> Hapus</button>
+                        data-idtahun ="<?php echo $row['id_tahun']; ?>"><i class='fa fa-trash'></i> Hapus</button>
                         </td>
                       </tr>
                       <?php }?>
@@ -192,20 +187,6 @@ Content Wrapper. Contains page content -->
               <input class="form-control" type="text" placeholder="Tahun Pelajaran" name="tahunpel">
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Awal Tahun Pelajaran</label>
-          <div class="input-group date col-sm-4" data-date-format="yyyy/mm/dd">
-            <input class="form-control" id="startDate" placeholder="Awal Smester" name="awaltahun" style="margin-left:14px">
-            <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-4 control-label">Akhir Tahun Pelajaran</label>
-          <div class="input-group date col-sm-4" data-date-format="yyyy/mm/dd">
-            <input class="form-control" id="startDate" placeholder="Akhir Smester" name="akhirtahun" style="margin-left:14px">
-            <span class="input-group-addon" ><i class="fa fa-calendar" style="margin-left:13px"></i></span>
-          </div>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

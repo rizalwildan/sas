@@ -33,15 +33,19 @@ class Siswa extends CI_Controller {
 		$tempat = $this->input->post('tempat');
 		$tgl = $this->input->post('tgl');
 		$wali = $this->input->post('wali');
+		$nohp = $this->input->post('nohp');
 
-		$datasiswa = array('nim' => $nim,
-			'namasiswa' => $nama,
+		$datasiswa = array('nis' => $nim,
+			'nama_siswa' => $nama,
 			'gender' => $jenis,
 			'alamat' => $alamat,
-			'tmlahir' => $tempat,
-			'tgllahir' => $tgl,
-			'namawali' => $wali,
+			'tempat_lahir' => $tempat,
+			'tgl_lahir' => $tgl,
+			'nama_wali' => $wali,
+			'no_hp_wali' => $nohp
 			);
+			print_r($datasiswa);
+			die();
 
 		//Pengaturan Form Validation
 		$config = array(
@@ -115,11 +119,12 @@ class Siswa extends CI_Controller {
 			}
 		}
 		else {
+			//insert siswa ke table siswa
 			$this->db->insert('siswa', $datasiswa);
 
 			$this->load->model('Siswa_model');
 
-			//insert satu siswa ke kelas
+			//insert satu siswa ke table siswa_kelas
 			$this->Siswa_model->insert_siswa($kelas);
 
 			$this->session->set_flashdata('insert', 'Data Berhasil');
@@ -149,20 +154,22 @@ class Siswa extends CI_Controller {
 		$tgl = $this->input->post('tgl');
 		$tahun = $this->input->post('idtahun');
 		$wali = $this->input->post('wali');
+		$nohp = $this->input->post('nohp');
 
-		$datasiswa = array('idsiswa' => $idsiswa,
-			'nim' => $nim,
-			'namasiswa' => $nama,
+		$datasiswa = array('id_siswa' => $idsiswa,
+			'nis' => $nim,
+			'nama_siswa' => $nama,
 			'gender' => $jenis,
 			'alamat' => $alamat,
-			'tmlahir' => $tempat,
-			'tgllahir' => $tgl,
-			'namawali' => $wali,
+			'tempat_lahir' => $tempat,
+			'tgl_lahir' => $tgl,
+			'nama_wali' => $wali,
+			'no_hp_wali' => $nohp
 			);
 
 		$dataSiswaKelas = array(
-			'idkelas' => $kelas,
-			'idtahun' => $tahun
+			'id_kelas' => $kelas,
+			'id_tahun' => $tahun
 			);
 
 			//Pengaturan Form Validation

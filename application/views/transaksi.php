@@ -50,29 +50,18 @@
                       <div id="example1_length" class="dataTables_length">
                         <label>
                           Tahun Ajaran
-                          <p> <?= $tahunajaran; ?></p>
+                          <p>
+                          <?php
+                          foreach($tahunajaran as $tahun) {
+                            echo $tahun['nama_tahun_pelajaran'];
+                            }
+                          ?>
+                          </p>
 
                           </label>
                         </div>
                       </div>
               </div>
-
-
-              <!-- <div class="row">
-                    <div class="col-sm-6">
-                      <div id="example1_length" class="dataTables_length">
-                        <label>
-                          Kelas
-
-                          <?php
-                          $js = 'id="kelas" class="form-control input-sm" onChange="filterkelas(this.value)"';
-                          echo form_dropdown('nama_lap', $kelas['kelas'],'',$js);
-                          ?>
-
-                          </label>
-                        </div>
-                      </div>
-              </div> -->
 
             <div class="row">
                     <div class="col-sm-6">
@@ -96,10 +85,10 @@
                           </select>
 
                           <?php
-                            if(isset($_GET['bln'])){
-                              $bulan = $_GET['bln'];
+                            if(isset($_GET['periode'])){
+                              $bulan = $_GET['periode'];
                             }else{
-                              $bulan = "Januari";
+                              $bulan = "";
                             }
                           ?>
                           </label>
@@ -123,9 +112,9 @@
                        <tbody>
                         <?php foreach ($siswa as $data) { ?>
                            <tr>
-                             <td><?= $data['nim']; ?></td>
-                             <td><?= $data['namasiswa']; ?></td>
-                             <td><?= $data['namakelas']; ?></td>
+                             <td><?= $data['nis']; ?></td>
+                             <td><?= $data['nama_siswa']; ?></td>
+                             <td><?= $data['nama_kelas']; ?></td>
                              <!-- <td><a href="<?= base_url('Admin/bayar');?>?nim=<?= $data['nim']; ?>&jenis=<?= $data['jenis_kelas']; ?>&thn=<?= $tahunajaran; ?>" class="btn btn-xs btn-success" ><i class="fa fa-dashboard"></i> Bayar</a></td> -->
                              <td>
                               <?php
@@ -136,10 +125,10 @@
                                     <form action="<?= base_url('Home/bayar');?>" method="post">
                                <?php }?>
 
-                                <input type="hidden" class="nim" name="nim" value="<?= $data['nim']; ?>">
-                                <input type="hidden" id="jenis" name="jenis" value="<?= $data['jenis_kelas']; ?>">
-                                <input type="hidden" id="tahun" name="tahun" value="<?= $tahunajaran; ?>">
-                                <input type="hidden" id="bulan" name="bulan" value="<?= $bulan; ?>">
+                                <input type="" id="idsiswa" name="idsiswa" value="<?= $data['id_siswa']; ?>">
+                                <input type="" id="jenis" name="jenis" value="<?= $data['jenis_kelas']; ?>">
+                                <input type="" id="idtahun" name="idtahun" value="<?php foreach($tahunajaran as $tahun) { echo $tahun['id_tahun'];} ?>">
+                                <input type="" id="bulan" name="bulan" value="<?= $bulan?>">
                                 <input type="submit" class="btn btn-xs btn-success" value="Bayar">
                               </form>
 
@@ -165,10 +154,10 @@
             $akun = $this->session->userdata('akun');
             if($akun['level'] == 1)
             {?>
-              window.location.href = "http://127.0.0.1:8080/sas/admin/transaksi?bln=" + bulan;
+              window.location.href = "http://localhost/sas2/admin/transaksi?periode=" + bulan;
        <?php }
            else{ ?>
-            window.location.href = "http://127.0.0.1:8080/sas/home/transaksi?bln=" + bulan;
+            window.location.href = "http://localhost/sas2/home/transaksi?periode=" + bulan;
           <?php } ?>
 
         }

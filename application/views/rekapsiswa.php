@@ -11,48 +11,36 @@
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-          <!-- <div class="row">
-                  <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
-                  <div class="col-sm-6">
-                    <div id="example1_length" class="dataTables_length">
-                      <label>
-                        Kelas
-                        <select class="form-control input-sm" aria-controls="example1" name="kelas" >
-                            <option value="">--Pilih Kelas--</option>
-                              <?php foreach($kelas->result() as $isikelas){ ?>
-                            <option value="<?php echo $isikelas->namakelas; ?>"><?php echo $isikelas->namakelas; ?></option>
-                          <?php } ?>
-                        </select>
-                        </label>
-                      </div>
-                    </div>
-            </div> -->
 
             <div class="row">
-                    <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
-                    <div class="col-sm-6">
-                      <div id="example1_length" class="dataTables_length">
-                        <label>
-                          Tahun Pelajaran
-                          <select class="form-control input-sm" aria-controls="example1" name="kelas" >
-                              <option value="">--Pilih Kelas--</option>
-                                <?php foreach($kelas->result() as $isikelas){ ?>
-                              <option value="<?php echo $isikelas->namakelas; ?>"><?php echo $isikelas->namakelas; ?></option>
-                            <?php } ?>
-                          </select>
-                          </label>
-                        </div>
-                        <button class="btn btn-success pull-left" type="submit" id="filter" name="filter"> Go</button>
-                      </div>
-              </div>
+                   <div class="col-sm-12">
+                     <div id="example1_length" class="dataTables_length">
+                       <label>
+                         Tahun Ajaran
+                         <select class="form-control input-sm" aria-controls="example1" name="kelas">
+                           <option value="">--Semua Kelas--</option>
+                         </select>
+                         </label>
+                       </div>
+                     </div>
+             </div>
 
+            <div class="row">
+                   <div class="col-sm-12">
+                     <div id="example1_length" class="dataTables_length">
+                       <label>
+                         Kelas
+                         <select class="form-control input-sm" aria-controls="example1" name="kelas">
+                           <option value="">--Semua Kelas--</option>
+                           <?php foreach($kelas->result() as $datakelas) { ?>
+                           <option value="<?php echo $datakelas->id_kelas; ?>"><?php echo $datakelas->nama_kelas; ?></option>
+                           <?php }?>
+                         </select>
+                         </label>
+                       </div>
+                     </div>
+             </div>
 
-          <div class="row">
-            <div class="col-xs-12">
-            <button class="btn btn-primary pull-right" type="submit" id="print" name="print"><i class="fa fa-print"></i> Print</button>
-            </div>
-          </div>
-          </form>
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                 <div class="row">
@@ -80,130 +68,46 @@
                     </thead>
                     <tbody>
                       <?php
-                      foreach ($spp as $key) { ?>
+                      foreach ($spp as $key){ ?>
                       <tr>
-                        <td><?= $key['nim']?></td>
-                        <td><?= $key['nama']?></td>
-                        <td><?= $key['namakelas'] ?></td>
+                        <td><?= $key['nis']?></td>
+                        <td><?= $key['nama_siswa']?></td>
+                        <td><?= $key['nama_kelas'] ?></td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapJanuari"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Januari"
-                          data-januari="<?=$key['januari'] ?>">
                           <?= $key['januari']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapFebruari"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Februari"
-                          data-februari="<?=$key['februari'] ?>">
                           <?= $key['februari']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapMaret"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Maret"
-                          data-maret="<?=$key['maret'] ?>">
                           <?= $key['maret']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapApril"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="April"
-                          data-april="<?=$key['april'] ?>">
                           <?= $key['april']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapMei"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Mei"
-                          data-mei="<?=$key['mei'] ?>">
                           <?= $key['mei']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapJuni"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Juni"
-                          data-juni="<?=$key['juni'] ?>">
                           <?= $key['juni']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapJuli"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Juli"
-                          data-juli="<?=$key['juli'] ?>">
                           <?= $key['juli']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapAgustus"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Agustus"
-                          data-agustus="<?=$key['agustus'] ?>">
                           <?= $key['agustus']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapSeptember"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="September"
-                          data-september="<?=$key['september'] ?>">
                           <?= $key['september']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapOktober"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Oktober"
-                          data-oktober="<?=$key['oktober'] ?>">
                           <?= $key['oktober']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapNovember"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="November"
-                          data-november="<?=$key['november'] ?>">
                           <?= $key['november']?>
-                          </button>
                         </td>
                         <td>
-                          <button class="btn btn-link" data-toggle="modal" data-target="#editRekapDesember"
-                          data-nim="<?=$key['nim'] ?>"
-                          data-namasiswa="<?=$key['nama'] ?>"
-                          data-namakelas="<?=$key['namakelas'] ?>"
-                          data-periode="Desember"
-                          data-desember="<?=$key['desember'] ?>">
                           <?= $key['desember']?>
-                          </button>
                         </td>
                         <td><?= $key['total']?></td>
                       </tr>

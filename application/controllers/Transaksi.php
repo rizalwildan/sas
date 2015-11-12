@@ -41,8 +41,8 @@ class Transaksi extends CI_Controller {
 		$deskripsi = $this->input->post('deskripsi');
 		$iuran = $this->input->post('iuran');
 
-		$dataKomponen = array('nama_komp' =>$nama_komponen ,
-			'deskripsi'=>$deskripsi,
+		$dataKomponen = array('nama_komponen' =>$nama_komponen ,
+			'deskripsi_komponen'=>$deskripsi,
 			'iuran'=>$iuran
 		);
 
@@ -76,7 +76,7 @@ class Transaksi extends CI_Controller {
 					 			redirect(base_url('index.php/admin/KomponenDetail'));
 					 		}
 							else {
-								$this->db->insert('komponen', $dataKomponen);
+								$this->db->insert('komponen_pembayaran', $dataKomponen);
 								$this->session->set_flashdata('insert', 'Berhasil');
 								redirect(base_url('index.php/admin/KomponenDetail'));
 							}
@@ -89,9 +89,9 @@ class Transaksi extends CI_Controller {
 		$deskripsi=$this->input->post('deskripsi');
 		$iuran=$this->input->post('iuran');
 
-		$updateKomponen = array('idkomponen'=>$idkomponen,
-			'nama_komp'=> $nama_komponen,
-			'deskripsi'=> $deskripsi,
+		$updateKomponen = array('id_komponen'=>$idkomponen,
+			'nama_komponen'=> $nama_komponen,
+			'deskripsi_komponen'=> $deskripsi,
 			'iuran'=>$iuran
 			);
 		$config = array(
@@ -221,39 +221,33 @@ class Transaksi extends CI_Controller {
 	public function submitPayment()
 	{
 
-		$nim = $this->input->post('nim');
-		$kelas = $this->input->post('kelas');
-		$tahun = $this->input->post('tahun');
+		$idsiswa = $this->input->post('idsiswa');
+		$idkelas = $this->input->post('idkelas');
+		$jeniskelas = $this->input->post('jeniskelas');
+		$idtahun = $this->input->post('idtahun');
 		$bulan = $this->input->post('bulan');
-		$nama = $this->input->post('nama');
+		$iduser = $this->input->post('iduser');
 		$tgltransaksi = $this->input->post('tgltransaksi');
 		$nominalspp = $this->input->post('nominalspp');
-		$namakelas = $this->input->post('namakelas');
-		//Input Ke Print_preview
-		$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
-		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
-		$data['totalpembayaran'] = $this->input->post('totalpembayaran');
-		$data['bulanpembayaran'] = $this->input->post('bulanpembayaran');
+
+		// Input Ke Print_preview
+		$data['siswa'] = $this->Transaksi_model->getSiswaById($idsiswa);
+		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$idtahun,$jeniskelas);
 
 		// tulis ke database
-		$datapembayaran = array('tanggal' => $tgltransaksi,
+		$datapembayaran = array('tgl_transaksi' => $tgltransaksi,
 								'periode' => $bulan,
-								'tahun' => $tahun,
-								'nim' => $nim,
-								'namasiswa' => $nama,
-								'jeniskelas' => $kelas,
-								'namakelas' => $namakelas,
-								// 'nominalspp' => $nominalspp,
-								// coba rekap per siswa diganti
-								'nominalspp' => $data['totalpembayaran'],
-								'sppstatus' => "lunas"
-
+								'id_tahun' => $idtahun,
+								'id_siswa' => $idsiswa,
+								'id_kelas' => $idkelas,
+								'iduser' => $iduser,
+								'nominal_spp' => $nominalspp
 		 );
 
 		//Cek Pembayaran
-		$this->db->WHERE('tahun', $datapembayaran['tahun']);
+		$this->db->WHERE('id_tahun', $datapembayaran['id_tahun']);
 		$this->db->WHERE('periode', $datapembayaran['periode']);
-		$this->db->WHERE('nim', $datapembayaran['nim']);
+		$this->db->WHERE('id_siswa', $datapembayaran['id_siswa']);
 		$query = $this->db->get('spp');
 
 		$count_row = $query->num_rows();
@@ -269,15 +263,6 @@ class Transaksi extends CI_Controller {
 			// Print and print preview
 			$this->load->view('printpreview2',$data);
 		}
-
-
-
-
-		/**
-		$HTML = $this->load->view('printpreview2',$data,true);
-		$filename = $nim.'_NOTA_'.$bulan.'_'.$tahun;
-		$this->pdf->pdf_create($HTML,$filename,'A4','potrait');
-		**/
 	}
 
 }

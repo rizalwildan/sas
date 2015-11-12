@@ -54,7 +54,7 @@ Content Wrapper. Contains page content -->
              <div class="row">
                     <div class="col-sm-12">
                       <?php foreach($cek as $smt) { ?>
-                      <input type="hidden" name="tahun" value="<?php echo $smt['idtahun']; ?>">
+                      <input type="hidden" name="tahun" value="<?php echo $smt['id_tahun']; ?>">
                       <?php }?>
                       <div id="example1_length" class="dataTables_length">
                         <label>
@@ -62,7 +62,7 @@ Content Wrapper. Contains page content -->
                           <select class="form-control input-sm" aria-controls="example1" name="kelas">
                             <option value="">--Semua Kelas--</option>
                             <?php foreach($kelas->result() as $datakelas) { ?>
-                            <option value="<?php echo $datakelas->idkelas; ?>"><?php echo $datakelas->namakelas; ?></option>
+                            <option value="<?php echo $datakelas->id_kelas; ?>"><?php echo $datakelas->nama_kelas; ?></option>
                             <?php }?>
                           </select>
                           </label>
