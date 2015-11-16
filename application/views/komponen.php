@@ -6,7 +6,7 @@
             Detail Komponen
           </h1>
         </section>
-        <!--
+
         <?php if($this->session->flashdata('insert'))
         { ?>
               <script type="text/javascript">
@@ -65,7 +65,7 @@
                   stackup_spacing: 10
                 });
               </script>
-        <?php } ?> -->
+        <?php } ?>
 
         <!-- Main content -->
         <section class="content">
@@ -73,13 +73,13 @@
           <div class="row">
             <div class="col-xs-12">
 
-              <!--Alert Form Validation
+              <!--Alert Form Validation-->
               <?php if(isset($error)){ ?>
-              <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div
+              <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <?php echo $error; ?>
               </div>
-              <?php } ?>-->
+              <?php } ?>
 
         <div class="row">
           <div class="col-sm-4">

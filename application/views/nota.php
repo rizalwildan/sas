@@ -93,7 +93,7 @@
     <div class="col-xs-12">
 
       <!-- data untuk print -->
-      <form action="<?= base_url('Admin/submitPayment');?>" method="post">
+      <form action="<?= base_url('Transaksi/submitPayment');?>" method="post">
         <input type="hidden" name="namakelas" value="<?= $data['namakelas'] ?>">
         <input type="hidden" name="tgltransaksi" value="<?= date("j M Y") ?>">
         <input type="hidden" name="nama" value="<?= $data['namasiswa']; ?>">

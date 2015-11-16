@@ -7,7 +7,7 @@ Content Wrapper. Contains page content -->
           </h1>
         </section>
 
-        <!--Notification
+        <!--Notification-->
         <?php if($this->session->flashdata('insert'))
         { ?>
               <script type="text/javascript">
@@ -86,28 +86,28 @@ Content Wrapper. Contains page content -->
                   stackup_spacing: 10
                 });
               </script>
-        <?php } ?> -->
+        <?php } ?>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
 
-            <!--Alert Form Validation
+            <!--Alert Form Validation-->
             <?php if($error){ ?>
-            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <?php echo $error; ?>
             </div>
             <?php } ?>
 
             <?php if($upload_error){ ?>
-            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div
+            <div class="alert alert-danger alert-dismissible"> <!--bootstrap error div-->
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <?php echo $upload_error; ?>
             </div>
             <?php } ?>
-            -->
+
             <div class="row">
               <div class="col-xs-12">
                   <button class="btn btn-success pull-right" data-toggle="modal" data-target="#modalImport"><i class="fa fa-plus"></i> Import Data</button>

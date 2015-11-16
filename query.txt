@@ -8,3 +8,7 @@ create view view_komponenperkelas as
         spp_setting.idtahun = tahun.idtahun 
     order by spp_setting.jenis_kelas;
 
+2. view_siswa_sudah_punya_kelas
+SELECT siswa.idsiswa, siswa.namasiswa, siswa.nim, kelas.idkelas,  kelas.namakelas, siswa.gender, siswa.alamat, siswa.tmlahir, siswa.tgllahir, siswa.namawali, tahun.tahun_pelajaran FROM siswa, kelas, siswa_kelas, tahun WHERE siswa.idsiswa = siswa_kelas.idsiswa AND kelas.idkelas = siswa_kelas.idkelas AND siswa_kelas.idtahun = tahun.idtahun 
+
+

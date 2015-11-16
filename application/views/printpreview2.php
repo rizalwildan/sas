@@ -18,10 +18,23 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    function printDiv(divName) {
+  var printContents = document.getElementById(divName).innerHTML;
+  var originalContents = document.body.innerHTML;
+
+  document.body.innerHTML = printContents;
+
+  window.print();
+
+  document.body.innerHTML = originalContents;
+  }
+    </script>
   </head>
-  <body onload="window.print();">
+  <body>
     <div class="wrapper">
       <!-- Main content -->
+      <div id="print">
       <section class="invoice" style="margin-right:800px">
         <!-- title row -->
         <div class="row">
@@ -114,6 +127,16 @@
       <!-- this row will not appear when printing -->
 
       </section>
+    </div>
+    <button type="submit" onclick="printDiv('print')"><i class="fa fa-print"></i> Cetak Nota </button>
+    <?php
+    $akun = $this->session->userdata('akun');
+    if($akun['level'] == 1){?>
+      <a href="<?php echo base_url(); ?>admin/transaksi"> Kembali </a>
+    <?php } else { ?>
+      <a href="<?php echo base_url(); ?>home/transaksi"> Kembali </a>
+    <?php } ?>
+
     </div><!-- ./wrapper -->
 
     <!-- AdminLTE App -->

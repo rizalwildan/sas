@@ -140,56 +140,6 @@ class Admin extends CI_Controller {
 
 	}
 
-	public function submitPayment()
-	{
-
-		$nim = $this->input->post('nim');
-		$kelas = $this->input->post('kelas');
-		$tahun = $this->input->post('tahun');
-		$bulan = $this->input->post('bulan');
-		$nama = $this->input->post('nama');
-		$tgltransaksi = $this->input->post('tgltransaksi');
-		$nominalspp = $this->input->post('nominalspp');
-		$namakelas = $this->input->post('namakelas');
-		//Input Ke Print_preview
-		$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
-		$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
-		$data['totalpembayaran'] = $this->input->post('totalpembayaran');
-		$data['danabos'] = $this->input->post('danabos');
-		$data['bulanpembayaran'] = $this->input->post('bulanpembayaran');
-
-		// tulis ke database
-		$datapembayaran = array('tanggal' => $tgltransaksi,
-								'periode' => $bulan,
-								'tahun' => $tahun,
-								'nim' => $nim,
-								'namasiswa' => $nama,
-								'jeniskelas' => $kelas,
-								'namakelas' => $namakelas,
-								// 'nominalspp' => $nominalspp,
-								// coba rekap per siswa diganti
-								'nominalspp' => $data['totalpembayaran'],
-								'danabos' => $data['danabos'],
-								'sppstatus' => "lunas"
-
-		 );
-
-
-		$this->db->insert('spp', $datapembayaran);
-		// print_r($datapembayaran);
-		// die();
-
-		// Print and print preview
-		$this->load->view('printpreview2',$data);
-
-
-		/**
-		$HTML = $this->load->view('printpreview2',$data,true);
-		$filename = $nim.'_NOTA_'.$bulan.'_'.$tahun;
-		$this->pdf->pdf_create($HTML,$filename,'A4','potrait');
-		**/
-	}
-
 // end functions modul transaksi spp
 
 			public function komponenDetail()
@@ -356,7 +306,7 @@ class Admin extends CI_Controller {
 		$akun = $this->session->userdata('akun');
 		if($akun['login'] == FALSE)
 		{
-			redirect(base_url(). 'Home/index');
+			redirect(base_url(). 'Admin/index');
 		}
 		else
 		{

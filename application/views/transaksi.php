@@ -24,6 +24,27 @@
           <div class="row">
           <div class="col-xs-12">
 
+            <!--Notification-->
+      <?php if($this->session->flashdata('gagal'))
+      { ?>
+            <script type="text/javascript">
+            $.bootstrapGrowl("Siswa Sudah Melakukan Pembayaran Pada Periode Ini", // Messages
+              { // options
+                type: "warning", // info, success, warning and danger
+                ele: "body", // parent container
+                offset: {
+                from: "top",
+                amount: 70
+              },
+                align: "right", // right, left or center
+                width: 350,
+                delay: 3000,
+                allow_dismiss: true, // add a close button to the message
+                stackup_spacing: 10
+              });
+            </script>
+      <?php } ?>
+
              <div class="row">
                     <div class="col-sm-6">
                       <div id="example1_length" class="dataTables_length">
@@ -35,23 +56,6 @@
                         </div>
                       </div>
               </div>
-
-
-              <!-- <div class="row">
-                    <div class="col-sm-6">
-                      <div id="example1_length" class="dataTables_length">
-                        <label>
-                          Kelas
-
-                          <?php
-                          $js = 'id="kelas" class="form-control input-sm" onChange="filterkelas(this.value)"';
-                          echo form_dropdown('nama_lap', $kelas['kelas'],'',$js);
-                          ?>
-
-                          </label>
-                        </div>
-                      </div>
-              </div> -->
 
             <div class="row">
                     <div class="col-sm-6">
