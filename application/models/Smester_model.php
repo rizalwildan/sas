@@ -6,6 +6,12 @@
 		 parent::__construct();
 		}
 
+		public function getDataTahun()
+		{
+			$this->db->order_by('nama_tahun_pelajaran', 'DESC');
+			return $this->db->get('tahun_pelajaran');
+		}
+
     public function insert_smester($data)
     {
       $this->db->insert('tahun', $data);

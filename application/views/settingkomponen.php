@@ -61,7 +61,7 @@ Content Wrapper. Contains page content -->
              <div class="row">
                     <div class="col-sm-12">
                       <?php foreach($cek as $smt) { ?>
-                      <input type="hidden" name="idtahun" value="<?php echo $smt['idtahun']; ?>">
+                      <input type="hidden" name="idtahun" value="<?php echo $smt['id_tahun']; ?>">
                       <?php }?>
                       <div id="example1_length" class="dataTables_length">
                         <label>

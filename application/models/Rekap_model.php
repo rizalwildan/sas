@@ -82,27 +82,34 @@
 		}
 
 		//Mengambil Status Pembayaran Dari NIM perkelas
-		public function getstatuskelas($nim, $bulan)
+		public function getstatuskelas($id_siswa, $bulan)
 		{
-			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
+			$data = $this->db->query("SELECT * FROM view_spp WHERE id_siswa='$id_siswa' AND periode='$bulan'");
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;
 			}else{
 				foreach ($data->result() as $key) {
-					$kirimData = $key->nominalspp;
+					$kirimData = $key->nominal_spp;
 				}
 			}
 
 			return $kirimData;
 		}
 
+		public function filter_rekap($kelas, $tahun)
+		{
+			$this->db->WHERE('id_kelas', $kelas);
+			$this->db->WHERE('id_tahun', $tahun);
+			$data = $this->db->get('view_spp');
 
-
-
-
-
-
+			if($data->num_rows() < 1){
+				$kirimData = "kosong";
+			}else {
+				$kirimData = $data->result_array();
+			}
+			return $kirimData;
+		}
 
 		public function daftarSiswa()
 		{

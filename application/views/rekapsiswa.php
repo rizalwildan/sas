@@ -11,14 +11,23 @@
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
-
+            <?php
+            $akun = $this->session->userdata('akun');
+            if ($akun['level'] == 1) { ?>
+              <form method="post" action="<?php echo base_url();?>Admin/filter_rekap">
+            <?php } else { ?>
+              <form method="post" action="<?php echo base_url();?>Home/filter_rekap">
+            <?php } ?>
             <div class="row">
                    <div class="col-sm-12">
                      <div id="example1_length" class="dataTables_length">
                        <label>
                          Tahun Ajaran
-                         <select class="form-control input-sm" aria-controls="example1" name="kelas">
-                           <option value="">--Semua Kelas--</option>
+                         <select class="form-control input-sm" aria-controls="example1" name="tahun">
+                           <option value="">--Pilih Tahun--</option>
+                           <?php foreach ($tahun->result() as $datatahun) {?>
+                             <option value="<?php echo $datatahun->id_tahun; ?>"><?php echo $datatahun->nama_tahun_pelajaran; ?></option>
+                           <?php } ?>
                          </select>
                          </label>
                        </div>
@@ -31,15 +40,17 @@
                        <label>
                          Kelas
                          <select class="form-control input-sm" aria-controls="example1" name="kelas">
-                           <option value="">--Semua Kelas--</option>
+                           <option value="">--Pilih Kelas--</option>
                            <?php foreach($kelas->result() as $datakelas) { ?>
                            <option value="<?php echo $datakelas->id_kelas; ?>"><?php echo $datakelas->nama_kelas; ?></option>
                            <?php }?>
                          </select>
                          </label>
                        </div>
+                       <button type="submit" class="btn btn-success pull-left">Go</button>
                      </div>
              </div>
+           </form>
 
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
