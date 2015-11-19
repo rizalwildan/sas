@@ -33,6 +33,7 @@ class Admin extends CI_Controller {
 			$this->load->model('Login_model');
 			$this->load->model('Rekap_model');
 			$this->load->model('Smester_model');
+			$this->load->model('Pesan_model');
 		}
 
 
@@ -381,6 +382,35 @@ class Admin extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar2');
 		$this->load->view('pesan');
+		$this->load->view('template/footer');
+	}
+
+	public function inbox()
+	{
+		$data['inbox'] = $this->Pesan_model->getInbox();
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('inbox', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function outbox()
+	{
+		$data['outbox'] = $this->Pesan_model->getOutbox();
+
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('outbox',$data);
+		$this->load->view('template/footer');
+	}
+
+	public function sent()
+	{
+		$data['sent'] = $this->Pesan_model->getSent();
+		
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar2');
+		$this->load->view('sentitem',$data);
 		$this->load->view('template/footer');
 	}
 }

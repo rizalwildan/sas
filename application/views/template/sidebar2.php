@@ -38,9 +38,9 @@
               <a href="#"><i class="fa fa-envelope"></i> <span>Pesan</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>admin/pesan">Tulis Pesan</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/">Kotak Masuk</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/">Outbox</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/">Pesan Terkirim</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/inbox">Kotak Masuk</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/outbox">Outbox</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/sent">Pesan Terkirim</a></li>
               </ul>
             </li>
             <li class="treeview">
