@@ -100,8 +100,22 @@
 		public function filter_rekap($kelas, $tahun)
 		{
 			$this->db->WHERE('id_kelas', $kelas);
-			$this->db->WHERE('id_tahun', $tahun);
-			$data = $this->db->get('view_spp');
+			$this->db->WHERE('nama_tahun_pelajaran', $tahun);
+			$data = $this->db->get('view_siswa_sudah_dapat_kelas');
+
+			if($data->num_rows() < 1){
+				$kirimData = "kosong";
+			}else {
+				$kirimData = $data->result_array();
+			}
+			return $kirimData;
+		}
+
+		public function print_rekap($isi)
+		{
+			$this->db->WHERE('id_kelas', $isi['namakelas']);
+			$this->db->WHERE('nama_tahun_pelajaran', $isi['tahun']);
+			$data = $this->db->get('view_siswa_sudah_dapat_kelas');
 
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";
@@ -113,7 +127,7 @@
 
 		public function daftarSiswa()
 		{
-			$data = $this->db->query("SELECT * FROM view_spp GROUP BY id_siswa ");
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_dapat_kelas GROUP BY id_siswa ");
 
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";

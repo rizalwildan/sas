@@ -18,75 +18,121 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    function printDiv(divName) {
+  var printContents = document.getElementById(divName).innerHTML;
+  var originalContents = document.body.innerHTML;
+
+  document.body.innerHTML = printContents;
+
+  window.print();
+
+  document.body.innerHTML = originalContents;
+  }
+  </script>
   </head>
-  <body onload="window.print();">
+
+  <body onload="">
     <div class="wrapper">
       <!-- Main content -->
+      <div id="print">
       <section class="invoice">
         <!-- title row -->
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-sm-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> Laporan Keuangan Siswa
+            <i class="fa fa-globe"></i>Rekap Keuangan Siswa Per Kelas
             <small class="pull-right">Tanggal Cetak: <?= date("j M Y") ?></small>
           </h2>
           </div><!-- /.col -->
         </div>
-
+       
         <!-- Table row -->
         <div class="row">
-          <div class="col-xs-12 table-responsive">
-            <table id='rekapsiswa' class='table table-bordered table-striped'>
-               <thead>
-                 <tr>
-                   <th>Nis</th>
-                   <th>Nama Siswa</th>
-                   <th>Kelas</th>
-                   <th>Jan</th>
-                   <th>Feb</th>
-                   <th>Mar</th>
-                   <th>Apr</th>
-                   <th>Mei</th>
-                   <th>Juni</th>
-                   <th>Juli</th>
-                   <th>Agus</th>
-                   <th>Sept</th>
-                   <th>Okto</th>
-                   <th>Nov</th>
-                   <th>Des</th>
-                   <th>Total</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <?php
-                 foreach ($spp as $key) { ?>
-                 <tr>
-                   <td><?= $key['nim']?> </td>
-                   <td><?= $key['nama']?></td>
-                   <td><?= $key['namakelas'] ?></td>
-                   <td><?= $key['Januari']?></td>
-                   <td><?= $key['Februari']?></td>
-                   <td><?= $key['Maret']?></td>
-                   <td><?= $key['April']?></td>
-                   <td><?= $key['Mei']?></td>
-                   <td><?= $key['Juni']?></td>
-                   <td><?= $key['Juli']?></td>
-                   <td><?= $key['Agustus']?></td>
-                   <td><?= $key['September']?></td>
-                   <td><?= $key['Oktober']?></td>
-                   <td><?= $key['November']?></td>
-                   <td><?= $key['Desember']?></td>
-                   <td><?= $key['total']?></td>
-                 </tr>
-                 <?php }?>
-               </tbody>
-           </table>
+          <div class="col-sm-12 table-responsive">
+            <table class='table table-bordered table-striped'>
+                    <thead>
+                      <tr>
+                        <th>Nis</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>Maret</th>
+                        <th>April</th>
+                        <th>Mei</th>
+                        <th>Juni</th>
+                        <th>Juli</th>
+                        <th>Agustus</th>
+                        <th>September</th>
+                        <th>Oktober</th>
+                        <th>November</th>
+                        <th>Desember</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      foreach ($spp as $key){ ?>
+                      <tr>
+                        <td><?= $key['nis']?></td>
+                        <td><?= $key['nama_siswa']?></td>
+                        <td><?= $key['nama_kelas'] ?></td>
+                        <td>
+                          <?= $key['januari']?>
+                        </td>
+                        <td>
+                          <?= $key['februari']?>
+                        </td>
+                        <td>
+                          <?= $key['maret']?>
+                        </td>
+                        <td>
+                          <?= $key['april']?>
+                        </td>
+                        <td>
+                          <?= $key['mei']?>
+                        </td>
+                        <td>
+                          <?= $key['juni']?>
+                        </td>
+                        <td>
+                          <?= $key['juli']?>
+                        </td>
+                        <td>
+                          <?= $key['agustus']?>
+                        </td>
+                        <td>
+                          <?= $key['september']?>
+                        </td>
+                        <td>
+                          <?= $key['oktober']?>
+                        </td>
+                        <td>
+                          <?= $key['november']?>
+                        </td>
+                        <td>
+                          <?= $key['desember']?>
+                        </td>
+                        <td><?= $key['total']?></td>
+                      </tr>
+                      <?php }?>
+                    </tbody>
+                </table>
           </div><!-- /.col -->
         </div><!-- /.row -->
-
-      <!-- this row will not appear when printing -->
-
+      
       </section>
+    </div>
+    <button type="submit" onclick="printDiv('print')"><i class="fa fa-print"></i> Cetak Rekap </button>
+    <?php
+    $akun = $this->session->userdata('akun');
+    if($akun['level'] == 1){?>
+      <a href="<?php echo base_url(); ?>admin/rekap"> Kembali </a>
+    <?php } else { ?>
+      <a href="<?php echo base_url(); ?>home/rekap"> Kembali </a>
+    <?php } ?>
+
     </div><!-- ./wrapper -->
 
     <!-- AdminLTE App -->
