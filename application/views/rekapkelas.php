@@ -39,19 +39,21 @@
                       <?php foreach ($spp as $key) { ?>
                       <tr>
                         <td><?= $key['namakelas']?></td>
-                        <td><?= $key['Januari']?></td>
-                        <td><?= $key['Februari']?></td>
-                        <td><?= $key['Maret']?></td>
-                        <td><?= $key['April']?></td>
-                        <td><?= $key['Mei']?></td>
-                        <td><?= $key['Juni']?></td>
-                        <td><?= $key['Juli']?></td>
-                        <td><?= $key['Agustus']?></td>
-                        <td><?= $key['September']?></td>
-                        <td><?= $key['Oktober']?></td>
-                        <td><?= $key['November']?></td>
-                        <td><?= $key['Desember']?></td>
-                        <td><?= $key['total']?></td>
+                        <td><?= $key['januari']?></td>
+                        <td><?= $key['februari']?></td>
+                        <td><?= $key['maret']?></td>
+                        <td><?= $key['april']?></td>
+                        <td><?= $key['mei']?></td>
+                        <td><?= $key['juni']?></td>
+                        <td><?= $key['juli']?></td>
+                        <td><?= $key['agustus']?></td>
+                        <td><?= $key['september']?></td>
+                        <td><?= $key['oktober']?></td>
+                        <td><?= $key['november']?></td>
+                        <td><?= $key['desember']?></td>
+                        <td><?= $key['januari'] + $key['februari'] + $key['maret'] + $key['april'] + $key['mei']
+                        + $key['juni'] + $key['juli'] + $key['agustus'] + $key['september'] + $key['oktober'] + $key['november']
+                        + $key['desember']?></td>
                       </tr>
                       <?php }?>
                     </tbody>

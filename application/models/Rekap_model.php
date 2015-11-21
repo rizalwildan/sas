@@ -70,7 +70,7 @@
 		//Mengambil NIM berdasarkan kelas
 		public function daftarSiswaByKelas($kelas)
 		{
-			$data = $this->db->query("SELECT * FROM spp WHERE namakelas='$kelas' GROUP BY nim ");
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE namakelas='$kelas' GROUP BY nim ");
 
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";
@@ -97,12 +97,18 @@
 			return $kirimData;
 		}
 
+		public function daftarKelas()
+		{
+			$data = $this->db->query("SELECT * FROM kelas GROUP BY namakelas ");
 
+			if($data->num_rows() < 1){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
 
-
-
-
-
+			return $kirimData;
+		}
 
 		public function daftarSiswa()
 		{
@@ -152,6 +158,21 @@
 			$data = $this->db->query("SELECT sum(nominalspp) as jumlah FROM spp WHERE nim='$nim'");
 
 			if($data->num_rows() < 1){
+				$kirimData = 0;
+			}else{
+				foreach ($data->result() as $key) {
+					$kirimData = $key->jumlah;
+				}
+			}
+
+			return $kirimData;
+		}
+
+		public function totalSppKelas($namakelas, $bulan)
+		{
+			$data = $this->db->query("SELECT nominalspp * count(nim) as jumlah FROM spp WHERE namakelas='$namakelas' AND periode='$bulan'");
+
+			if ($data->num_rows() < 1) {
 				$kirimData = 0;
 			}else{
 				foreach ($data->result() as $key) {
