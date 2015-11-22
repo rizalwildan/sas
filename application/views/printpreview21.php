@@ -39,10 +39,10 @@
         <!-- title row -->
         <div class="row">
           <div class="col-xs-12">
-           
-             Nota SPP SMAN 3 MAGETAN
-            <small class="pull-right">Transaksi: <?= date("j M Y") ?></small>
-          <hr>
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i> Nota SPP
+            <small class="pull-right">Tanggal Transaksi: <?= date("j M Y") ?></small>
+          </h2>
           </div><!-- /.col -->
         </div>
         <!-- info row -->
@@ -51,8 +51,8 @@
           <address>
             <?php foreach ($siswa as $data) { ?>
               <strong><?= $data['namasiswa']; ?></strong><br>
-              NIS : <?= $data['nim']; ?><br>
-              Kelas : <?= $data['namakelas']; ?><br>
+              <b>NIS : <?= $data['nim']; ?> </b><br>
+              <b>Kelas : <?= $data['namakelas']; ?> </b><br>
             <?php }?>
           </address>
           </div><!-- /.col -->
@@ -61,7 +61,7 @@
         <!-- Table row -->
         <div class="row">
           <div class="col-xs-12 table-responsive">
-            <table border="0" style="width:100%">
+            <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
@@ -101,31 +101,25 @@
         }
       ?>
 
-      <div class="table-responsive" style="margin-left:90px">
-        <table border="0">
+      <div class="table-responsive">
+        <table class="table">
           <tbody>
             <tr>
-              <th>Subtotal:</th>
-              <td><?= $jumlah; ?></td>
+              <th style="width:50%">Subtotal:</th>
+              <td><b><?= $jumlah; ?></b></td>
             </tr>
             <tr>
-              <th>Pembayaran Bulan:</th>
-              <td><?= $bulanpembayaran; ?></td>
+              <th>Untuk Pembayaran Bulan:</th>
+              <td><b><?= $bulanpembayaran; ?></b></td>
             </tr>
             <tr>
               <th>Dana Bos :</th>
-              <td><?= $danabos; ?></td>
+              <td><b><?= $danabos; ?></b></td>
             </tr>
             <tr>
               <th>Total:</th>
-              <td><?= $totalpembayaran; ?></td>
+              <td><b><?= $totalpembayaran; ?> </b></td>
             </tr>
-	    <tr>
-              <td>
-		<br/><br/><br/>
-		(Sri Wahyuni)
-	      </td>
-	    </tr>
           </tbody>
         </table>
       </div>

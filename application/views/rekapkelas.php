@@ -2,7 +2,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Rekap Keuangan Per Kelas
+            Rekap Keuangan Per Tingkat Kelas
           </h1>
         </section>
 

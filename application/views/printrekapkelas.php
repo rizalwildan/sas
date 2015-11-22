@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> Laporan Keuangan Per Kelas
+            <i class="fa fa-globe"></i> Laporan Keuangan Per Tingkat Kelas
             <small class="pull-right">Tanggal Cetak: <?= date("j M Y") ?></small>
           </h2>
           </div><!-- /.col -->

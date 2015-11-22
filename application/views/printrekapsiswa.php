@@ -27,7 +27,7 @@
         <div class="row">
           <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> Laporan Keuangan Siswa
+            <i class="fa fa-globe"></i> Laporan Keuangan Siswa Kelas
             <small class="pull-right">Tanggal Cetak: <?= date("j M Y") ?></small>
           </h2>
           </div><!-- /.col -->
