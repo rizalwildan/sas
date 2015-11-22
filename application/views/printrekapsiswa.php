@@ -22,10 +22,10 @@
   <body onload="window.print();">
     <div class="wrapper">
       <!-- Main content -->
-      <section class="invoice">
+      <section class="invoice" style="margin-right:300px">
         <!-- title row -->
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12" >
           <h2 class="page-header">
             <i class="fa fa-globe"></i> Laporan Keuangan Siswa Kelas
             <small class="pull-right">Tanggal Cetak: <?= date("j M Y") ?></small>

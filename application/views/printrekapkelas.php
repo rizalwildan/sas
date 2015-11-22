@@ -35,7 +35,7 @@
     <div class="wrapper">
       <!-- Main content -->
       <div id="print">
-      <section class="invoice">
+      <section class="invoice" style="margin-right:300px">
         <!-- title row -->
         <div class="row">
           <div class="col-xs-12">
