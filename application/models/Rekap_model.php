@@ -70,7 +70,9 @@
 		//Mengambil NIM berdasarkan kelas
 		public function daftarSiswaByKelas($kelas)
 		{
-			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE namakelas='$kelas' GROUP BY nim ");
+			$query = "SELECT * FROM view_siswa_sudah_punya_kelas, cek_smester WHERE namakelas='$kelas' AND view_siswa_sudah_punya_kelas.tahun_pelajaran = cek_smester.tahun_pelajaran
+			 GROUP BY nim ";
+			$data = $this->db->query($query);
 
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";
@@ -82,9 +84,9 @@
 		}
 
 		//Mengambil Status Pembayaran Dari NIM perkelas
-		public function getstatuskelas($nim, $bulan)
+		public function getstatuskelas($nim, $bulan, $tahun_pelajaran)
 		{
-			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
+			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan' AND tahun = '$tahun_pelajaran'");
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;
@@ -110,9 +112,9 @@
 			return $kirimData;
 		}
 
-		public function daftarSiswa()
+		public function daftarKelasByJenis($jenis_kelas)
 		{
-			$data = $this->db->query("SELECT * FROM spp GROUP BY nim ");
+			$data = $this->db->query("SELECT * FROM kelas WHERE jenis_kelas = '$jenis_kelas' GROUP BY namakelas ");
 
 			if($data->num_rows() < 1){
 				$kirimData = "kosong";
@@ -123,9 +125,24 @@
 			return $kirimData;
 		}
 
-		public function getStatus($nim, $bulan)
+		public function daftarSiswa()
 		{
-			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
+			$query = "SELECT * FROM view_siswa_sudah_punya_kelas, cek_smester WHERE view_siswa_sudah_punya_kelas.tahun_pelajaran = cek_smester.tahun_pelajaran
+			 GROUP BY nim ";
+			$data = $this->db->query($query);
+
+			if($data->num_rows() < 1){
+				$kirimData = "kosong";
+			}else{
+				$kirimData = $data->result_array();
+			}
+
+			return $kirimData;
+		}
+
+		public function getStatus($nim, $bulan, $tahun_pelajaran)
+		{
+			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan' AND tahun = '$tahun_pelajaran'");
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;
@@ -140,7 +157,8 @@
 
 		public function getBos($nim, $bulan)
 		{
-			$data = $this->db->query("SELECT * FROM spp WHERE nim='$nim' AND periode='$bulan'");
+			$query = "SELECT * FROM spp, cek_smester WHERE nim='$nim' AND periode='$bulan' AND spp.tahun = cek_smester.tahun_pelajaran";
+			$data = $this->db->query($query);
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;
@@ -153,9 +171,9 @@
 			return $kirimData;
 		}
 
-		public function totalSPPByNim($nim)
+		public function totalSPPByNim($nim, $tahun_pelajaran)
 		{
-			$data = $this->db->query("SELECT sum(nominalspp) as jumlah FROM spp WHERE nim='$nim'");
+			$data = $this->db->query("SELECT sum(nominalspp) as jumlah FROM spp WHERE nim='$nim' AND tahun='$tahun_pelajaran'");
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;
@@ -170,7 +188,26 @@
 
 		public function totalSppKelas($namakelas, $bulan)
 		{
-			$data = $this->db->query("SELECT nominalspp * count(nim) as jumlah FROM spp WHERE namakelas='$namakelas' AND periode='$bulan'");
+			$query = "SELECT nominalspp * count(nim) as jumlah FROM spp, cek_smester WHERE namakelas='$namakelas' AND periode='$bulan' 
+			AND spp.tahun = cek_smester.tahun_pelajaran";
+			$data = $this->db->query($query);
+
+			if ($data->num_rows() < 1) {
+				$kirimData = 0;
+			}else{
+				foreach ($data->result() as $key) {
+					$kirimData = $key->jumlah;
+				}
+			}
+
+			return $kirimData;
+		}
+
+		public function totalSppKelasPerBulan($jenis_kelas, $bulan)
+		{
+			$query = "SELECT sum(nominalspp) as jumlah FROM spp, cek_smester WHERE jeniskelas='$jenis_kelas' AND periode='$bulan' 
+				AND spp.tahun = cek_smester.tahun_pelajaran";
+			$data = $this->db->query($query);
 
 			if ($data->num_rows() < 1) {
 				$kirimData = 0;
@@ -185,7 +222,8 @@
 
 		public function totalBosByNim($nim)
 		{
-			$data = $this->db->query("SELECT sum(danabos) as jumlah FROM spp WHERE nim='$nim'");
+			$query = "SELECT sum(danabos) as jumlah FROM spp, cek_smester WHERE nim='$nim' AND spp.tahun = cek_smester.tahun_pelajaran";
+			$data = $this->db->query($query);
 
 			if($data->num_rows() < 1){
 				$kirimData = 0;

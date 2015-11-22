@@ -238,7 +238,7 @@ class Transaksi extends CI_Controller {
 	$namakelas = $this->input->post('namakelas');
 
 	//Input Ke Print_preview
-	$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim);
+	$data['siswa'] = $this->Transaksi_model->getSiswaByNim($nim, $tahun);
 	$data['komponen'] = $this->Transaksi_model->getKomponenByBulan($bulan,$tahun,$kelas);
 	$data['totalpembayaran'] = $this->input->post('totalpembayaran');
 	$data['bulanpembayaran'] = $this->input->post('bulanpembayaran');

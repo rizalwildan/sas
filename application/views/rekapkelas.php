@@ -12,6 +12,31 @@
           <div class="row">
           <div class="col-xs-12">
 
+            <div class="row">
+                  <?php 
+                  $akun = $this->session->userdata('akun');
+                  if ($akun['level'] == 1) { ?>
+                    <form method="post" action="<?= base_url('Admin/filter_rekap_kelas');?>">
+                  <?php } else { ?> 
+                    <form method="post" action="<?= base_url('Home/filter_rekap_kelas');?>">
+                  <?php } ?>
+                  <div class="col-sm-6">
+                    <div id="example1_length" class="dataTables_length">
+                      <label>
+                        Kelas
+                        <select class="form-control input-sm" aria-controls="example1" name="jeniskelas" >
+                            <option value="">--Pilih Kelas--</option>
+                            <option value="1">X</option>
+                            <option value="2">XI</option>
+                            <option value="3">XII</option>
+                        </select>
+                        </label>
+                      </div>
+                      <button class="btn btn-primary" type="submit">Go</button>
+                    </div>
+                    </form>
+            </div>
+
             <div class="box box-info" style="margin-top:20px">
               <div class="box-body">
                 <div class="row">

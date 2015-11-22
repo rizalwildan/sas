@@ -69,7 +69,9 @@
 		}
 
 		public function getAllSiswa(){
-			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas ORDER BY namakelas");
+			$query = "SELECT * FROM view_siswa_sudah_punya_kelas, cek_smester WHERE view_siswa_sudah_punya_kelas.tahun_pelajaran = cek_smester.tahun_pelajaran
+			 ORDER BY namakelas";
+			$data = $this->db->query($query);
 
 			if($data->num_rows() < 1 ){
 				$kirimData = "kosong";
@@ -106,9 +108,9 @@
 			return $kirimData;
 		}
 
-		public function getSiswaByNim($nim)
+		public function getSiswaByNim($nim, $tahun)
 		{
-			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE nim='$nim'");
+			$data = $this->db->query("SELECT * FROM view_siswa_sudah_punya_kelas WHERE nim='$nim' AND tahun_pelajaran = '$tahun'");
 
 			if($data->num_rows() < 1 ){
 				$kirimData = "kosong";

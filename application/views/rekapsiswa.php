@@ -12,7 +12,13 @@
           <div class="row">
           <div class="col-xs-12">
           <div class="row">
-                  <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
+              <?php $akun = $this->session->userdata('akun');
+              if ($akun['level'] == 1) { ?>
+                <form method="post" action="<?= base_url('Admin/print_rekap_siswa');?>">
+              <?php } else { ?> 
+                <form method="post" action="<?= base_url('Home/print_rekap_siswa');?>">
+              <?php } ?>
+                  
                   <div class="col-sm-6">
                     <div id="example1_length" class="dataTables_length">
                       <label>
@@ -39,7 +45,7 @@
                 <div class="row">
                 <div class="col-md-12" style="overflow:auto;">
                  <table id='rekapsiswa' class='table table-bordered table-striped'>
-                    <thead>
+                  <thead>
                       <tr>
                         <th>Nis</th>
                         <th>Nama Siswa</th>
@@ -57,7 +63,6 @@
                         <th>November</th>
                         <th>Desember</th>
                         <th>Total</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -188,9 +193,6 @@
                           </button>
                         </td>
                         <td><?= $key['total']?></td>
-                        <td>
-
-                        </td>
                       </tr>
                       <?php }?>
                     </tbody>
@@ -639,7 +641,7 @@
       </div><!-- /.content-wrapper -->
 
 <script type="text/javascript">
-       $(document).ready(function() {
-       $('#rekapsiswa').DataTable();
+      $(document).ready(function() {
+      $('#rekapsiswa').DataTable();
       } );
   </script>

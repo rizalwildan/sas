@@ -21,6 +21,7 @@
                       <tr>
                         <th>Nis</th>
                         <th>Nama Siswa</th>
+                        <th>Kelas</th>
                         <th>January</th>
                         <th>February</th>
                         <th>Maret</th>
@@ -42,6 +43,7 @@
                       <tr>
                         <td><?= $key['nim']?></td>
                         <td><?= $key['nama']?></td>
+                        <td><?= $key['namakelas']?></td>
                         <td><?= $key['Januari']?></td>
                         <td><?= $key['Februari']?></td>
                         <td><?= $key['Maret']?></td>
