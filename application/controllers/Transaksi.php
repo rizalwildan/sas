@@ -284,7 +284,7 @@ class Transaksi extends CI_Controller {
 		// die();
 
 		// Print and print preview
-		$this->load->view('printpreview2',$data);
+		$this->load->view('print3',$data);
 	}
 
 

@@ -35,7 +35,7 @@
     <div class="wrapper">
       <!-- Main content -->
       <div id="print">
-      <section class="invoice" style="margin-right:800px">
+      <section class="invoice" style="margin-right:900px">
         <!-- title row -->
         <div class="row">
           <div class="col-xs-12">
@@ -61,7 +61,7 @@
         <!-- Table row -->
         <div class="row">
           <div class="col-xs-12 table-responsive">
-            <table border="0" style="width:100%">
+            <table border="0" style="width:75%">
               <thead>
                 <tr>
                   <th>No</th>

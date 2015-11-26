@@ -1,3 +1,4 @@
+
 <?php
   // foreach ($siswa as $data) {
   //   # code...
@@ -148,10 +149,10 @@
             $akun = $this->session->userdata('akun');
             if($akun['level'] == 1)
             {?>
-              window.location.href = "http://192.168.20.173/sas/admin/transaksi?bln=" + bulan;
+              window.location.href = "<?php echo base_url();?>admin/transaksi?bln=" + bulan;
        <?php }
            else{ ?>
-            window.location.href = "http://192.168.20.173/sas/home/transaksi?bln=" + bulan;
+            window.location.href = "<?php echo base_url();?>home/transaksi?bln=" + bulan;
           <?php } ?>
 
         }
