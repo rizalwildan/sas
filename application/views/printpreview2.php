@@ -47,17 +47,25 @@
           </div><!-- /.col -->
         </div>
         <!-- info row -->
-        <div class="row invoice-info">
-          <div class="col-sm-4 invoice-col">
-          <address>
+        <div class="row">
+          <div class="col-xs-12">
+          <table border="0">
             <?php foreach ($siswa as $data) { ?>
-              <strong><?= $data['namasiswa']; ?></strong><br>
-              NIS : <?= $data['nim']; ?><br>
-              Kelas : <?= $data['namakelas']; ?><br>
+ 	     <tr>
+              <td><?= $data['namasiswa']; ?><td>
+	    </tr>
+	   <tr>
+             <td> NIS : <?= $data['nim']; ?> </td>
+	  </tr>
+	  <tr>
+             <td> Kelas : <?= $data['namakelas']; ?> </td>
+	  </tr>
             <?php }?>
-          </address>
+          </table>
           </div><!-- /.col -->
         </div><!-- /.row -->
+	<br>
+	----------------------------------------------------------------------
 
         <!-- Table row -->
         <div class="row">
@@ -129,7 +137,7 @@
       </div>
 	<br>
 	--------------------------------------------------------------------
-	<br><br><br><br>
+	<br><br>
 	(Sri Wahyuni)
 
       <!-- this row will not appear when printing -->
