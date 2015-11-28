@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<div id="print">
-		<table border="0" style="width:45%">
+		<table border="0" style="width:30%">
 			<tr>
 				<td>
 					Nota SPP SMAN 3 MAGETAN 
@@ -29,7 +29,7 @@
 		</table>
 		-------------------------------------------------------------------------
 		<br>
-		<table border="0" style="width:30%">
+		<table border="0" style="width:40%">
 			<?php foreach ($siswa as $data) { ?>
 			<tr>
 				<td>Nama : <?= $data['namasiswa']; ?></td>
@@ -44,7 +44,7 @@
 		</table>
 		<br>
 		-------------------------------------------------------------------------
-		<table border="0" style="width:30%">									 
+		<table border="0" style="width:40%">									 
   		<tr>
     		<td><b>No</b></td>
     		<td><b>Komponen</b></td>		

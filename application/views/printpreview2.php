@@ -42,7 +42,8 @@
            
              Nota SPP SMAN 3 MAGETAN
             <small class="pull-right">Transaksi: <?= date("j M Y") ?></small>
-          <hr>
+          <br>
+	---------------------------------------------------------------------
           </div><!-- /.col -->
         </div>
         <!-- info row -->
@@ -61,7 +62,7 @@
         <!-- Table row -->
         <div class="row">
           <div class="col-xs-12 table-responsive">
-            <table border="0" style="width:75%">
+            <table border="0" style="width:95%">
               <thead>
                 <tr>
                   <th>No</th>
@@ -89,6 +90,8 @@
             </table>
           </div><!-- /.col -->
         </div><!-- /.row -->
+	<br>
+	--------------------------------------------------------------------
 
       <?php
         $jumlah = 0;
@@ -101,7 +104,7 @@
         }
       ?>
 
-      <div class="table-responsive" style="margin-left:90px">
+      <div class="table-responsive" style="margin-left:40px">
         <table border="0">
           <tbody>
             <tr>
@@ -121,14 +124,13 @@
               <td><?= $totalpembayaran; ?></td>
             </tr>
 	    <tr>
-              <td>
-		<br/><br/><br/>
-		(Sri Wahyuni)
-	      </td>
-	    </tr>
           </tbody>
         </table>
       </div>
+	<br>
+	--------------------------------------------------------------------
+	<br><br><br><br>
+	(Sri Wahyuni)
 
       <!-- this row will not appear when printing -->
 
